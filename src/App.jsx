@@ -1,7 +1,9 @@
 import { useState } from 'react'
+import { Outlet, Link } from 'react-router'
 import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
+import myTestButton from './components/test-component'
 import './App.css'
 
 function App() {
@@ -28,6 +30,7 @@ function App() {
         >
           Count is {count}
         </button>
+        <myTestButton />
       </section>
 
       <div className="ticks"></div>
@@ -41,10 +44,10 @@ function App() {
           <p>Your questions, answered</p>
           <ul>
             <li>
-              <a href="https://vite.dev/" target="_blank">
+              <Link to="/home">
                 <img className="logo" src={viteLogo} alt="" />
                 Explore Vite
-              </a>
+              </Link>
             </li>
             <li>
               <a href="https://react.dev/" target="_blank">
