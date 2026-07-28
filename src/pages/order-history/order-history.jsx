@@ -1,10 +1,12 @@
-import {useState} from 'react';
-import './order_history.css';
+import { useState } from 'react';
+import './order-history.css';
 
 export default function OrderHistory() {
   const [orders, setOrders] = useState([]);
-}
 
-return(
-  
-)
+  return (
+    <div className="order-history-page">
+      {/* */}
+    </div>
+  );
+}
