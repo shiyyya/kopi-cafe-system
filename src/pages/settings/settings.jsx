@@ -1,84 +1,90 @@
 import {useState} from 'react';
 import './settings.css';
 
-export default function Settings() {
+function Settings() {
   const [profile, setProfile] = useState({
     fullName: '',
     email: '',
     phone: '',
-
-
   });
 
-
-   return (
-    <div className="settings-page">
-      {/* Header */}
-      <div className="settings-header">
-        <button className="settings-back-button" aria-label="Go back">
-          ←
-        </button>
-        <h1 className="settings-header-title">Settings</h1>
-      </div>
- 
-      <div className="settings-content">
-        {/* Profile Information */}
-        <div className="settings-card">
-          <h2 className="settings-card-title">Profile Information</h2>
- 
-          <label className="settings-label">Full Name</label>
-          <input
-            className="settings-input"
-            type="text"
-            value={profile.fullName}
-            onChange={handleChange('fullName')}
-          />
- 
-          <label className="settings-label">Email</label>
-          <input
-            className="settings-input"
-            type="email"
-            value={profile.email}
-            onChange={handleChange('email')}
-          />
- 
-          <label className="settings-label">Phone</label>
-          <input
-            className="settings-input"
-            type="tel"
-            value={profile.phone}
-            onChange={handleChange('phone')}
-          />
-        </div>
- 
-        {/* Saved Addresses */}
-        <div className="settings-card">
-          <h2 className="settings-card-title">Saved Addresses</h2>
-          {}
-
-          <input
-            className="settings-add-address-input"
-            type="text"
-            placeholder="Add new delivery address..."
-            value={newAddress}
-            onChange={}
-            onKeyDown={}
-          />
- 
-          <button className="settings-add-address-button" onClick={handleAddAddress}>
-            <span className="plus-icon">+</span>
-            Add Address
-          </button>
-        </div>
- 
-        {/* Save Changes */}
-        <button className="settings-save-button" onClick={handleSave}>
-          Save Changes
-        </button>
-      </div>
+  return (
+    <div>
+      <h1>SETTINGS</h1>
     </div>
   );
 }
+
+export default Settings;
+
+//    return (
+//     <div className="settings-page">
+//       {/* Header */}
+//       <div className="settings-header">
+//         <button className="settings-back-button" aria-label="Go back">
+//           ←
+//         </button>
+//         <h1 className="settings-header-title">Settings</h1>
+//       </div>
+ 
+//       <div className="settings-content">
+//         {/* Profile Information */}
+//         <div className="settings-card">
+//           <h2 className="settings-card-title">Profile Information</h2>
+ 
+//           <label className="settings-label">Full Name</label>
+//           <input
+//             className="settings-input"
+//             type="text"
+//             value={profile.fullName}
+//             onChange={handleChange('fullName')}
+//           />
+ 
+//           <label className="settings-label">Email</label>
+//           <input
+//             className="settings-input"
+//             type="email"
+//             value={profile.email}
+//             onChange={handleChange('email')}
+//           />
+ 
+//           <label className="settings-label">Phone</label>
+//           <input
+//             className="settings-input"
+//             type="tel"
+//             value={profile.phone}
+//             onChange={handleChange('phone')}
+//           />
+//         </div>
+ 
+//         {/* Saved Addresses */}
+//         <div className="settings-card">
+//           <h2 className="settings-card-title">Saved Addresses</h2>
+//           {}
+
+//           <input
+//             className="settings-add-address-input"
+//             type="text"
+//             placeholder="Add new delivery address..."
+//             value={newAddress}
+//             onChange={}
+//             onKeyDown={}
+//           />
+ 
+//           <button className="settings-add-address-button" onClick={handleAddAddress}>
+//             <span className="plus-icon">+</span>
+//             Add Address
+//           </button>
+//         </div>
+ 
+//         {/* Save Changes */}
+//         <button className="settings-save-button" onClick={handleSave}>
+//           Save Changes
+//         </button>
+//       </div>
+//     </div>
+//   );
+// }
 
 /* 
 di pa tapos yang html may kulang pa sa address 
