@@ -1,10 +1,12 @@
 import {useState} from 'react';
 import './profile.css';
 
-export default function ProfilePage() {
+function Profile() {
     return (
     <div className="profile-page">
       {/* */}
     </div>
   );
 }
+
+export default Profile;

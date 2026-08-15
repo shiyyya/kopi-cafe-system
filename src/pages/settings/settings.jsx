@@ -1,7 +1,7 @@
 import {useState} from 'react';
 import './settings.css';
 
-export default function Settings() {
+function Settings() {
   const [profile, setProfile] = useState({
     fullName: '',
     email: '',
@@ -79,6 +79,8 @@ export default function Settings() {
     </div>
   );
 }
+
+export default Settings;
 
 /* 
 di pa tapos yang html may kulang pa sa address 
