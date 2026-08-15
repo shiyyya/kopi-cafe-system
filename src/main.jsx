@@ -17,8 +17,8 @@ createRoot(document.getElementById('root')).render(
         <Route path="/" element={<App />}>
           <Route index element={<Home />} />
           <Route path="store-locator" element={<StoreLocator />} />
-          <Route path="store-status" element={<OrderStatus />} />
-          <Route path="store-history" element={<OrderHistory />} />
+          <Route path="order-status" element={<OrderStatus />} />
+          <Route path="order-history" element={<OrderHistory />} />
           <Route path="settings" element={<Settings />} />
           <Route path="profile" element={<Profile />} />
         </Route>
