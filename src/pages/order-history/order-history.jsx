@@ -6,7 +6,7 @@ function OrderHistory() {
 
   return (
     <div className="order-history-page">
-      {/* */}
+      <h1>ORDER HISTORY</h1>
     </div>
   );
 }
