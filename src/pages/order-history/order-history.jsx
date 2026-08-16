@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import './order-history.css';
+import Header from '/src/components/blocks/header-wback/header-wback.jsx';
 
 function OrderHistory() {
   const [orders, setOrders] = useState([]);
 
   return (
     <div className="order-history-page">
-      <h1>ORDER HISTORY</h1>
+   <Header title="Order History" />
     </div>
   );
 }
