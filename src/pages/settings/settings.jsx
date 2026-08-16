@@ -1,5 +1,6 @@
 import {useState} from 'react';
 import './settings.css';
+import Header from '/src/components/blocks/header-wback/header-wback.jsx';
 
 function Settings() {
   const [profile, setProfile] = useState({
@@ -10,7 +11,8 @@ function Settings() {
 
   return (
     <div>
-      <h1>SETTINGS</h1>
+      <Header title="Settings" />
+      {/* ... */}
     </div>
   );
 }

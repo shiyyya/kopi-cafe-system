@@ -8,7 +8,6 @@ import StoreLocator from './pages/store-locator/store-locator.jsx';
 import OrderStatus from './pages/order-status/order-status.jsx';
 import OrderHistory from './pages/order-history/order-history.jsx';
 import Settings from './pages/settings/settings';
-import Profile from './pages/profile/profile.jsx';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -20,7 +19,6 @@ createRoot(document.getElementById('root')).render(
           <Route path="order-status" element={<OrderStatus />} />
           <Route path="order-history" element={<OrderHistory />} />
           <Route path="settings" element={<Settings />} />
-          <Route path="profile" element={<Profile />} />
         </Route>
       </Routes>
     </BrowserRouter>
