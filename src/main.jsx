@@ -3,11 +3,11 @@ import { createRoot } from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router';
 import './index.css';
 import App from './App.jsx';
-import Home from './pages/home/home.jsx';
-import StoreLocator from './pages/store-locator/store-locator.jsx';
-import OrderStatus from './pages/order-status/order-status.jsx';
-import OrderHistory from './pages/order-history/order-history.jsx';
-import Settings from './pages/settings/settings';
+import Home from './customer/pages/home/home.jsx';
+import StoreLocator from './customer/pages/store-locator/store-locator.jsx';
+import OrderStatus from './customer/pages/order-status/order-status.jsx';
+import OrderHistory from './customer/pages/order-history/order-history.jsx';
+import Settings from './customer/pages/settings/settings.jsx';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

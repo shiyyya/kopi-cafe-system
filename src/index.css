@@ -30,6 +30,22 @@
   }
 }
 
+* {
+  -webkit-tap-highlight-color: transparent;
+  box-sizing: border-box;
+}
+
+body::-webkit-scrollbar,
+html::-webkit-scrollbar {
+  display: none;
+}
+
+body, html {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+
 /*@media (prefers-color-scheme: dark) {
   :root {
     --text: #9ca3af;
