@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './home.css';
-import HomeHeader from '/src/components/layout/home-header/home-header.jsx';;
+import HomeHeader from '/src/components/layout/home-header/home-header.jsx';
 // import SidebarLoggedIn from '/src/components/blocks/sidebar/sidebar-logged-in.jsx';
 // import SidebarLoggedOut from '/src/components/blocks/sidebar/sidebar-logged-out.jsx';
 
