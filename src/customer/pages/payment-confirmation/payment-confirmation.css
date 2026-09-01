@@ -42,7 +42,6 @@
   margin: 0 0 4px;
 }
 
-/* GCash: receipt card */
 .receiptCard {
   background: var(--code-bg);
   border: 1px solid var(--border);
@@ -98,7 +97,6 @@
   flex-shrink: 0;
 }
 
-/* Cash: delivery info card */
 .confirmedInfoCard {
   background: var(--code-bg);
   border: 1px solid var(--border);

@@ -105,7 +105,6 @@
   flex: 1;
 }
 
-/* --- Override LinkButton look para bumagay sa sidebar (flat, walang border/bg card) --- */
 .sidebarNav .linkButton {
   height: auto;
   padding: 14px 0;
@@ -132,12 +131,6 @@
   letter-spacing: normal;
   color: var(--code-bg);
 }
-
-/* locked (di pa naka-login) na nav items */
-/* .sidebarNav .linkButton.locked {
-  opacity: 0.45;
-  pointer-events: none;
-} */
 
 .sidebarFooter {
   padding: 16px;
