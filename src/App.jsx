@@ -18,6 +18,7 @@ function App() {
          <Link to="order-history">Order History</Link><br></br>
            <Link to="login">Login</Link><br></br>
              <Link to="signup">Signup</Link><br></br>
+              <Link to="delivery-eligibility">Delivery Eligibility</Link><br></br>
     </div>
   )
 }

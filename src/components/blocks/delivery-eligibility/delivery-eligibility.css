@@ -1,0 +1,184 @@
+.eligibilityCard {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: var(--shadow);
+  text-align: left;
+}
+
+.eligibilityTitleRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.eligibilityTitleRow .titleIcon {
+  width: 16px;
+  height: 16px;
+}
+
+.eligibilityTitleRow h3 {
+  font-family: var(--heading);
+  color: var(--accent);
+  font-size: 15px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.eligibilitySubtext {
+  color: var(--text);
+  font-size: 14px;
+  margin: 0 0 16px;
+}
+
+.eligibilityForm {
+  display: flex;
+  gap: 8px;
+}
+
+.eligibilityInput {
+  flex: 1;
+  min-width: 0;
+  background: var(--input-bg);
+  border: 1px solid var(--text-1);
+  color: var(--text-3);
+  font: inherit;
+  font-size: 14px;
+  border-radius: 12px;
+  padding: 10px 16px;
+  outline: none;
+}
+
+.eligibilityInput::placeholder {
+  color: var(--text);
+}
+
+.eligibilityInput:focus {
+  box-shadow: 0 0 0 2px var(--accent-border);
+}
+
+.eligibilityButton {
+  flex-shrink: 0;
+  background: var(--accent);
+  color: var(--text-h);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  border: none;
+  border-radius: 12px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+
+.eligibilityButton:hover {
+  opacity: 0.85;
+}
+
+.eligibilityResult {
+  margin: 12px 0 0;
+  padding: 12px 14px;
+  border-radius: 12px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.eligibilityResult .resultIcon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.eligibilityResult > div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.eligibilityResultTitle {
+  margin: 0;
+  font-size: 13.5px;
+  font-weight: 600;
+}
+
+.eligibilityResultSubtitle {
+  margin: 0;
+  font-size: 12.5px;
+  opacity: 0.85;
+}
+
+.eligibilityResult.eligible {
+  background: var(--success-bg);
+  color:  var(--success);
+}
+
+.eligibilityResult.ineligible {
+  background: var(--error-bg);
+  color: var(--error);
+}
+
+
+@media (max-width: 480px) {
+  .eligibilitySubtext,
+  .eligibilityInput,
+  .eligibilityButton {
+    font-size: 12.5px;
+  }
+
+  .eligibilityTitleRow h3 {
+    font-size: 13.5px;
+  }
+
+  .eligibilityResultTitle {
+    font-size: 10px;
+  }
+
+  .eligibilityResultSubtitle {
+    font-size: 11px;
+  }
+}
+
+.zonesSection {
+  background: var(--input-bg);
+  border-radius: 12px;
+  padding: 16px;
+  margin-top: 16px;
+}
+
+.zonesLabel {
+  font-family: var(--heading);
+  color: var(--text-1);
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0 0 12px;
+}
+
+.zonesList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.zoneTag {
+  background: var(--btn-bg);
+  color: var(--btn-primary);
+  font-size: 13px;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 999px;
+}
+
+@media (max-width: 480px) {
+  .zonesLabel {
+    font-size: 12.5px;
+  }
+
+  .zoneTag {
+    font-size: 11.5px;
+    padding: 7px 14px;
+  }
+}
