@@ -8,8 +8,10 @@ import StoreLocator from './customer/pages/store-locator/store-locator.jsx';
 import OrderStatus from './customer/pages/order-status/order-status.jsx';
 import OrderHistory from './customer/pages/order-history/order-history.jsx';
 import Settings from './customer/pages/settings/settings.jsx';
-import LogIn from './customer/pages/Login/Login.jsx';
-import SignUp from './customer/pages/signup/signup.jsx';
+import PlaceOrder from './customer/pages/place-order/place-order.jsx';
+import DeliveryEligibility from './components/blocks/delivery-eligibility/delivery-eligibility.jsx';
+import Login from './components/cards/login/login.jsx';
+import Signup from './components/cards/signup/signup.jsx';
 import QRPayment from './customer/pages/qr-payment/qr-payment.jsx';
 // import Walkin_Customer from './staff/pages/walk-in/walk-in.jsx';
 
@@ -24,12 +26,14 @@ createRoot(document.getElementById('root')).render(
           <Route path="order-status" element={<OrderStatus />} />
           <Route path="order-history" element={<OrderHistory />} />
           <Route path="settings" element={<Settings />} />
-          <Route path="login" element={<LogIn />} />
-          <Route path="signup" element={<SignUp />} />
+          <Route path="place-order" element={<PlaceOrder />} />
+          <Route path="delivery-eligibility" element={<DeliveryEligibility />} />
+          <Route path="login" element={<Login />} />
+          <Route path="signup" element={<Signup />} />
           <Route path="qr-payment" element={<QRPayment />} />
           {/* <Route path="walk-in" element={<Walkin_Customer />}/> */}
         </Route>
       </Routes>
     </BrowserRouter>
-  </StrictMode>,
-)
+  </StrictMode>
+);

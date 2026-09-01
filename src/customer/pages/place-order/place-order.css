@@ -1,0 +1,331 @@
+.PlaceOrderPage {
+    min-height: 100svh;
+    width: 100%;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+}
+
+.PlaceOrderContent {
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 16px 20px 100px;
+}
+
+.DeliverySection,
+.OrderSummary,
+.PaymentSection {
+    width: 100%;
+    margin-bottom: 14px;
+    padding: 16px;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: var(--code-bg);
+    box-shadow: var(--shadow);
+}
+
+.SectionHeader {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.SectionHeader span {
+    color: var(--accent);
+    font-size: 17px;
+}
+
+.SectionHeader h2,
+.OrderSummary h2,
+.PaymentSection h2 {
+    margin: 0;
+    color: var(--accent);
+    font-family: var(--sans);
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.PlaceOrderInput {
+    width: 100%;
+    height: 42px;
+    margin-bottom: 10px;
+    padding: 0 12px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 13px;
+    outline: none;
+}
+
+.PlaceOrderInput:last-child {
+    margin-bottom: 0;
+}
+
+.PlaceOrderInput::placeholder {
+    color: var(--text);
+}
+
+.PlaceOrderInput:focus {
+    border-color: var(--accent-border);
+    box-shadow: 0 0 0 3px var(--accent-bg);
+}
+
+.OrderSummary h2,
+.PaymentSection h2 {
+    margin-bottom: 14px;
+}
+
+.OrderItems {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.OrderItem {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.ItemImage {
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 7px;
+    background: var(--accent-bg);
+}
+
+.ItemImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.ItemImage span {
+    color: var(--accent);
+    font-size: 20px;
+}
+
+.ItemDetails {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.ItemDetails strong {
+    overflow: hidden;
+    color: var(--accent);
+    font-size: 12px;
+    font-weight: 700;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.ItemDetails span {
+    color: var(--text);
+    font-size: 10px;
+}
+
+.ItemPrice {
+    color: var(--accent);
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+.EmptyOrder {
+    min-height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text);
+    font-size: 13px;
+}
+
+.SummaryDivider {
+    width: 100%;
+    height: 1px;
+    margin: 12px 0 8px;
+    background: var(--border);
+}
+
+.PriceRow {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0;
+    color: var(--text);
+    font-size: 12px;
+}
+
+.PriceRow strong {
+    color: var(--accent);
+}
+
+.TotalRow {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 3px;
+    padding-top: 9px;
+    border-top: 1px solid var(--border);
+    color: var(--accent);
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.TotalRow strong {
+    font-size: 15px;
+}
+
+.PaymentOption {
+    width: 100%;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+    padding: 10px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--bg);
+    color: var(--text);
+    text-align: left;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.PaymentOption:last-child {
+    margin-bottom: 0;
+}
+
+.PaymentOption:hover {
+    border-color: var(--accent-border);
+}
+
+.PaymentOption.selected {
+    border-color: var(--accent);
+    background: var(--accent-bg);
+}
+
+.PaymentIcon {
+    width: 24px;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--accent);
+    font-size: 16px;
+}
+
+.PaymentDetails {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.PaymentDetails strong {
+    color: var(--accent);
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.PaymentDetails small {
+    color: var(--text);
+    font-size: 10px;
+}
+
+.PaymentCheck {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background: var(--accent);
+    color: var(--text-h);
+    font-size: 10px;
+}
+
+.PaymentRadio {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+}
+
+.PlaceOrderFooter {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+    padding: 14px 20px;
+    background: var(--bg);
+    box-shadow: var(--shadow);
+}
+
+.ConfirmOrderButton {
+    width: 100%;
+    max-width: 660px;
+    height: 48px;
+    display: block;
+    margin: 0 auto;
+    border: none;
+    border-radius: 10px;
+    background: var(--accent);
+    color: var(--text-h);
+    font-family: var(--sans);
+    font-size: 13px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.ConfirmOrderButton:hover {
+    opacity: 0.9;
+}
+
+.ConfirmOrderButton:active {
+    transform: scale(0.99);
+}
+
+.ConfirmOrderButton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+@media (max-width: 600px) {
+    .PlaceOrderContent {
+        padding: 14px 12px 90px;
+    }
+
+    .DeliverySection,
+    .OrderSummary,
+    .PaymentSection {
+        padding: 14px;
+        border-radius: 12px;
+    }
+
+    .PlaceOrderFooter {
+        padding: 12px;
+    }
+
+    .ConfirmOrderButton {
+        height: 46px;
+    }
+}

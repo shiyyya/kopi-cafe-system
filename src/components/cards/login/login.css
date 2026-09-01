@@ -1,20 +1,11 @@
-.LoginPage {
-    min-height: 100svh;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 24px;
-    background: var(--bg);
-}
-
-.UserLogin {
+.LoginCard {
     width: 100%;
     max-width: 640px;
     padding: 40px 30px 36px;
-    background: #faf7f0;
+    background: var(--card-bg);
     border-radius: 20px;
     box-shadow: var(--shadow);
+    box-sizing: border-box;
     text-align: left;
 }
 
@@ -29,24 +20,19 @@
 .LoginLogo {
     display: flex;
     align-items: center;
-    gap: 10px;
     margin-bottom: 34px;
 }
 
-.LogoIcon {
-    font-size: 28px;
-}
-
-.LogoText {
+.LoginLogo span {
     color: var(--accent);
     font-family: var(--heading);
     font-size: 24px;
     font-weight: 700;
 }
 
-.UserLogin h1 {
+.LoginCard h1 {
     margin: 0 0 12px;
-    color: var(--accent);
+    color: var(--text-3);
     font-family: var(--heading);
     font-size: 38px;
     font-weight: 600;
@@ -55,29 +41,39 @@
 }
 
 .LoginDescription {
-    margin: 0 0 30px;
-    color: #765e50;
+    margin: 0 0 28px;
+    color: var(--text);
     font-family: var(--sans);
     font-size: 20px;
     line-height: 145%;
 }
 
-.LoginInput {
-    width: 100%;
-    height: 68px;
-    margin-bottom: 18px;
-    padding: 0 24px;
-    border: 1px solid #cdbda8;
-    border-radius: 18px;
-    background: #e8dac4;
-    color: var(--accent);
+.LoginCard label {
+    display: block;
+    margin: 0 0 7px;
+    color: var(--text-2);
     font-family: var(--sans);
-    font-size: 20px;
+    font-size: 16px;
+}
+
+.LoginInput {
+    display: block;
+    width: 100%;
+    height: 62px;
+    margin: 0 0 18px;
+    padding: 0 20px;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    background: var(--input-bg);
+    color: var(--text-3);
+    font-family: var(--sans);
+    font-size: 18px;
     outline: none;
+    box-sizing: border-box;
 }
 
 .LoginInput::placeholder {
-    color: #81776f;
+    color: var(--text);
 }
 
 .LoginInput:focus {
@@ -86,17 +82,19 @@
 }
 
 .LoginButton {
+    display: block;
     width: 100%;
-    height: 76px;
+    height: 62px;
     margin-top: 6px;
+    padding: 0;
     border: none;
-    border-radius: 18px;
-    background: var(--accent);
-    color: var(--text-h);
+    border-radius: 16px;
+    background: var(--btn-secondary);
+    color: var(--btn-label);
     font-family: var(--sans);
-    font-size: 24px;
+    font-size: 20px;
     cursor: pointer;
-    transition: 0.2s ease;
+    transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
 .LoginButton:hover {
@@ -112,15 +110,16 @@
     justify-content: center;
     align-items: center;
     gap: 4px;
-    margin: 28px 0 0;
-    color: #765e50;
+    margin: 22px 0 0;
+    color: var(--text);
     font-family: var(--sans);
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .SignUpText a {
-    color: #4d7045;
-    font-size: 22px;
+    color: var(--text-4);
+    font-size: 18px;
+    font-weight: 700;
     text-decoration: none;
 }
 
@@ -129,16 +128,15 @@
 }
 
 @media (max-width: 600px) {
-    .LoginPage {
-        padding: 16px;
-    }
-
-    .UserLogin {
+    .LoginCard {
+        max-width: 100%;
         padding: 32px 20px 30px;
         border-radius: 18px;
     }
 
     .LoginHandle {
+        width: 50px;
+        height: 5px;
         margin-bottom: 30px;
     }
 
@@ -146,29 +144,38 @@
         margin-bottom: 28px;
     }
 
-    .UserLogin h1 {
+    .LoginLogo span {
+        font-size: 22px;
+    }
+
+    .LoginCard h1 {
         font-size: 32px;
     }
 
     .LoginDescription {
+        margin-bottom: 24px;
         font-size: 18px;
+    }
+
+    .LoginCard label {
+        font-size: 14px;
     }
 
     .LoginInput {
-        height: 62px;
-        font-size: 18px;
+        height: 58px;
+        font-size: 17px;
     }
 
     .LoginButton {
-        height: 68px;
-        font-size: 21px;
+        height: 58px;
+        font-size: 18px;
     }
 
     .SignUpText {
-        font-size: 16px;
+        font-size: 14px;
     }
 
     .SignUpText a {
-        font-size: 20px;
+        font-size: 17px;
     }
 }
