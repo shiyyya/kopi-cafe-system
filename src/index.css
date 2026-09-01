@@ -1,5 +1,5 @@
 :root {
-  --text: #6b6375;
+  --text: #6B5040;
   --text-h: #F5EDE0;
   --bg: #F5EDE0;
   --border: #e5e4e7;
@@ -13,7 +13,8 @@
 
   --btn-primary: #4A6741;     
   --btn-secondary: #2C1A0E;   
-  --btn-label: #FFFFFF;        
+  --btn-label: #FFFFFF;
+  --btn-bg:   #e3e9d9;     
 
   --progress: #4A6741;         
 
@@ -25,7 +26,13 @@
   --card-bg: #FDF8F0;         
   --header-bg: #2C1A0E;        
 
-  --notif: #D4C078;           
+  --notif: #D4C078;   
+  
+  --error: #a2402f;
+  --error-bg: #fbe9e7;
+
+  --success: #2f6b3a;
+  --success-bg: #e3e9d9;
 
   --sans: 'Nunito Sans', system-ui, 'Segoe UI', Roboto, sans-serif;
   --heading: 'Playfair Display', system-ui, 'Segoe UI', Roboto, sans-serif;
@@ -173,4 +180,5 @@ code {
   padding: 4px 8px;
   background: var(--code-bg);
 }
+
 
