@@ -2,7 +2,7 @@ import './payment-confirmation.css';
 import CheckIcon from '/src/assets/icons/check-circle.svg?react';
 import ClockIcon from '/src/assets/icons/time.svg?react';
 import PinIcon from '/src/assets/icons/location.svg?react';
-import CashIcon from '/src/assets/icons/alert.svg?react';
+import CashIcon from '/src/assets/images/cash.png?react';
 
 function formatAmount(value) {
   const number = Number(value) || 0;
@@ -10,17 +10,15 @@ function formatAmount(value) {
 }
 
 export default function PaymentConfirmed({
-  method = 'gcash', // 'gcash' | 'cash'
+  method = 'gcash', 
   orderId,
   etaText = 'Ready in approximately 20-35 minutes',
   onBackToMenu,
 
-  // gcash-specific
   referenceNumber,
   amountPaid,
   receiptEmail,
 
-  // cash-specific
   deliveryAddress,
   paymentNote = 'Pay cash upon delivery',
   confirmationSentTo,

@@ -77,7 +77,7 @@ import './home.css';
 import HomeHeader from '/src/components/layout/home-header/home-header.jsx';
 import SidebarLoggedIn from '/src/components/blocks/sidebar/sidebar-logged-in.jsx';
 import SidebarLoggedOut from '/src/components/blocks/sidebar/sidebar-logged-out.jsx';
-// import Footer from '/src/components/blocks/footer/footer.jsx';
+import Footer from '/src/components/blocks/footer/footer.jsx';
 
 export default function Home() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
