@@ -35,7 +35,6 @@ function SignUp() {
                 <Input
                     type="email"
                     name="email"
-                    placeholder="juan@email.com"
                     className="SignUpInput"
                 />
 
@@ -43,7 +42,6 @@ function SignUp() {
                 <Input
                     type="tel"
                     name="phone"
-                    placeholder="09XX-XXX-XXXX"
                     className="SignUpInput"
                 />
 
@@ -51,7 +49,6 @@ function SignUp() {
                 <Input
                     type="password"
                     name="password"
-                    placeholder="••••••••"
                     className="SignUpInput"
                 />
 
@@ -59,7 +56,6 @@ function SignUp() {
                 <Input
                     type="password"
                     name="newPassword"
-                    placeholder="••••••••"
                     className="SignUpInput"
                 />
 
