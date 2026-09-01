@@ -13,7 +13,7 @@
 }
 
 .storeCard {
-  background: var(--code-bg);
+  background: var(--card-bg);
   border: 1px solid var(--border);
   border-radius: 16px;
   overflow: hidden;
