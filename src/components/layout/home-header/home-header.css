@@ -1,0 +1,81 @@
+.homeHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px;
+  background: var(--accent);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logoIcon {
+  flex-shrink: 0;
+}
+
+.homeTitle {
+  font-family: var(--heading);
+  color: var(--text-h);
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.avatarBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  line-height: 0;
+}
+
+.headerLoginBtn {
+  background: #4A6741;
+  color: var(--text-h);
+  border: none;
+  border-radius: 999px;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 18px;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+
+.headerLoginBtn:hover {
+  opacity: 0.85;
+}
+
+.cartBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menuBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
