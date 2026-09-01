@@ -1,5 +1,4 @@
 import { Link } from 'react-router';
-import PlaceHolderIcon from '/src/assets/icons/profile/profile-outline.svg?react';
 import './link-button.css';
 
 function LinkButton({goto = "/", icon: Icon = PlaceHolderIcon, label = "oi nalimutan mo label", type = "normal"}) {
