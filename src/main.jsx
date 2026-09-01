@@ -9,7 +9,7 @@ import OrderStatus from './customer/pages/order-status/order-status.jsx';
 import OrderHistory from './customer/pages/order-history/order-history.jsx';
 import Settings from './customer/pages/settings/settings.jsx';
 import PlaceOrder from './customer/pages/place-order/place-order.jsx';
-import DeliveryEligibility from './components/blocks/delivery-eligibility/delivery-eligibility.jsx';
+import DeliveryEligibility from './components/cards/delivery-eligibility/delivery-eligibility.jsx';
 import Login from './components/cards/login/login.jsx';
 import Signup from './components/cards/signup/signup.jsx';
 import QRPayment from './customer/pages/qr-payment/qr-payment.jsx';
