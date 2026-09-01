@@ -13,6 +13,7 @@ import DeliveryEligibility from './components/cards/delivery-eligibility/deliver
 import Login from './components/cards/login/login.jsx';
 import Signup from './components/cards/signup/signup.jsx';
 import QRPayment from './customer/pages/qr-payment/qr-payment.jsx';
+import PaymentConfirmation from './customer/pages/payment-confirmation/payment-confirmation.jsx';
 // import Walkin_Customer from './staff/pages/walk-in/walk-in.jsx';
 
 
@@ -31,6 +32,7 @@ createRoot(document.getElementById('root')).render(
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<Signup />} />
           <Route path="qr-payment" element={<QRPayment />} />
+          <Route path="payment-confirmation" element={<PaymentConfirmation />} />
           {/* <Route path="walk-in" element={<Walkin_Customer />}/> */}
         </Route>
       </Routes>

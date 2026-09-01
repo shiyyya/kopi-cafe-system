@@ -1,35 +1,26 @@
+import { Link } from 'react-router';
 import './sidebar.css';
 import CrownLogo from '/src/assets/logo/logo.svg?react';
 import CloseIcon from '/src/assets/icons/close.svg?react';
 import PersonIcon from '/src/assets/icons/login.svg?react';
-import ChevronRightIcon from '/src/assets/icons/chevron.svg?react';
 import PinIcon from '/src/assets/icons/location.svg?react';
 import CupIcon from '/src/assets/icons/cap.svg?react';
 import HistoryIcon from '/src/assets/icons/time.svg?react';
 import GearIcon from '/src/assets/icons/settings.svg?react';
+import LinkButton from '/src/components/elements/button/link-button/link-button.jsx';
 
 const MENU_ITEMS = [
-  { key: 'store-locator', label: 'Store Locator', icon: PinIcon, guestAccess: true },
-  { key: 'order-status', label: 'Order Status', icon: CupIcon, guestAccess: false },
-  { key: 'order-history', label: 'Order History', icon: HistoryIcon, guestAccess: false },
-  { key: 'settings', label: 'Settings', icon: GearIcon, guestAccess: false },
+  { key: 'store-locator', label: 'Store Locator', icon: PinIcon, goto: '/store-locator', guestAccess: true },
+  { key: 'order-status', label: 'Order Status', icon: CupIcon, goto: '/login', guestAccess: false },
+  { key: 'order-history', label: 'Order History', icon: HistoryIcon, goto: '/login', guestAccess: false },
+  { key: 'settings', label: 'Settings', icon: GearIcon, goto: '/login', guestAccess: false },
 ];
 
 export default function SidebarLoggedOut({
   isOpen = false,
   onClose,
-  onNavigate,
-  onLogin,
 }) {
   if (!isOpen) return null;
-
-  const handleItemClick = (item) => {
-    if (!item.guestAccess) {
-      onLogin?.();
-      return;
-    }
-    onNavigate?.(item.key);
-  };
 
   return (
     <>
@@ -51,36 +42,27 @@ export default function SidebarLoggedOut({
           </button>
         </div>
 
-        <button type="button" className="loginSignupBtn" onClick={onLogin}>
+        <Link to="/login" className="loginSignupBtn" style={{ textDecoration: 'none', textAlign: 'center' }}>
           Log In / Sign Up
-        </button>
+        </Link>
 
         <nav className="sidebarNav">
-          {MENU_ITEMS.map((item) => {
-            const { key, label, icon: Icon, guestAccess } = item;
-            return (
-              <button
-                key={key}
-                type="button"
-                className={`sidebarNavItem${!guestAccess ? ' sidebarNavItemLocked' : ''}`}
-                onClick={() => handleItemClick(item)}
-                aria-disabled={!guestAccess}
-              >
-                <span className="navItemLeft">
-                  <Icon className="navItemIcon" />
-                  <span>{label}</span>
-                </span>
-                <ChevronRightIcon className="navItemChevron" />
-              </button>
-            );
-          })}
+          {MENU_ITEMS.map((item) => (
+            <LinkButton
+              key={item.key}
+              goto={item.goto}
+              icon={item.icon}
+              label={item.label}
+              type="normal"
+            />
+          ))}
         </nav>
 
         <div className="sidebarFooter">
-          <button type="button" className="loginBtn" onClick={onLogin}>
+          <Link to="/login" className="loginBtn" style={{ textDecoration: 'none' }}>
             <PersonIcon className="footerIcon" />
             <span>Log In</span>
-          </button>
+          </Link>
         </div>
       </aside>
     </>
