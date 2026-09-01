@@ -1,0 +1,180 @@
+.sidebarOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 40;
+}
+
+.sidebar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 280px;
+  max-width: 85vw;
+  background: var(--accent);
+  display: flex;
+  flex-direction: column;
+  z-index: 50;
+  box-shadow: var(--shadow);
+}
+
+.sidebarHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.sidebarBrand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brandIcon {
+  width: 22px;
+  height: 22px;
+}
+
+.brandName {
+  font-family: var(--heading);
+  color: var(--btn-label);
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.sidebarCloseBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+}
+
+.closeIcon {
+  width: 18px;
+  height: 18px;
+}
+
+.sidebarUser {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.userAvatarIcon {
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+}
+
+.userName {
+  color: var(--btn-label);
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0;
+}
+
+.loginSignupBtn {
+  margin: 16px;
+  background: var(--btn-primary);
+  color: var(--btn-label);
+  border: none;
+  border-radius: 999px;
+  padding: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.loginSignupBtn:hover {
+  opacity: 0.92;
+}
+
+.sidebarNav {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 0;
+  flex: 1;
+}
+
+.sidebarNavItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background: none;
+  border: none;
+  color: var(--code-bg);
+  padding: 14px 16px;
+  font-size: 14.5px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.sidebarNavItem:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.sidebarNavItemLocked {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.sidebarNavItemLocked:hover {
+  background: none;
+}
+
+.navItemLeft {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.navItemIcon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.navItemChevron {
+  width: 14px;
+  height: 14px;
+}
+
+.sidebarFooter {
+  padding: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.logoutBtn,
+.loginBtn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: none;
+  border: none;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0;
+}
+
+.logoutBtn {
+  color: var(--error);
+}
+
+.loginBtn {
+  color: var(--code-bg);
+}
+
+.footerIcon {
+  width: 18px;
+  height: 18px;
+}

@@ -122,7 +122,7 @@
 }
 
 
-@media (max-width: 480px) {
+@media (max-width: 380px) {
   .eligibilitySubtext,
   .eligibilityInput,
   .eligibilityButton {
@@ -164,12 +164,12 @@
 }
 
 .zoneTag {
-  background: var(--btn-bg);
+  background: var(--input-bg);
   color: var(--btn-primary);
   font-size: 13px;
   font-weight: 500;
   padding: 8px 16px;
-  border-radius: 999px;
+  border-radius: 55px;
 }
 
 @media (max-width: 480px) {

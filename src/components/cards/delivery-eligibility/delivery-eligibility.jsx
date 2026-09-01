@@ -70,7 +70,7 @@ export default function DeliveryEligibility() {
       )}
 
       <div className="zonesSection">
-        <p className="zonesLabel">Delivery zones:</p>
+        <p className="zonesLabel">Delivery Zones:</p>
         <div className="zonesList">
           {DELIVERY_ZONES.map((zone) => (
             <span key={zone} className="zoneTag">{zone}</span>

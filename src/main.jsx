@@ -10,7 +10,7 @@ import OrderHistory from './customer/pages/order-history/order-history.jsx';
 import Settings from './customer/pages/settings/settings.jsx';
 import LogIn from './customer/pages/Login/Login.jsx';
 import SignUp from './customer/pages/signup/signup.jsx';
-import DeliveryEligibility from './components/blocks/delivery-eligibility/delivery-eligibility.jsx';
+import QRPayment from './customer/pages/qr-payment/qr-payment.jsx';
 // import Walkin_Customer from './staff/pages/walk-in/walk-in.jsx';
 
 
@@ -24,10 +24,10 @@ createRoot(document.getElementById('root')).render(
           <Route path="order-status" element={<OrderStatus />} />
           <Route path="order-history" element={<OrderHistory />} />
           <Route path="settings" element={<Settings />} />
-           <Route path="login" element={<LogIn />} />
-           <Route path="signup" element={<SignUp />} />
-            <Route path="delivery-eligibility" element={<DeliveryEligibility />} />
-           {/* <Route path="walk-in" element={<Walkin_Customer />}/> */}
+          <Route path="login" element={<LogIn />} />
+          <Route path="signup" element={<SignUp />} />
+          <Route path="qr-payment" element={<QRPayment />} />
+          {/* <Route path="walk-in" element={<Walkin_Customer />}/> */}
         </Route>
       </Routes>
     </BrowserRouter>
