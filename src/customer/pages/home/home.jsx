@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router';
 import './home.css';
 import HomeHeader from '/src/components/layout/home-header/home-header.jsx';
 // import SidebarLoggedIn from '/src/components/blocks/sidebar/sidebar-logged-in.jsx';
@@ -33,12 +34,14 @@ export default function Home() {
   const goToProfile = () => {
     console.log('Go to profile');
   };
+  
+  const navigate = useNavigate();
 
   return (
     <div className="homePage">
       <HomeHeader
         currentUser={currentUser}
-        onLogin={handleLogin}
+       onLogin={() => navigate('/login')}
         onCartClick={goToCart}
         onProfileClick={goToProfile}
         onMenuClick={() => setSidebarOpen(true)}

@@ -1,17 +1,4 @@
-.SignUpPage {
-    min-height: 100svh;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 24px;
-    background: var(--bg);
-    box-sizing: border-box;
-    text-align: left;
-    overflow-x: hidden;
-}
-
-.SignUpCard {
+.LoginCard {
     width: 100%;
     max-width: 640px;
     padding: 40px 30px 36px;
@@ -22,7 +9,7 @@
     text-align: left;
 }
 
-.SignUpHandle {
+.LoginHandle {
     width: 60px;
     height: 6px;
     margin: 0 auto 38px;
@@ -30,20 +17,20 @@
     border-radius: 10px;
 }
 
-.SignUpLogo {
+.LoginLogo {
     display: flex;
     align-items: center;
     margin-bottom: 34px;
 }
 
-.SignUpLogo span {
+.LoginLogo span {
     color: var(--accent);
     font-family: var(--heading);
     font-size: 24px;
     font-weight: 700;
 }
 
-.SignUpCard h1 {
+.LoginCard h1 {
     margin: 0 0 12px;
     color: var(--text-3);
     font-family: var(--heading);
@@ -53,7 +40,7 @@
     letter-spacing: -0.5px;
 }
 
-.SignUpDescription {
+.LoginDescription {
     margin: 0 0 28px;
     color: var(--text);
     font-family: var(--sans);
@@ -61,23 +48,21 @@
     line-height: 145%;
 }
 
-.SignUpCard label {
+.LoginCard label {
     display: block;
     margin: 0 0 7px;
     color: var(--text-2);
     font-family: var(--sans);
     font-size: 16px;
-    line-height: 145%;
-    text-align: left;
 }
 
-.SignUpInput {
+.LoginInput {
     display: block;
     width: 100%;
     height: 62px;
-    margin: 0 0 16px;
+    margin: 0 0 18px;
     padding: 0 20px;
-    border: 1px solid #cdbda8;
+    border: 1px solid var(--border);
     border-radius: 16px;
     background: var(--input-bg);
     color: var(--text-3);
@@ -87,32 +72,20 @@
     box-sizing: border-box;
 }
 
-.SignUpInput::placeholder {
+.LoginInput::placeholder {
     color: var(--text);
 }
 
-.SignUpInput:focus {
+.LoginInput:focus {
     border-color: var(--accent-border);
     box-shadow: 0 0 0 3px var(--accent-bg);
 }
 
-.AddressInput {
-    height: 72px;
-}
-
-.DeliveryNote {
-    margin: -6px 0 18px;
-    color: var(--text);
-    font-family: var(--sans);
-    font-size: 13px;
-    line-height: 145%;
-}
-
-.CreateAccountButton {
+.LoginButton {
     display: block;
     width: 100%;
     height: 62px;
-    margin: 0;
+    margin-top: 6px;
     padding: 0;
     border: none;
     border-radius: 16px;
@@ -122,18 +95,17 @@
     font-size: 20px;
     cursor: pointer;
     transition: opacity 0.2s ease, transform 0.2s ease;
-    box-sizing: border-box;
 }
 
-.CreateAccountButton:hover {
+.LoginButton:hover {
     opacity: 0.9;
 }
 
-.CreateAccountButton:active {
+.LoginButton:active {
     transform: scale(0.99);
 }
 
-.LoginText {
+.SignUpText {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -142,93 +114,68 @@
     color: var(--text);
     font-family: var(--sans);
     font-size: 16px;
-    line-height: 145%;
-    text-align: center;
 }
 
-.LoginText a {
+.SignUpText a {
     color: var(--text-4);
     font-size: 18px;
     font-weight: 700;
     text-decoration: none;
 }
 
-.LoginText a:hover {
+.SignUpText a:hover {
     text-decoration: underline;
 }
 
 @media (max-width: 600px) {
-    .SignUpPage {
-        min-height: 100svh;
-        padding: 16px;
-        align-items: flex-start;
-    }
-
-    .SignUpCard {
-        width: 100%;
+    .LoginCard {
         max-width: 100%;
-        margin-top: 20px;
         padding: 32px 20px 30px;
         border-radius: 18px;
     }
 
-    .SignUpHandle {
+    .LoginHandle {
         width: 50px;
         height: 5px;
         margin-bottom: 30px;
     }
 
-    .SignUpLogo {
+    .LoginLogo {
         margin-bottom: 28px;
     }
 
-    .SignUpLogo span {
+    .LoginLogo span {
         font-size: 22px;
     }
 
-    .SignUpCard h1 {
+    .LoginCard h1 {
         font-size: 32px;
     }
 
-    .SignUpDescription {
+    .LoginDescription {
         margin-bottom: 24px;
         font-size: 18px;
     }
 
-    .SignUpCard label {
+    .LoginCard label {
         font-size: 14px;
     }
 
-    .SignUpInput {
-        width: 100%;
+    .LoginInput {
         height: 58px;
-        margin-bottom: 14px;
-        padding: 0 18px;
-        border-radius: 15px;
         font-size: 17px;
     }
 
-    .AddressInput {
-        height: 68px;
-    }
-
-    .DeliveryNote {
-        margin-top: -4px;
-        font-size: 12px;
-    }
-
-    .CreateAccountButton {
+    .LoginButton {
         height: 58px;
-        border-radius: 15px;
         font-size: 18px;
     }
 
-    .LoginText {
-        margin-top: 20px;
+    .SignUpText {
         font-size: 14px;
     }
 
-    .LoginText a {
+    .SignUpText a {
         font-size: 17px;
     }
 }
