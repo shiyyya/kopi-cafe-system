@@ -11,6 +11,54 @@
   --shadow:
     rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
 
+  --btn-primary: #4A6741;     
+  --btn-secondary: #2C1A0E;   
+  --btn-label: #FFFFFF;        
+
+  --progress: #4A6741;         
+
+  --text-2: #6B5040;           
+  --text-3: #1C1008;          
+  --text-4: #4A6741;          
+
+  --card-bg: #FDF8F0;         
+  --header-bg: #2C1A0E;        
+
+  --notif: #D4C078;           
+
+  --sans: 'Nunito Sans', system-ui, 'Segoe UI', Roboto, sans-serif;
+  --heading: 'Playfair Display', system-ui, 'Segoe UI', Roboto, sans-serif;
+  --mono: ui-monospace, Consolas, monospace;
+
+  font: 18px/145% var(--sans);
+  letter-spacing: 0.18px;
+  color-scheme: light dark;
+  color: var(--text);
+  background: var(--bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  @media (max-width: 1024px) {
+    font-size: 16px;
+  }
+}
+
+
+/* :root {
+  --text: #6b6375;
+  --text-h: #F5EDE0;
+  --bg: #F5EDE0;
+  --border: #e5e4e7;
+  --code-bg: #f4f3ec;
+  --accent: #2C1A0E;
+  --accent-bg: rgba(44, 26, 14, 0.1);
+  --accent-border: rgba(44, 26, 14, 0.5);
+  --social-bg: rgba(244, 243, 236, 0.5);
+  --shadow:
+    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+
   --sans: 'Nunito Sans', system-ui, 'Segoe UI', Roboto, sans-serif;
   --heading: 'Playfair Display', system-ui, 'Segoe UI', Roboto, sans-serif;
   --mono: ui-monospace, Consolas, monospace;
@@ -43,7 +91,7 @@ html::-webkit-scrollbar {
 body, html {
   -ms-overflow-style: none;
   scrollbar-width: none;
-}
+} */
 
 
 /*@media (prefers-color-scheme: dark) {
