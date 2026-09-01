@@ -1,4 +1,5 @@
 import './home-header.css';
+import Button from '/src/components/elements/button/button.jsx'; 
 import MenuIcon from '/src/assets/icons/burger.svg?react';
 import CartIcon from '/src/assets/icons/cart.svg?react';
 import AvatarIcon from '/src/assets/icons/avatar.svg?react';
@@ -20,37 +21,34 @@ export default function HomeHeader({
 
       <div className="headerActions">
         {currentUser ? (
-          <button
-            type="button"
+          <Button
             className="avatarBtn"
             onClick={onProfileClick}
             aria-label="Open profile"
           >
             <AvatarIcon className="avatarIcon" />
-          </button>
+          </Button>
         ) : (
-          <button type="button" className="headerLoginBtn" onClick={onLogin}>
+          <Button className="headerLoginBtn" onClick={onLogin}>
             Log In
-          </button>
+          </Button>
         )}
 
-        <button
-          type="button"
+        <Button
           className="cartBtn"
           onClick={onCartClick}
           aria-label="Open cart"
         >
           <CartIcon className="cartIcon" />
-        </button>
+        </Button>
 
-        <button
-          type="button"
+        <Button
           className="menuBtn"
           onClick={onMenuClick}
           aria-label="Open menu"
         >
           <MenuIcon className="menuIcon" />
-        </button>
+        </Button>
       </div>
     </header>
   );

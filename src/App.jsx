@@ -16,6 +16,8 @@ function App() {
        <Link to="settings">Settings</Link><br></br>
         <Link to="order-status">Order Status</Link><br></br>
          <Link to="order-history">Order History</Link><br></br>
+           <Link to="login">Login</Link><br></br>
+             <Link to="signup">Signup</Link><br></br>
     </div>
   )
 }
