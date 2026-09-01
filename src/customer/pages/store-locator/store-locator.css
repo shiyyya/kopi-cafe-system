@@ -1,0 +1,136 @@
+.storeLocatorPage {
+  min-height: 100vh;
+  width: 100%;
+  background: var(--bg);
+  text-align: left;
+}
+
+.locatorContainer {
+  width: 100%;
+  max-width: 380px;
+  margin: 0 auto;
+  padding: 16px 16px 24px;
+}
+
+.storeCard {
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 16px;
+  box-shadow: var(--shadow);
+}
+
+.storePhoto {
+  width: 100%;
+  aspect-ratio: 2.5 / 1;  
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  border-radius: 12px 12px 0 0;
+}
+
+.storeBody {
+  padding: 16px 20px 20px;
+}
+
+.storeTitleRow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.storeTitleRow h2 {
+  font-family: var(--heading);
+  color: var(--accent);
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.35;
+  margin: 0;
+}
+
+.statusBadge {
+  flex-shrink: 0;
+  background: var(--success-bg);
+  color: var(--success);
+  font-size: 12px;
+  font-weight: 500;
+  padding: 4px 12px;
+  border-radius: 999px;
+}
+
+.storeAddress {
+  color: var(--text);
+  font-size: 14px;
+  margin: 4px 0 0;
+}
+
+.storeDetails {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.storeDetailRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--accent);
+}
+
+.storeDetailRow svg {
+  color: var(--text);
+  flex-shrink: 0;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 16px 0;
+}
+
+.zonesLabel {
+  color: var(--accent);
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0 0 10px;
+}
+
+.zonesList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.zoneTag {
+  background: var(--input-bg);
+  color: var(--success);
+  border: 1px solid var(--text);
+  font-size: 12px;
+  padding: 4px 12px;
+}
+
+@media (max-width: 380px) {
+  .storeTitleRow h2 {
+    font-size: 15px;
+  }
+
+  .storeAddress,
+  .storeDetailRow,
+  .zonesLabel {
+    font-size: 12.5px;
+  }
+
+  .statusBadge,
+  .zoneTag {
+    font-size: 11px;
+    padding: 3px 10px;
+  }
+}
+
+.eligibilityNoZones .zonesSection {
+  display: none;
+}
