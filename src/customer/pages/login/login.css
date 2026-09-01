@@ -1,0 +1,174 @@
+.LoginPage {
+    min-height: 100svh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 24px;
+    background: var(--bg);
+}
+
+.UserLogin {
+    width: 100%;
+    max-width: 640px;
+    padding: 40px 30px 36px;
+    background: #faf7f0;
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    text-align: left;
+}
+
+.LoginHandle {
+    width: 60px;
+    height: 6px;
+    margin: 0 auto 38px;
+    background: #ddd8cf;
+    border-radius: 10px;
+}
+
+.LoginLogo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 34px;
+}
+
+.LogoIcon {
+    font-size: 28px;
+}
+
+.LogoText {
+    color: var(--accent);
+    font-family: var(--heading);
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.UserLogin h1 {
+    margin: 0 0 12px;
+    color: var(--accent);
+    font-family: var(--heading);
+    font-size: 38px;
+    font-weight: 600;
+    line-height: 118%;
+    letter-spacing: -0.5px;
+}
+
+.LoginDescription {
+    margin: 0 0 30px;
+    color: #765e50;
+    font-family: var(--sans);
+    font-size: 20px;
+    line-height: 145%;
+}
+
+.LoginInput {
+    width: 100%;
+    height: 68px;
+    margin-bottom: 18px;
+    padding: 0 24px;
+    border: 1px solid #cdbda8;
+    border-radius: 18px;
+    background: #e8dac4;
+    color: var(--accent);
+    font-family: var(--sans);
+    font-size: 20px;
+    outline: none;
+}
+
+.LoginInput::placeholder {
+    color: #81776f;
+}
+
+.LoginInput:focus {
+    border-color: var(--accent-border);
+    box-shadow: 0 0 0 3px var(--accent-bg);
+}
+
+.LoginButton {
+    width: 100%;
+    height: 76px;
+    margin-top: 6px;
+    border: none;
+    border-radius: 18px;
+    background: var(--accent);
+    color: var(--text-h);
+    font-family: var(--sans);
+    font-size: 24px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.LoginButton:hover {
+    opacity: 0.9;
+}
+
+.LoginButton:active {
+    transform: scale(0.99);
+}
+
+.SignUpText {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    margin: 28px 0 0;
+    color: #765e50;
+    font-family: var(--sans);
+    font-size: 18px;
+}
+
+.SignUpText a {
+    color: #4d7045;
+    font-size: 22px;
+    text-decoration: none;
+}
+
+.SignUpText a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+    .LoginPage {
+        padding: 16px;
+    }
+
+    .UserLogin {
+        padding: 32px 20px 30px;
+        border-radius: 18px;
+    }
+
+    .LoginHandle {
+        margin-bottom: 30px;
+    }
+
+    .LoginLogo {
+        margin-bottom: 28px;
+    }
+
+    .UserLogin h1 {
+        font-size: 32px;
+    }
+
+    .LoginDescription {
+        font-size: 18px;
+    }
+
+    .LoginInput {
+        height: 62px;
+        font-size: 18px;
+    }
+
+    .LoginButton {
+        height: 68px;
+        font-size: 21px;
+    }
+
+    .SignUpText {
+        font-size: 16px;
+    }
+
+    .SignUpText a {
+        font-size: 20px;
+    }
+}
