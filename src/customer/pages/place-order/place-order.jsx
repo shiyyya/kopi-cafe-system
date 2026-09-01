@@ -7,6 +7,7 @@ import Button from "/src/components/elements/button/button.jsx";
 import Check from "/src/assets/icons/check.svg?react";
 import Phone from "/src/assets/icons/phone.svg?react";
 import Location from "/src/assets/icons/location.svg?react";
+import Money from "/src/assets/icons/money.svg?react";
 
 function PlaceOrder() {
     const navigate = useNavigate();
@@ -94,7 +95,9 @@ function PlaceOrder() {
                         className={`PaymentOption ${paymentMethod === "cod" ? "selected" : ""}`}
                         onClick={() => setPaymentMethod("cod")}
                     >
-                        <span className="PaymentIcon">💵</span>
+                        <span className="PaymentIcon">
+                            <Money />
+                        </span>
 
                         <span className="PaymentInfo">
                             <strong>Cash on Delivery / Pickup</strong>
