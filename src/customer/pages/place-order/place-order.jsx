@@ -1,275 +1,145 @@
-import "./place-order.css";
 import { useState } from "react";
-import { useLocation, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
+import "./place-order.css";
 import Header from "/src/components/blocks/header-wback/header-wback.jsx";
 import Input from "/src/components/elements/input/input.jsx";
 import Button from "/src/components/elements/button/button.jsx";
+import Check from "/src/assets/icons/check.svg?react";
+import Phone from "/src/assets/icons/phone.svg?react";
+import Location from "/src/assets/icons/location.svg?react";
 
 function PlaceOrder() {
     const navigate = useNavigate();
-    const location = useLocation();
+    const [address,setAddress] = useState("");
+    const [phone,setPhone] = useState("");
+    const [paymentMethod,setPaymentMethod] = useState("cod");
 
-    const orderItems = location.state?.items || [];
-
-    const [address, setAddress] = useState(
-        location.state?.address || ""
-    );
-
-    const [phone, setPhone] = useState(
-        location.state?.phone || ""
-    );
-
-    const [paymentMethod, setPaymentMethod] = useState(
-        location.state?.paymentMethod || ""
-    );
-
-    const deliveryFee = Number(
-        location.state?.deliveryFee || 0
-    );
-
-    const subtotal = orderItems.reduce(
-        (total, item) => {
-            return (
-                total +
-                Number(item.price) * Number(item.quantity)
-            );
-        },
-        0
-    );
-
-    const total = subtotal + deliveryFee;
-
-    const handlePaymentChange = (method) => {
-        setPaymentMethod(method);
-    };
-
-    const handlePlaceOrder = () => {
-        const order = {
-            items: orderItems,
-            address,
-            phone,
-            paymentMethod,
-            subtotal,
-            deliveryFee,
-            total,
-            createdAt: new Date().toISOString(),
-        };
-
-        navigate("/order-status", {
-            state: {
-                order,
-            },
-        });
+    const handleContinue = () => {
+        if(paymentMethod === "gcash"){
+            navigate("/qr-payment");
+        }else{
+            navigate("/payment-confirmation");
+        }
     };
 
     return (
         <div className="PlaceOrderPage">
-            <Header title="Place Order" />
+            <Header title="Place Order"/>
 
             <main className="PlaceOrderContent">
 
-                <section className="DeliverySection">
-                    <div className="SectionHeader">
-                        <span>⌖</span>
-                        <h2>Delivery Address</h2>
+                <section className="PlaceOrderCard">
+                    <h2>Delivery Address</h2>
+
+                    <div className="AddressInputWrapper">
+                        <span className="AddressIcon">
+                            <Location />
+                        </span>
+
+                        <Input
+                            type="text"
+                            name="address"
+                            value={address}
+                            onChange={(e) => setAddress(e.target.value)}
+                            placeholder="Enter your delivery address"
+                            className="AddressInput"
+                        />
+
+                        {address && (
+                            <span className="AddressCheck">
+                                <Check />
+                            </span>
+                        )}
                     </div>
 
-                    <Input
-                        type="text"
-                        name="address"
-                        value={address}
-                        onChange={(event) =>
-                            setAddress(event.target.value)
-                        }
-                        placeholder="Enter delivery address"
-                        className="PlaceOrderInput"
-                    />
+                    <button
+                        type="button"
+                        className="AddAddressButton"
+                        onClick={() => navigate("/store-locator")}
+                    >
+                        <span>＋</span>
+                        Add new address
+                    </button>
 
-                    <Input
-                        type="tel"
-                        name="phone"
-                        value={phone}
-                        onChange={(event) =>
-                            setPhone(event.target.value)
-                        }
-                        placeholder="Enter phone number"
-                        className="PlaceOrderInput"
-                    />
+                    <div className="AddressDivider"></div>
+
+                    <div className="PhoneInputWrapper">
+                        <Phone />
+                        <span className="PhoneIcon"></span>
+
+                        <Input
+                            type="tel"
+                            name="phone"
+                            value={phone}
+                            onChange={(e) => setPhone(e.target.value)}
+                            placeholder="09171234567"
+                            className="PhoneNumberInput"
+                        />
+                    </div>
                 </section>
 
-                <section className="OrderSummary">
+                <section className="PlaceOrderCard">
                     <h2>Order Summary</h2>
 
-                    {orderItems.length === 0 ? (
-                        <div className="EmptyOrder">
-                            <p>No items in your order.</p>
-                        </div>
-                    ) : (
-                        <>
-                            <div className="OrderItems">
-                                {orderItems.map((item) => (
-                                    <div
-                                        className="OrderItem"
-                                        key={item.id}
-                                    >
-                                        <div className="ItemImage">
-                                            {item.image ? (
-                                                <img
-                                                    src={item.image}
-                                                    alt={item.name}
-                                                />
-                                            ) : (
-                                                <span>☕</span>
-                                            )}
-                                        </div>
-
-                                        <div className="ItemDetails">
-                                            <strong>
-                                                {item.name}
-                                            </strong>
-
-                                            {item.variant && (
-                                                <span>
-                                                    {item.variant}
-                                                </span>
-                                            )}
-
-                                            <span>
-                                                × {item.quantity}
-                                            </span>
-                                        </div>
-
-                                        <strong className="ItemPrice">
-                                            ₱
-                                            {(
-                                                Number(item.price) *
-                                                Number(item.quantity)
-                                            ).toFixed(2)}
-                                        </strong>
-                                    </div>
-                                ))}
-                            </div>
-
-                            <div className="SummaryDivider"></div>
-
-                            <div className="PriceRow">
-                                <span>Subtotal</span>
-                                <strong>
-                                    ₱{subtotal.toFixed(2)}
-                                </strong>
-                            </div>
-
-                            <div className="PriceRow">
-                                <span>Delivery fee</span>
-                                <strong>
-                                    ₱{deliveryFee.toFixed(2)}
-                                </strong>
-                            </div>
-
-                            <div className="TotalRow">
-                                <span>Total</span>
-                                <strong>
-                                    ₱{total.toFixed(2)}
-                                </strong>
-                            </div>
-                        </>
-                    )}
+                    <div className="EmptyOrder">
+                        No items in your order yet.
+                    </div>
                 </section>
 
-                <section className="PaymentSection">
+                <section className="PlaceOrderCard">
                     <h2>Payment Method</h2>
 
-                    <Button
+                    <button
                         type="button"
-                        className={
-                            paymentMethod === "Cash on Delivery"
-                                ? "PaymentOption selected"
-                                : "PaymentOption"
-                        }
-                        onClick={() =>
-                            handlePaymentChange(
-                                "Cash on Delivery"
-                            )
-                        }
+                        className={`PaymentOption ${paymentMethod === "cod" ? "selected" : ""}`}
+                        onClick={() => setPaymentMethod("cod")}
                     >
-                        <span className="PaymentIcon">
-                            
+                        <span className="PaymentIcon">💵</span>
+
+                        <span className="PaymentInfo">
+                            <strong>Cash on Delivery / Pickup</strong>
+                            <span>Pay when you receive your order</span>
                         </span>
 
-                        <span className="PaymentDetails">
-                            <strong>
-                                Cash on Delivery / Pickup
-                            </strong>
-
-                            <small>
-                                Pay when you receive your order
-                            </small>
+                        <span className="PaymentCircle">
+                            {paymentMethod === "cod" ? "✓" : ""}
                         </span>
+                    </button>
 
-                        <span
-                            className={
-                                paymentMethod ===
-                                "Cash on Delivery"
-                                    ? "PaymentCheck"
-                                    : "PaymentRadio"
-                            }
-                        >
-                            {paymentMethod ===
-                                "Cash on Delivery" && "✓"}
-                        </span>
-                    </Button>
-
-                    <Button
+                    <button
                         type="button"
-                        className={
-                            paymentMethod === "GCash"
-                                ? "PaymentOption selected"
-                                : "PaymentOption"
-                        }
-                        onClick={() =>
-                            handlePaymentChange("GCash")
-                        }
+                        className={`PaymentOption ${paymentMethod === "gcash" ? "selected" : ""}`}
+                        onClick={() => setPaymentMethod("gcash")}
                     >
-                        <span className="PaymentIcon">
-                        </span>
+                        <span className="PaymentIcon">📱</span>
 
-                        <span className="PaymentDetails">
+                        <span className="PaymentInfo">
                             <strong>GCash QR</strong>
-
-                            <small>
-                                Scan and pay via GCash
-                            </small>
+                            <span>Scan and pay via GCash</span>
                         </span>
 
-                        <span
-                            className={
-                                paymentMethod === "GCash"
-                                    ? "PaymentCheck"
-                                    : "PaymentRadio"
-                            }
-                        >
-                            {paymentMethod === "GCash" && "✓"}
+                        <span className="PaymentCircle">
+                            {paymentMethod === "gcash" ? "✓" : ""}
                         </span>
-                    </Button>
+                    </button>
                 </section>
 
-                <section className="OrderInformation">
-                    <p>
-                        Order will be processed after confirmation.
-                    </p>
-                </section>
+                <div className="OrderDetails">
+                    <p>Order ID: —</p>
+                    <p>Receipt sent to your account</p>
+                </div>
 
             </main>
 
-            <div className="PlaceOrderFooter">
+            <div className="PlaceOrderBottom">
                 <Button
                     type="button"
-                    className="ConfirmOrderButton"
-                    onClick={handlePlaceOrder}
+                    className="PlaceOrderButton"
+                    onClick={handleContinue}
                 >
-                    Place Order
-                    {total > 0 &&
-                        ` (₱${total.toFixed(2)})`}
+                    {paymentMethod === "gcash"
+                        ? "Confirm Payment"
+                        : "Continue to Payment"}
                 </Button>
             </div>
         </div>
