@@ -2,11 +2,11 @@
   position: absolute;
   inset: 0;
   background: rgba(0, 0, 0, 0.4);
-  z-index: 40;
+  z-index: 1000;
 }
 
 .sidebar {
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
@@ -15,7 +15,7 @@
   background: var(--accent);
   display: flex;
   flex-direction: column;
-  z-index: 50;
+  z-index: 1001;
   box-shadow: var(--shadow);
 }
 
