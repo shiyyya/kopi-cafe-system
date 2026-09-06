@@ -1,0 +1,41 @@
+.quantity-selector {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.quantity-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    background: var(--card-bg);
+    color: var(--accent);
+    font-family: var(--sans);
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.quantity-button:first-child {
+    padding-bottom: 2px;
+}
+
+.quantity-button:last-child {
+    padding-bottom: 1px;
+}
+
+.quantity-value {
+    min-width: 20px;
+    text-align: center;
+    color: var(--text-3);
+    font-family: var(--sans);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1;
+}

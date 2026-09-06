@@ -5,6 +5,9 @@
   gap: 12px;
   padding: 14px 16px;
   background: var(--accent);
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 .logo {
@@ -28,7 +31,7 @@
 .headerActions {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 2px;
 }
 
 .avatarBtn {
@@ -78,4 +81,34 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.cartBtn {
+  position: relative;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cartCount {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 17px;
+  height: 17px;
+  padding: 0 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--btn-primary);
+  color: var(--btn-label);
+  border-radius: 50%;
+  font-family: var(--sans);
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1;
 }
