@@ -1,12 +1,20 @@
 import "./place-order.css";
+
 import { useState } from "react";
+
 import { useLocation, useNavigate } from "react-router";
+
 import Header from "/src/components/blocks/header-wback/header-wback.jsx";
+
 import Input from "/src/components/elements/input/input.jsx";
+
 import Button from "/src/components/elements/button/button.jsx";
+
+import OrderItem from "/src/components/blocks/order-item/order-item.jsx";
 
 function PlaceOrder() {
     const navigate = useNavigate();
+
     const location = useLocation();
 
     const orderItems = location.state?.items || [];
@@ -29,9 +37,20 @@ function PlaceOrder() {
 
     const subtotal = orderItems.reduce(
         (total, item) => {
+            const productPrice = Number(
+                item.product?.price || 0
+            );
+
+            const addOnsTotal = (item.addOns || []).reduce(
+                (addOnTotal, addOn) =>
+                    addOnTotal + Number(addOn.price || 0),
+                0
+            );
+
             return (
                 total +
-                Number(item.price) * Number(item.quantity)
+                (productPrice + addOnsTotal) *
+                    Number(item.quantity || 1)
             );
         },
         0
@@ -67,7 +86,6 @@ function PlaceOrder() {
             <Header title="Place Order" />
 
             <main className="PlaceOrderContent">
-
                 <section className="DeliverySection">
                     <div className="SectionHeader">
                         <span>⌖</span>
@@ -108,45 +126,11 @@ function PlaceOrder() {
                         <>
                             <div className="OrderItems">
                                 {orderItems.map((item) => (
-                                    <div
-                                        className="OrderItem"
+                                    <OrderItem
                                         key={item.id}
-                                    >
-                                        <div className="ItemImage">
-                                            {item.image ? (
-                                                <img
-                                                    src={item.image}
-                                                    alt={item.name}
-                                                />
-                                            ) : (
-                                                <span>☕</span>
-                                            )}
-                                        </div>
-
-                                        <div className="ItemDetails">
-                                            <strong>
-                                                {item.name}
-                                            </strong>
-
-                                            {item.variant && (
-                                                <span>
-                                                    {item.variant}
-                                                </span>
-                                            )}
-
-                                            <span>
-                                                × {item.quantity}
-                                            </span>
-                                        </div>
-
-                                        <strong className="ItemPrice">
-                                            ₱
-                                            {(
-                                                Number(item.price) *
-                                                Number(item.quantity)
-                                            ).toFixed(2)}
-                                        </strong>
-                                    </div>
+                                        item={item}
+                                        showRemove={false}
+                                    />
                                 ))}
                             </div>
 
@@ -154,6 +138,7 @@ function PlaceOrder() {
 
                             <div className="PriceRow">
                                 <span>Subtotal</span>
+
                                 <strong>
                                     ₱{subtotal.toFixed(2)}
                                 </strong>
@@ -161,6 +146,7 @@ function PlaceOrder() {
 
                             <div className="PriceRow">
                                 <span>Delivery fee</span>
+
                                 <strong>
                                     ₱{deliveryFee.toFixed(2)}
                                 </strong>
@@ -168,6 +154,7 @@ function PlaceOrder() {
 
                             <div className="TotalRow">
                                 <span>Total</span>
+
                                 <strong>
                                     ₱{total.toFixed(2)}
                                 </strong>
@@ -192,9 +179,7 @@ function PlaceOrder() {
                             )
                         }
                     >
-                        <span className="PaymentIcon">
-                            
-                        </span>
+                        <span className="PaymentIcon"></span>
 
                         <span className="PaymentDetails">
                             <strong>
@@ -230,8 +215,7 @@ function PlaceOrder() {
                             handlePaymentChange("GCash")
                         }
                     >
-                        <span className="PaymentIcon">
-                        </span>
+                        <span className="PaymentIcon"></span>
 
                         <span className="PaymentDetails">
                             <strong>GCash QR</strong>
@@ -258,7 +242,6 @@ function PlaceOrder() {
                         Order will be processed after confirmation.
                     </p>
                 </section>
-
             </main>
 
             <div className="PlaceOrderFooter">
