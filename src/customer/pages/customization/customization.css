@@ -317,3 +317,12 @@
         margin: 0 auto;
     }
 }
+
+.temperature-options.error .temperature-option {
+    border-color: #d9534f;
+}
+.temperature-error {
+    margin: 6px 0 0;
+    color: #d9534f;
+    font-size: 12px;
+}

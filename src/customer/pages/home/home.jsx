@@ -2,8 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import "./home.css";
 import HomeHeader from "/src/components/layout/home-header/home-header.jsx";
-import SidebarLoggedIn from "/src/components/blocks/sidebar/sidebar-logged-in.jsx";
-import SidebarLoggedOut from "/src/components/blocks/sidebar/sidebar-logged-out.jsx";
+import Sidebar from "/src/components/blocks/sidebar/sidebar.jsx";
 import FeaturedCarousel from "/src/components/blocks/featured-carousel/featured-carousel.jsx";
 import OrderType from "/src/components/blocks/order-type/order-type.jsx";
 import MenuSection from "/src/components/blocks/menu-section/menu-section.jsx";
@@ -35,6 +34,12 @@ export default function Home() {
         setCartItems(savedCart);
     }, []);
     useEffect(() => {
+        document.body.style.overflow = sidebarOpen ? "hidden" : "";
+        return () => {
+            document.body.style.overflow = "";
+        };
+    }, [sidebarOpen]);
+    useEffect(() => {
         if (window.location.hash === "#menu") {
             setTimeout(() => {
                 document.getElementById("menu")?.scrollIntoView({
@@ -59,10 +64,6 @@ export default function Home() {
                 product,
             },
         });
-    };
-    const handleNavigate = (key) => {
-        setSidebarOpen(false);
-        console.log("Navigate to:", key);
     };
     const handleLogin = () => {
         setSidebarOpen(false);
@@ -121,22 +122,13 @@ export default function Home() {
                     onLoginRequired={handleFeaturedOrder}
                 />
             </div>
-            {currentUser ? (
-                <SidebarLoggedIn
-                    isOpen={sidebarOpen}
-                    user={currentUser}
-                    onClose={() => setSidebarOpen(false)}
-                    onNavigate={handleNavigate}
-                    onLogout={handleLogout}
-                />
-            ) : (
-                <SidebarLoggedOut
-                    isOpen={sidebarOpen}
-                    onClose={() => setSidebarOpen(false)}
-                    onNavigate={handleNavigate}
-                    onLogin={handleLogin}
-                />
-            )}
+            <Sidebar
+                isOpen={sidebarOpen}
+                user={currentUser}
+                onClose={() => setSidebarOpen(false)}
+                onLogout={handleLogout}
+                onLogin={handleLogin}
+            />
             {deliveryEligibilityOpen && (
                 <div
                     className="delivery-eligibility-overlay"
