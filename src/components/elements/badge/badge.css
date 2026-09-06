@@ -1,0 +1,75 @@
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    width: fit-content;
+    padding: 2px 5px;
+    border-radius: 4px;
+    font-family: var(--mono);
+    font-size: 10px;
+    line-height: 1;
+    white-space: nowrap;
+}
+
+.badge-icon {
+    width: 12px;
+    height: 12px;
+    flex-shrink: 0;
+}
+
+.badge-popular {
+    background: var(--notif);
+    color: var(--text-3);
+}
+
+.badge-popular .badge-icon {
+    color: var(--text-3);
+}
+
+.badge-new {
+    background: var(--btn-primary);
+    color: var(--btn-label);
+}
+
+.badge-new .badge-icon {
+    color: var(--btn-label);
+}
+
+.badge-soldOut {
+    background: #808080;
+    color: var(--btn-label);
+}
+
+.badge-hot,
+.badge-iced {
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    justify-content: center;
+    gap: 2px;
+    border-radius: 5px;
+}
+
+.badge-hot {
+    background: #FFF7ED;
+    border: 1px solid #FFD6A8;
+    color: #F54900;
+}
+
+.badge-hot .badge-icon {
+    width: 10px;
+    height: 10px;
+    color: #F54900;
+}
+
+.badge-iced {
+    background: #F0F9FF;
+    border: 1px solid #B8E6FE;
+    color: #0084D1;
+}
+
+.badge-iced .badge-icon {
+    width: 10px;
+    height: 10px;
+    color: #0084D1;
+}

@@ -8,26 +8,18 @@ import ClockIcon from '/src/assets/icons/schedule.svg?react';
 import InstagramIcon from '/src/assets/icons/ig.svg?react'; 
 import FacebookIcon from '/src/assets/icons/fb.svg?react'; 
 import LeafIcon from '/src/assets/icons/leaf.svg?react'; 
-
 const DELIVERY_ZONES = [
   'Siling Bata',
   'Poblacion',
   'Bunsuran',
   'San Roque',
 ];
-
 const CONTACT_INFO = [
   { icon: PinIcon, text: 'Siling Bata, Pandi, Bulacan' },
   { icon: PhoneIcon, text: '0917-123-4567' },
   { icon: MailIcon, text: 'hello@kopiexpress.ph' },
   { icon: ClockIcon, text: '7:00 AM – 9:00 PM daily' },
 ];
-
-const SOCIAL_LINKS = [
-  { key: 'instagram', icon: InstagramIcon, href: 'https://instagram.com', label: 'Instagram' },
-  { key: 'facebook', icon: FacebookIcon, href: 'https://facebook.com', label: 'Facebook' },
-];
-
 export default function Footer() {
   return (
     <footer className="siteFooter">
@@ -38,16 +30,14 @@ export default function Footer() {
           <p className="footerBrandTagline">Est. January 2023 · Pandi, Bulacan</p>
         </div>
       </div>
-
       <div className="footerColumns">
         <div className="footerColumn">
           <h3 className="footerColumnTitle">Navigate</h3>
           <nav className="footerNav">
-            <Link to="/" className="footerNavLink">Menu</Link>
+            <a href="/#menu" className="footerNavLink">Menu</a>
             <Link to="/store-locator" className="footerNavLink">Store Locator</Link>
           </nav>
         </div>
-
         <div className="footerColumn">
           <h3 className="footerColumnTitle">Contact</h3>
           <div className="footerContactList">
@@ -60,8 +50,7 @@ export default function Footer() {
           </div>
         </div>
       </div>
-
-       <div className="footerZones">
+      <div className="footerZones">
         <h3 className="footerColumnTitle">Delivery Zones</h3>
         <div className="footerZonesList">
           {DELIVERY_ZONES.map((zone) => (
@@ -69,24 +58,7 @@ export default function Footer() {
           ))}
         </div>
       </div>
-
-      <div className="footerSocials">
-        {SOCIAL_LINKS.map(({ key, icon: Icon, href, label }) => (
-          <a
-            key={key}
-            href={href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="footerSocialLink"
-            aria-label={label}
-          >
-            <Icon className="footerSocialIcon" />
-          </a>
-        ))}
-      </div>
-
       <hr className="footerDivider" />
-
       <div className="footerBottom">
         <p className="footerCopyright">© 2025 Kopi Express. All rights reserved.</p>
         <p className="footerMotto">

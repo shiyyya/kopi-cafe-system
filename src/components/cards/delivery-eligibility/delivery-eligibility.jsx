@@ -38,7 +38,7 @@ export default function DeliveryEligibility() {
     <div className="eligibilityCard">
       <div className="eligibilityTitleRow">
         <PinIcon className="titleIcon" />
-        <h3>Check Delivery Eligibility</h3>
+        <h2>Check Delivery Eligibility</h2>
       </div>
       <p className="eligibilitySubtext">Enter your barangay to check if we can deliver to you.</p>
 

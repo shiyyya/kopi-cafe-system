@@ -1,53 +1,102 @@
+import { useState } from "react";
+
 import "./login.css";
-import { Link, useNavigate } from "react-router";
+
+import { Link } from "react-router";
+
 import Input from "/src/components/elements/input/input.jsx";
+
 import Button from "/src/components/elements/button/button.jsx";
 
-function LoginCard() {
-    const navigate = useNavigate();
+import Logo from "/src/assets/logo/logo.svg?react";
+
+import user from "/src/data/user.js";
+
+function LoginCard({ onClose, onSignUp, onLoginSuccess }) {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
+    const handleLogin = () => {
+        if (
+            email === user.email &&
+            password === user.password
+        ) {
+            localStorage.setItem(
+                "currentUser",
+                JSON.stringify(user)
+            );
+
+            onLoginSuccess?.(user);
+            onClose?.();
+        }
+    };
 
     return (
-        <div className="LoginCard">
-            <div className="LoginHandle"></div>
-
-            <div className="LoginLogo">
-                <span>Kopi Express</span>
-            </div>
-
-            <h1>Welcome Back</h1>
-
-            <p className="LoginDescription">
-                Log in to place your order.
-            </p>
-
-            <label>Email *</label>
-            <Input
-                type="email"
-                name="email"
-                placeholder="Email address"
-                className="LoginInput"
-            />
-
-            <label>Password *</label>
-            <Input
-                type="password"
-                name="password"
-                placeholder="Password"
-                className="LoginInput"
-            />
-
-            <Button
-                type="button"
-                className="LoginButton"
-                onClick={() => navigate("/")}
+        <div
+            className="loginOverlay"
+            onClick={onClose}
+        >
+            <div
+                className="LoginCard"
+                onClick={(event) => event.stopPropagation()}
             >
-                Log In
-            </Button>
+                <div className="LoginHandle"></div>
 
-            <p className="SignUpText">
-                No account?
-                <Link to="/signup">Sign Up</Link>
-            </p>
+                <div className="LoginLogo">
+                    <Logo />
+                    <span>Kopi Express</span>
+                </div>
+
+                <h2>Welcome Back</h2>
+
+                <p className="LoginDescription">
+                    Log in to place your order.
+                </p>
+
+                <Input
+                    type="email"
+                    name="email"
+                    placeholder="Email address"
+                    className="LoginInput"
+                    value={email}
+                    onChange={(event) =>
+                        setEmail(event.target.value)
+                    }
+                />
+
+                <Input
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                    className="LoginInput"
+                    value={password}
+                    onChange={(event) =>
+                        setPassword(event.target.value)
+                    }
+                />
+
+                <Button
+                    type="button"
+                    className="LoginButton"
+                    onClick={handleLogin}
+                >
+                    Log In
+                </Button>
+
+                <p className="SignUpText">
+                    No account?
+
+                    <Link
+                        to="/signup"
+                        onClick={(event) => {
+                            event.preventDefault();
+                            onSignUp?.();
+                        }}
+                    >
+                        Sign Up
+                    </Link>
+                </p>
+            </div>
         </div>
     );
 }

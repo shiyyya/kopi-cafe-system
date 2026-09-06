@@ -1,75 +1,84 @@
+.loginOverlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    background: rgba(28, 16, 8, 0.45);
+}
+
 .LoginCard {
+    position: relative;
     width: 100%;
-    max-width: 640px;
-    padding: 40px 30px 36px;
+    max-width: 1126px;
+    padding: 20px;
     background: var(--card-bg);
-    border-radius: 20px;
+    border: 1px solid var(--border);
+    border-radius: 16px 16px 0 0;
     box-shadow: var(--shadow);
-    box-sizing: border-box;
     text-align: left;
 }
 
 .LoginHandle {
-    width: 60px;
-    height: 6px;
-    margin: 0 auto 38px;
-    background: #ddd8cf;
+    width: 50px;
+    height: 5px;
+    margin: 0 auto 16px;
+    background: var(--border);
     border-radius: 10px;
 }
 
 .LoginLogo {
     display: flex;
     align-items: center;
-    margin-bottom: 34px;
+    margin-bottom: 10px;
+    padding-right: 35px;
 }
 
 .LoginLogo span {
     color: var(--accent);
     font-family: var(--heading);
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 700;
 }
 
-.LoginCard h1 {
-    margin: 0 0 12px;
+.LoginCard h2 {
+    margin: 0 0 5px;
     color: var(--text-3);
     font-family: var(--heading);
-    font-size: 38px;
+    font-size: 20px;
     font-weight: 600;
     line-height: 118%;
-    letter-spacing: -0.5px;
 }
 
 .LoginDescription {
-    margin: 0 0 28px;
+    margin: 0 0 14px;
     color: var(--text);
     font-family: var(--sans);
-    font-size: 20px;
-    line-height: 145%;
+    font-size: 14px;
 }
 
 .LoginCard label {
     display: block;
-    margin: 0 0 7px;
+    margin: 0 0 5px;
     color: var(--text-2);
     font-family: var(--sans);
-    font-size: 16px;
+    font-size: 13px;
 }
 
 .LoginInput {
     display: block;
     width: 100%;
-    height: 62px;
-    margin: 0 0 18px;
-    padding: 0 20px;
-    border: 1px solid var(--border);
-    border-radius: 16px;
+    height: 44px;
+    margin: 0 0 11px;
+    padding: 8px 14px;
     background: var(--input-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
     color: var(--text-3);
     font-family: var(--sans);
-    font-size: 18px;
+    font-size: 14px;
     outline: none;
-    box-sizing: border-box;
 }
 
 .LoginInput::placeholder {
@@ -78,31 +87,26 @@
 
 .LoginInput:focus {
     border-color: var(--accent-border);
-    box-shadow: 0 0 0 3px var(--accent-bg);
+    box-shadow: 0 0 0 2px var(--accent-bg);
 }
 
 .LoginButton {
-    display: block;
     width: 100%;
-    height: 62px;
-    margin-top: 6px;
-    padding: 0;
-    border: none;
-    border-radius: 16px;
+    height: 44px;
+    margin-top: 3px;
+    padding: 8px 16px;
     background: var(--btn-secondary);
     color: var(--btn-label);
+    border: none;
+    border-radius: 12px;
     font-family: var(--sans);
-    font-size: 20px;
+    font-size: 14px;
+    font-weight: 500;
     cursor: pointer;
-    transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
 .LoginButton:hover {
     opacity: 0.9;
-}
-
-.LoginButton:active {
-    transform: scale(0.99);
 }
 
 .SignUpText {
@@ -110,15 +114,15 @@
     justify-content: center;
     align-items: center;
     gap: 4px;
-    margin: 22px 0 0;
+    margin: 12px 0 0;
     color: var(--text);
     font-family: var(--sans);
-    font-size: 16px;
+    font-size: 13px;
 }
 
 .SignUpText a {
     color: var(--text-4);
-    font-size: 18px;
+    font-size: 14px;
     font-weight: 700;
     text-decoration: none;
 }
@@ -127,55 +131,55 @@
     text-decoration: underline;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 480px) {
     .LoginCard {
-        max-width: 100%;
-        padding: 32px 20px 30px;
-        border-radius: 18px;
+        padding: 18px 16px 20px;
     }
 
     .LoginHandle {
-        width: 50px;
-        height: 5px;
-        margin-bottom: 30px;
+        margin-bottom: 14px;
     }
 
     .LoginLogo {
-        margin-bottom: 28px;
+        margin-bottom: 8px;
     }
 
     .LoginLogo span {
-        font-size: 22px;
+        font-size: 18px;
     }
 
     .LoginCard h1 {
-        font-size: 32px;
+        font-size: 18px;
+        margin-bottom: 5px;
     }
 
     .LoginDescription {
-        margin-bottom: 24px;
-        font-size: 18px;
+        font-size: 12.5px;
+        margin-bottom: 12px;
     }
 
     .LoginCard label {
-        font-size: 14px;
+        font-size: 12.5px;
+        margin-bottom: 4px;
     }
 
     .LoginInput {
-        height: 58px;
-        font-size: 17px;
-    }
-
-    .LoginButton {
-        height: 58px;
-        font-size: 18px;
-    }
-
-    .SignUpText {
+        height: 42px;
+        margin-bottom: 10px;
         font-size: 14px;
     }
 
+    .LoginButton {
+        height: 42px;
+        font-size: 14px;
+    }
+
+    .SignUpText {
+        margin-top: 10px;
+        font-size: 12.5px;
+    }
+
     .SignUpText a {
-        font-size: 17px;
+        font-size: 13.5px;
     }
 }
