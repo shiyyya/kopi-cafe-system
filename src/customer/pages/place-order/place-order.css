@@ -1,8 +1,9 @@
 .PlaceOrderPage {
     min-height: 100svh;
     width: 100%;
-    background: var(--bg);
-    box-sizing: border-box;
+    background: var(--card-bg);
+    color: var(--text);
+    font-family: var(--sans);
 }
 
 .PlaceOrderContent {

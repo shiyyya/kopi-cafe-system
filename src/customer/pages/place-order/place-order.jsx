@@ -1,33 +1,101 @@
 import { useState } from "react";
-import { useNavigate } from "react-router";
+
+import { useLocation, useNavigate } from "react-router";
+
 import "./place-order.css";
+
 import Header from "/src/components/blocks/header-wback/header-wback.jsx";
+
 import Input from "/src/components/elements/input/input.jsx";
+
 import Button from "/src/components/elements/button/button.jsx";
+
 import Check from "/src/assets/icons/check.svg?react";
+
 import Phone from "/src/assets/icons/phone.svg?react";
+
 import Location from "/src/assets/icons/location.svg?react";
+
+import OrderItem from "/src/components/blocks/order-item/order-item.jsx";
 
 function PlaceOrder() {
     const navigate = useNavigate();
-    const [address,setAddress] = useState("");
-    const [phone,setPhone] = useState("");
-    const [paymentMethod,setPaymentMethod] = useState("cod");
+
+    const location = useLocation();
+
+    const orderItems = location.state?.items || [];
+
+    const [address, setAddress] = useState(
+        location.state?.address || ""
+    );
+
+    const [phone, setPhone] = useState(
+        location.state?.phone || ""
+    );
+
+    const [paymentMethod, setPaymentMethod] = useState(
+        location.state?.paymentMethod || "cod"
+    );
+
+    const deliveryFee = Number(
+        location.state?.deliveryFee || 0
+    );
+
+    const subtotal = orderItems.reduce(
+        (total, item) => {
+            const productPrice = Number(
+                item.product?.price || 0
+            );
+
+            const addOnsTotal = (item.addOns || []).reduce(
+                (addOnTotal, addOn) =>
+                    addOnTotal + Number(addOn.price || 0),
+                0
+            );
+
+            return (
+                total +
+                (productPrice + addOnsTotal) *
+                    Number(item.quantity || 1)
+            );
+        },
+        0
+    );
+
+    const total = subtotal + deliveryFee;
 
     const handleContinue = () => {
-        if(paymentMethod === "gcash"){
-            navigate("/qr-payment");
-        }else{
-            navigate("/payment-confirmation");
+        const order = {
+            items: orderItems,
+            address,
+            phone,
+            paymentMethod,
+            subtotal,
+            deliveryFee,
+            total,
+            createdAt: new Date().toISOString(),
+        };
+
+        if (paymentMethod === "gcash") {
+            navigate("/qr-payment", {
+                state: {
+                    order,
+                },
+            });
+        } else {
+            navigate("/payment-confirmation", {
+                state: {
+                    order,
+                },
+            });
         }
     };
 
     return (
         <div className="PlaceOrderPage">
-            <Header title="Place Order"/>
+            <Header title="Place Order" />
 
             <main className="PlaceOrderContent">
-
                 <section className="PlaceOrderCard">
                     <h2>Delivery Address</h2>
 
@@ -40,7 +108,9 @@ function PlaceOrder() {
                             type="text"
                             name="address"
                             value={address}
-                            onChange={(e) => setAddress(e.target.value)}
+                            onChange={(e) =>
+                                setAddress(e.target.value)
+                            }
                             placeholder="Enter your delivery address"
                             className="AddressInput"
                         />
@@ -55,7 +125,9 @@ function PlaceOrder() {
                     <button
                         type="button"
                         className="AddAddressButton"
-                        onClick={() => navigate("/store-locator")}
+                        onClick={() =>
+                            navigate("/store-locator")
+                        }
                     >
                         <span>＋</span>
                         Add new address
@@ -65,13 +137,16 @@ function PlaceOrder() {
 
                     <div className="PhoneInputWrapper">
                         <Phone />
+
                         <span className="PhoneIcon"></span>
 
                         <Input
                             type="tel"
                             name="phone"
                             value={phone}
-                            onChange={(e) => setPhone(e.target.value)}
+                            onChange={(e) =>
+                                setPhone(e.target.value)
+                            }
                             placeholder="09171234567"
                             className="PhoneNumberInput"
                         />
@@ -81,9 +156,49 @@ function PlaceOrder() {
                 <section className="PlaceOrderCard">
                     <h2>Order Summary</h2>
 
-                    <div className="EmptyOrder">
-                        No items in your order yet.
-                    </div>
+                    {orderItems.length === 0 ? (
+                        <div className="EmptyOrder">
+                            <p>No items in your order.</p>
+                        </div>
+                    ) : (
+                        <>
+                            <div className="OrderItems">
+                                {orderItems.map((item) => (
+                                    <OrderItem
+                                        key={item.id}
+                                        item={item}
+                                        showRemove={false}
+                                    />
+                                ))}
+                            </div>
+
+                            <div className="SummaryDivider"></div>
+
+                            <div className="PriceRow">
+                                <span>Subtotal</span>
+
+                                <strong>
+                                    ₱{subtotal.toFixed(2)}
+                                </strong>
+                            </div>
+
+                            <div className="PriceRow">
+                                <span>Delivery fee</span>
+
+                                <strong>
+                                    ₱{deliveryFee.toFixed(2)}
+                                </strong>
+                            </div>
+
+                            <div className="TotalRow">
+                                <span>Total</span>
+
+                                <strong>
+                                    ₱{total.toFixed(2)}
+                                </strong>
+                            </div>
+                        </>
+                    )}
                 </section>
 
                 <section className="PlaceOrderCard">
@@ -91,35 +206,63 @@ function PlaceOrder() {
 
                     <button
                         type="button"
-                        className={`PaymentOption ${paymentMethod === "cod" ? "selected" : ""}`}
-                        onClick={() => setPaymentMethod("cod")}
+                        className={`PaymentOption ${
+                            paymentMethod === "cod"
+                                ? "selected"
+                                : ""
+                        }`}
+                        onClick={() =>
+                            setPaymentMethod("cod")
+                        }
                     >
-                        <span className="PaymentIcon">💵</span>
+                        <span className="PaymentIcon">
+                            💵
+                        </span>
 
                         <span className="PaymentInfo">
-                            <strong>Cash on Delivery / Pickup</strong>
-                            <span>Pay when you receive your order</span>
+                            <strong>
+                                Cash on Delivery / Pickup
+                            </strong>
+
+                            <span>
+                                Pay when you receive your order
+                            </span>
                         </span>
 
                         <span className="PaymentCircle">
-                            {paymentMethod === "cod" ? "✓" : ""}
+                            {paymentMethod === "cod"
+                                ? "✓"
+                                : ""}
                         </span>
                     </button>
 
                     <button
                         type="button"
-                        className={`PaymentOption ${paymentMethod === "gcash" ? "selected" : ""}`}
-                        onClick={() => setPaymentMethod("gcash")}
+                        className={`PaymentOption ${
+                            paymentMethod === "gcash"
+                                ? "selected"
+                                : ""
+                        }`}
+                        onClick={() =>
+                            setPaymentMethod("gcash")
+                        }
                     >
-                        <span className="PaymentIcon">📱</span>
+                        <span className="PaymentIcon">
+                            📱
+                        </span>
 
                         <span className="PaymentInfo">
                             <strong>GCash QR</strong>
-                            <span>Scan and pay via GCash</span>
+
+                            <span>
+                                Scan and pay via GCash
+                            </span>
                         </span>
 
                         <span className="PaymentCircle">
-                            {paymentMethod === "gcash" ? "✓" : ""}
+                            {paymentMethod === "gcash"
+                                ? "✓"
+                                : ""}
                         </span>
                     </button>
                 </section>
@@ -128,7 +271,6 @@ function PlaceOrder() {
                     <p>Order ID: —</p>
                     <p>Receipt sent to your account</p>
                 </div>
-
             </main>
 
             <div className="PlaceOrderBottom">
