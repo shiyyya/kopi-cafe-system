@@ -1,0 +1,57 @@
+.LargeHeader {
+    width: 100%;
+    height: 118px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0 24px;
+    background: var(--header-bg);
+}
+
+.headerTop {
+    height: 58px;
+    display: flex;
+    align-items: center;
+}
+
+.LargeHeaderTitle {
+    margin: 0;
+    font-family: var(--heading);
+    font-size: 24px;
+    line-height: 1;
+    font-weight: 600;
+    color: var(--text-h);
+}
+
+.headerTabs {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.headerTab {
+     height: 30px;
+    padding: 0 14px;
+    border: none;
+    border-radius: 6px 6px 0 0;
+    background: transparent;
+    color: var(--text-h);
+    font-family: var(--sans);
+    font-size: 11px;
+    cursor: pointer;
+    white-space: nowrap;
+    border-radius: 6px;
+}
+
+.headerTab:hover {
+    background: rgba(245, 237, 224, 0.15);
+}
+
+.headerTab.active {
+    background: var(--card-bg);
+    color: var(--text-3);
+    border-radius: 6px;
+}
