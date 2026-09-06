@@ -1,21 +1,16 @@
 import { useState } from "react";
-
 import "./login.css";
-
 import { Link } from "react-router";
-
 import Input from "/src/components/elements/input/input.jsx";
-
 import Button from "/src/components/elements/button/button.jsx";
-
 import Logo from "/src/assets/logo/logo.svg?react";
-
+import EyeIcon from "/src/assets/icons/eye.svg?react";
+import EyeOffIcon from "/src/assets/icons/eye-off.svg?react";
 import user from "/src/data/user.js";
-
 function LoginCard({ onClose, onSignUp, onLoginSuccess }) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-
+    const [showPassword, setShowPassword] = useState(false);
     const handleLogin = () => {
         if (
             email === user.email &&
@@ -25,12 +20,10 @@ function LoginCard({ onClose, onSignUp, onLoginSuccess }) {
                 "currentUser",
                 JSON.stringify(user)
             );
-
             onLoginSuccess?.(user);
             onClose?.();
         }
     };
-
     return (
         <div
             className="loginOverlay"
@@ -41,18 +34,14 @@ function LoginCard({ onClose, onSignUp, onLoginSuccess }) {
                 onClick={(event) => event.stopPropagation()}
             >
                 <div className="LoginHandle"></div>
-
                 <div className="LoginLogo">
                     <Logo />
                     <span>Kopi Express</span>
                 </div>
-
                 <h2>Welcome Back</h2>
-
                 <p className="LoginDescription">
                     Log in to place your order.
                 </p>
-
                 <Input
                     type="email"
                     name="email"
@@ -63,18 +52,36 @@ function LoginCard({ onClose, onSignUp, onLoginSuccess }) {
                         setEmail(event.target.value)
                     }
                 />
-
-                <Input
-                    type="password"
-                    name="password"
-                    placeholder="Password"
-                    className="LoginInput"
-                    value={password}
-                    onChange={(event) =>
-                        setPassword(event.target.value)
-                    }
-                />
-
+                <div className="LoginPasswordWrapper">
+                    <Input
+                        type={showPassword ? "text" : "password"}
+                        name="password"
+                        placeholder="Password"
+                        className="LoginInput"
+                        value={password}
+                        onChange={(event) =>
+                            setPassword(event.target.value)
+                        }
+                    />
+                    <button
+                        type="button"
+                        className="LoginPasswordToggle"
+                        onClick={() =>
+                            setShowPassword((current) => !current)
+                        }
+                        aria-label={
+                            showPassword
+                                ? "Hide password"
+                                : "Show password"
+                        }
+                    >
+                        {showPassword ? (
+                            <EyeIcon />
+                        ) : (
+                            <EyeOffIcon />
+                        )}
+                    </button>
+                </div>
                 <Button
                     type="button"
                     className="LoginButton"
@@ -82,10 +89,8 @@ function LoginCard({ onClose, onSignUp, onLoginSuccess }) {
                 >
                     Log In
                 </Button>
-
                 <p className="SignUpText">
                     No account?
-
                     <Link
                         to="/signup"
                         onClick={(event) => {
@@ -100,5 +105,4 @@ function LoginCard({ onClose, onSignUp, onLoginSuccess }) {
         </div>
     );
 }
-
 export default LoginCard;
