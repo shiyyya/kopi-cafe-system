@@ -1,0 +1,335 @@
+.order-status-page {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #F5EDE0;
+}
+
+.order-info-card {
+    position: absolute;
+    left: 16px;   
+    top: 75.99px;
+    width: 398.04px;
+    height: 77.22px;;
+    padding: 20px 16px;
+    box-sizing: border-box;
+    background-color: #FDF8F0;
+    border: 1.11px solid rgba(44, 26, 14, 0.15);
+    border-radius: 16px;
+}
+
+.order-info-details {
+    height: 23px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.order-number {
+    alignment-baseline: top;
+    font-family: Consolas, monospace;
+    font-size: 14px;
+    width: 62px;
+    height: 20px;
+    font-weight: bold;
+    line-height: 20px;
+    color: #2C1A0E;
+}
+
+.status-badge {
+    display: flex;
+    align-items: center;
+    padding: 4px 8px;
+    background-color: #DCFCE7;
+    border-radius: 999px;
+}
+
+.order-status {
+    font-family: Consolas, monospace;
+    font-size: 10px;
+    font-weight: bold;
+    line-height: 15px;
+    color: #008236;
+}
+
+
+.order-date {
+    text-align: left;
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+    color: #6B5040;
+}
+
+.order-progress-card {
+    position: absolute;
+    left: 16px;   
+    top: 169.21px;
+    width: 398.04px;
+    height: 330.15px;;
+    padding: 20px 16px;
+    box-sizing: border-box;
+    background-color: #FDF8F0;
+    border: 1.11px solid rgba(44, 26, 14, 0.15);
+    border-radius: 16px;
+}
+
+.progress-title {
+  font-family: 'Nunito Sans',;
+  width: 100px;
+  font-weight: bold; 
+  font-size: 14px;
+  line-height: 20px;
+  color: #1C1008; 
+  text-align: left;          
+}
+
+.progress-list {
+  display: flex;
+  flex-direction: column;
+  width: 363.82px;
+  height: 275.93px;
+  gap: 0px;
+  padding: 0px 16px 0px 0px;
+}
+
+.progress-item {
+  display: flex;
+  flex-direction: row;
+  width: 363.82px;
+  height: 65.99px;
+  gap: 12px;
+  padding: 0px;
+}
+
+.check-circle {
+    width: 32px;
+    height: 32px;
+}
+
+.progress-details {
+    display: flex;
+    flex-direction: column;
+    width: Auto;
+    height: 65.99px, fill;
+}
+
+.progress-status {
+    font-family: 'Nunito Sans',;
+    font-weight: 500;
+    font-size: 14px;
+    text-align: left;
+    line-height: 20px;
+    width: auto;
+    height: auto;
+    color: #1C1008;
+}
+
+.progress-message {
+    font-family: 'Nunito Sans',;
+    font-size: 12px;
+    text-align: left;
+    line-height: 0px;
+    width: auto;
+    height: auto;
+    color: #6B5040;
+}
+
+.items-ordered-card {
+    position: absolute;
+    left: 16px;   
+    top: 515.36px;
+    width: 398.04px;
+    height: 155.34px;;
+    padding: 20px 16px;
+    box-sizing: border-box;
+    background-color: #FDF8F0;
+    border: 1.11px solid rgba(44, 26, 14, 0.15);
+    border-radius: 16px;
+}
+
+.ordered-title {
+  font-family: 'Nunito Sans',;
+  width: 100px;
+  font-weight: bold; 
+  font-size: 14px;
+  line-height: 20px;
+  color: #1C1008; 
+  text-align: left;          
+}
+
+.ordered-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 363.82px;
+  height: 52px;
+  box-sizing: border-box;
+}
+
+.ordered-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.ordered-details {
+  display: flex;
+  flex-direction: column;
+  width: 252.82px;
+  height: auto;
+  padding: 0px;
+}
+
+.ordered-name {
+  font-family: 'Nunito Sans', ;
+  font-weight: 600;
+  font-size: 12px;
+  text-align: left;
+  line-height: 0px;
+  letter-spacing: 0px;
+  color: #1C1008;
+  width: auto;
+  height: auto;
+}
+
+.quantity-temp {
+  font-family: 'Nunito Sans', ;
+  font-weight: 400;
+  font-size: 10px;
+  text-align: left;
+  line-height: 16px;
+  color: #6B5040;
+  width: auto;
+  height: auto;
+}
+
+.ordered-price {
+  font-family: 'Consolas', monospace;
+  font-weight: 700;
+  font-size: 12px; 
+  line-height: 16px;
+  letter-spacing: 0px;
+  color: #1C1008;
+  width: auto;
+  height: auto;
+}
+
+.total-section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 363.82px;
+  height: 37.12px;
+  padding: 0px;
+  box-sizing: border-box;
+  border-top: 1.11px solid rgba(44, 26, 14, 0.15); 
+}
+
+.total-font {
+  font-family: 'Nunito Sans', ;
+  font-weight: 400;
+  font-size: 14px;
+  text-align: left;
+  line-height: 20px;
+  letter-spacing: 0px;
+  color: #6B5040;
+  width: auto;
+  height: auto;
+}
+
+.total-price {
+  font-family: 'Playfair Display', ;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0px;
+  color: #1C1008;
+  width: auto;
+  height: auto;
+}
+
+.delivery-address-card {
+    position: absolute;
+    left: 16px;   
+    top: 686.7px;
+    width: 398.04px;
+    height: 107.33px;;
+    padding: 20px 16px;
+    box-sizing: border-box;
+    background-color: #FDF8F0;
+    border: 1.11px solid rgba(44, 26, 14, 0.15);
+    border-radius: 16px;
+}
+
+.delivery-address-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  width: 363.82px;
+  height: 16px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+.address-icon {
+    width: 13.99px;
+    height: 13.99px;
+}
+
+.address-title {
+  font-family: 'Nunito Sans', ;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0px;
+  color: #1C1008;
+  width: auto;
+  height: auto;
+}
+
+.address-location {
+  font-family: 'Nunito Sans', ;
+  font-weight: 400;
+  font-size: 14px;
+  text-align: left;
+  line-height: 20px;
+  letter-spacing: 0px;
+  color: #6B5040;
+  width: auto;
+  height: auto;
+  padding: 8px 0px 8px 0px;
+}
+
+.address-time-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 363.82px;
+  height: 21.11px;
+  padding: 0px 0px 0px 0px;
+  border-top: 1.11px solid rgba(44, 26, 14, 0.15);
+}
+
+.time-icon {
+    width: 12.99px;
+    height: 12.99px;
+    padding: 0px 8px 0px 0px;
+}
+
+.arrival-time {
+  font-family: 'Nunito Sans', ;
+  font-weight: 400;
+  font-size: 12px;
+  text-align: left;
+  line-height: 20px;
+  letter-spacing: 0px;
+  color: #6B5040;
+  width: auto;
+  height: auto;
+}
