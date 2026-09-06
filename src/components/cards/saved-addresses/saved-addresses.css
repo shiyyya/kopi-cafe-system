@@ -1,0 +1,82 @@
+.settingsCard {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 16px;
+  box-shadow: var(--shadow);
+}
+
+.cardTitle {
+  font-family: var(--heading);
+  color: var(--accent);
+  font-size: 15px;
+  font-weight: 700;
+  margin: 0 0 14px;
+}
+
+.fieldInput {
+  width: 100%;
+  box-sizing: border-box;
+  background: var(--box-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 14px;
+  font-size: 14px;
+  color: var(--text);
+  outline: none;
+}
+
+.fieldInput:focus {
+  border-color: var(--accent);
+}
+
+.addressRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--box-bg);
+  border-radius: 10px;
+  padding: 12px 14px;
+  margin-bottom: 10px;
+}
+
+.addressText {
+  font-size: 14px;
+  color: var(--text);
+}
+
+.removeAddressBtn {
+  background: none;
+  border: none;
+  color: var(--text);
+  font-size: 16px;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0 0 0 12px;
+}
+
+.addressInput {
+  margin-bottom: 12px;
+}
+
+.addAddressBtn {
+  background: none;
+  border: none;
+  color: var(--accent);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0;
+}
+
+@media (max-width: 480px) {
+  .cardTitle {
+    font-size: 14px;
+  }
+
+  .addressText,
+  .fieldInput {
+    font-size: 13px;
+  }
+}

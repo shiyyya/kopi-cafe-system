@@ -1,6 +1,24 @@
-.homePage {
+/* .homePage {
   min-height: 100vh;
   width: 100%;
   background: var(--bg);
   position: relative;
+} */
+
+.homePage {
+  min-height: 100vh;
+  width: 100%;
+  background: var(--bg);
+
+  display: flex;             
+  flex-direction: column;    
+  position: relative;       
+}
+
+.homeContent {
+  flex: 1;                   
+}
+
+.siteFooter {
+  margin-top: auto;
 }

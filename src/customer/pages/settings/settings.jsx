@@ -1,143 +1,136 @@
-import {useState} from 'react';
+import { useState } from 'react';
 import './settings.css';
 import Header from '/src/components/blocks/header-wback/header-wback.jsx';
+import ProfileInformation from '/src/components/cards/profile-info/profile-info.jsx';
+import SavedAddresses from '/src/components/cards/saved-addresses/saved-addresses.jsx';
+import ChangePassword from '/src/components/cards/change-password/change-password.jsx';
+import Button from '/src/components/elements/button/button.jsx';
 
-function Settings() {
-  const [profile, setProfile] = useState({
-    fullName: '',
-    email: '',
-    phone: '',
+const INITIAL_PROFILE = {
+  fullName: 'Primo Morandarte',
+  email: '',
+  phone: '',
+};
+
+const INITIAL_ADDRESSES = ['Siling Bata, Pandi, Bulacan'];
+
+export default function Settings() {
+  const [profile, setProfile] = useState(INITIAL_PROFILE);
+  const [savedProfile, setSavedProfile] = useState(INITIAL_PROFILE);
+
+  const [addresses, setAddresses] = useState(INITIAL_ADDRESSES);
+  const [savedAddresses, setSavedAddresses] = useState(INITIAL_ADDRESSES);
+
+  const [password, setPassword] = useState({
+    current: '',
+    next: '',
+    confirm: '',
+  });
+  const [passwordError, setPasswordError] = useState('');
+  const [showPassword, setShowPassword] = useState({
+    current: false,
+    next: false,
+    confirm: false,
   });
 
+  const handleProfileChange = (field) => (e) => {
+    setProfile((prev) => ({ ...prev, [field]: e.target.value }));
+  };
+
+  const handlePasswordChange = (field) => (e) => {
+    setPassword((prev) => ({ ...prev, [field]: e.target.value }));
+    setPasswordError('');
+  };
+
+  const toggleShowPassword = (field) => () => {
+    setShowPassword((prev) => ({ ...prev, [field]: !prev[field] }));
+  };
+
+  const handleAddAddress = (address) => {
+    setAddresses((prev) => [...prev, address]);
+  };
+
+  const handleRemoveAddress = (index) => {
+    setAddresses((prev) => prev.filter((_, i) => i !== index));
+  };
+
+  const validatePassword = () => {
+    if (!password.current || !password.next || !password.confirm) {
+      return 'All password fields are required.';
+    }
+    if (password.next.length < 8) {
+      return 'New password must be at least 8 characters.';
+    }
+    if (password.next !== password.confirm) {
+      return 'New password and confirmation do not match.';
+    }
+    return '';
+  };
+
+  const isProfileChanged =
+    JSON.stringify(profile) !== JSON.stringify(savedProfile);
+  const isAddressesChanged =
+    JSON.stringify(addresses) !== JSON.stringify(savedAddresses);
+  const isPasswordChanged =
+    password.current || password.next || password.confirm;
+
+  const hasChanges = isProfileChanged || isAddressesChanged || isPasswordChanged;
+
+  const handleSave = () => {
+    if (isPasswordChanged) {
+      const error = validatePassword();
+      if (error) {
+        setPasswordError(error);
+        return;
+      }
+    }
+
+    const payload = {
+      profile,
+      addresses,
+      ...(isPasswordChanged && {
+        currentPassword: password.current,
+        newPassword: password.next,
+      }),
+    };
+    console.log('Saving settings:', payload);
+
+    setSavedProfile(profile);
+    setSavedAddresses(addresses);
+    setPassword({ current: '', next: '', confirm: '' });
+    setPasswordError('');
+    setShowPassword({ current: false, next: false, confirm: false });
+  };
+
   return (
-    <div>
+    <div className="settingsPage">
       <Header title="Settings" />
-      {/* ... */}
+
+      <div className="settingsContainer">
+        <ProfileInformation profile={profile} onChange={handleProfileChange} />
+
+        <SavedAddresses
+          addresses={addresses}
+          onAdd={handleAddAddress}
+          onRemove={handleRemoveAddress}
+        />
+
+        <ChangePassword
+          password={password}
+          showPassword={showPassword}
+          passwordError={passwordError}
+          onChange={handlePasswordChange}
+          onToggleShow={toggleShowPassword}
+        />
+
+        <Button
+          className="saveChangesBtn"
+          onClick={handleSave}
+          disabled={!hasChanges}
+        >
+          Save Changes
+        </Button>
+      </div>
     </div>
   );
 }
-
-export default Settings;
-
-//    return (
-//     <div className="settings-page">
-//       {/* Header */}
-//       <div className="settings-header">
-//         <button className="settings-back-button" aria-label="Go back">
-//           ←
-//         </button>
-//         <h1 className="settings-header-title">Settings</h1>
-//       </div>
- 
-//       <div className="settings-content">
-//         {/* Profile Information */}
-//         <div className="settings-card">
-//           <h2 className="settings-card-title">Profile Information</h2>
- 
-//           <label className="settings-label">Full Name</label>
-//           <input
-//             className="settings-input"
-//             type="text"
-//             value={profile.fullName}
-//             onChange={handleChange('fullName')}
-//           />
- 
-//           <label className="settings-label">Email</label>
-//           <input
-//             className="settings-input"
-//             type="email"
-//             value={profile.email}
-//             onChange={handleChange('email')}
-//           />
- 
-//           <label className="settings-label">Phone</label>
-//           <input
-//             className="settings-input"
-//             type="tel"
-//             value={profile.phone}
-//             onChange={handleChange('phone')}
-//           />
-//         </div>
- 
-//         {/* Saved Addresses */}
-//         <div className="settings-card">
-//           <h2 className="settings-card-title">Saved Addresses</h2>
-//           {}
-
-//           <input
-//             className="settings-add-address-input"
-//             type="text"
-//             placeholder="Add new delivery address..."
-//             value={newAddress}
-//             onChange={}
-//             onKeyDown={}
-//           />
- 
-//           <button className="settings-add-address-button" onClick={handleAddAddress}>
-//             <span className="plus-icon">+</span>
-//             Add Address
-//           </button>
-//         </div>
- 
-//         {/* Save Changes */}
-//         <button className="settings-save-button" onClick={handleSave}>
-//           Save Changes
-//         </button>
-//       </div>
-//     </div>
-//   );
-// }
-
-/* 
-di pa tapos yang html may kulang pa sa address 
-owski
-*/
-
-  /*
-  nja, need export ng function
-  
-  default ibig sabihin nun un ung makukuha na function agad if not specified
-  ung export para pede sya maimport sa iba
-
-  OWKI
-
-  mali pala ako ng type hahahhaa may export talaga yun
-  kaya pala
-
-  same sa order_history
-
-  alam mo ba para san ung useState?
-  dko masyado gets
-
-  di ko rin masyadong gets eh pero storage na pwedeng mabago habang nngra run
-  so parang variable yeah parang
-
-  nagsesearch ka ba? yeah ow yeh
-
-  The useState hook is a built-in React function that allows you to add state variables to functional components, tracking data that changes over time and automatically re-rendering the UI when updates occur
-  ok medyo dko parin gets
-
-  ung return isa lang pede ireturn so if div lang man irereturn edi div
-  pero if need madami need <> sa loob netoh </> olrayt before html yung mga const?
-  dba ang const d na naiiba, d na ba maiiba ung yung sa settings i mean kunware yung label like  fullname, email, phone na mga labels
-  gets ko na akala ko d na mababago eh
-
-  wait isipin
-  ano ba nilagay ni trish sa settings fullname, email,phone, tas yung sa address
-
-  profile info tsaka saved address
-  edi ayun
-  tyaka ung new delivery address
-  
-  yeess
-
-  ayun lagay
-
-
-  then html na?
-  oum sa return
-
-  if may need pa na makita natin lagay nalang later
-
-  pakainit
-  */

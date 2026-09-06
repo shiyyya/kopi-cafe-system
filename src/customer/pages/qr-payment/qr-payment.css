@@ -1,0 +1,185 @@
+.qrPaymentPage {
+  min-height: 100vh;
+  width: 100%;
+  background: var(--bg);
+  text-align: left;
+}
+
+.qrPaymentContainer {
+  width: 100%;
+  max-width: 380px;
+  margin: 0 auto;
+  padding: 16px 16px 24px;
+}
+
+.qrCard {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.qrCardHeader {
+  background: var(--accent);
+  padding: 20px;
+  text-align: center;
+}
+
+.qrCardHeaderLabel {
+  color: var(--notif);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  margin: 0;
+}
+
+.qrCardHeaderOrder {
+  color: var(--text-h);
+  opacity: 0.75;
+  font-size: 12px;
+  margin: 4px 0 0;
+}
+
+.qrCardBody {
+  padding: 20px;
+  text-align: center;
+}
+
+.qrInstruction {
+  color: var(--text);
+  font-size: 13.5px;
+  font-weight: 500;
+  margin: 0 0 16px;
+}
+
+.qrImageWrap {
+  background: var(--btn-label);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  display: inline-block;
+  margin: 0 auto 16px;
+}
+
+.qrImage {
+  width: 160px;
+  height: 160px;
+  display: block;
+}
+
+.amountLabel {
+  color: var(--text);
+  font-size: 12.5px;
+  margin: 0 0 4px;
+}
+
+.amountValue {
+  font-family: var(--heading);
+  color: var(--accent);
+  font-size: 26px;
+  font-weight: 700;
+  margin: 0 0 16px;
+}
+
+.payToRow {
+  margin-bottom: 16px;
+}
+
+.payToLabel {
+  color: var(--text);
+  font-size: 13px;
+  margin: 0;
+}
+
+.payToNumber {
+  color: var(--accent);
+  font-size: 13.5px;
+  font-weight: 600;
+  margin: 2px 0 0;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 0 0 16px;
+}
+
+.refLabel {
+  display: block;
+  color: var(--accent);
+  font-size: 13.5px;
+  font-weight: 600;
+  margin: 0 0 10px;
+}
+
+.refInput {
+  width: 100%;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--accent);
+  font: inherit;
+  font-size: 14px;
+  text-align: center;
+  border-radius: 12px;
+  padding: 10px 16px;
+  outline: none;
+  margin-bottom: 14px;
+}
+
+.refInput::placeholder {
+  color: var(--text);
+}
+
+.refInput:focus {
+  box-shadow: 0 0 0 2px var(--accent-border);
+}
+
+.confirmButton {
+  width: 100%;
+  background: var(--btn-primary);
+  color: var(--text-h);
+  font: inherit;
+  font-size: 14.5px;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 20px;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+  margin-bottom: 10px;
+}
+
+.confirmButton:disabled {
+  background: var(--btn-primary);
+  color: var(--text-h);
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.confirmButton:hover:not(:disabled) {
+  opacity: 0.85;
+}
+
+.refHint {
+  color: var(--text);
+  font-size: 11.5px;
+  margin: 0;
+}
+
+@media (max-width: 380px) {
+  .amountValue {
+    font-size: 22px;
+  }
+
+  .qrImage {
+    width: 140px;
+    height: 140px;
+  }
+
+  .refLabel,
+  .refInput,
+  .confirmButton {
+    font-size: 13px;
+  }
+}

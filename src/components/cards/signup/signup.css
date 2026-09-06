@@ -1,0 +1,188 @@
+.SignUpCard {
+    width: 100%;
+    max-width: 640px;
+    padding: 40px 30px 36px;
+    background: var(--card-bg);
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    box-sizing: border-box;
+    text-align: left;
+}
+
+.SignUpHandle {
+    width: 60px;
+    height: 6px;
+    margin: 0 auto 38px;
+    background: #ddd8cf;
+    border-radius: 10px;
+}
+
+.SignUpLogo {
+    display: flex;
+    align-items: center;
+    margin-bottom: 34px;
+}
+
+.SignUpLogo span {
+    color: var(--accent);
+    font-family: var(--heading);
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.SignUpCard h1 {
+    margin: 0 0 12px;
+    color: var(--text-3);
+    font-family: var(--heading);
+    font-size: 38px;
+    font-weight: 600;
+    line-height: 118%;
+    letter-spacing: -0.5px;
+}
+
+.SignUpDescription {
+    margin: 0 0 28px;
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 20px;
+    line-height: 145%;
+}
+
+.SignUpCard label {
+    display: block;
+    margin: 0 0 7px;
+    color: var(--text-2);
+    font-family: var(--sans);
+    font-size: 16px;
+}
+
+.SignUpInput {
+    display: block;
+    width: 100%;
+    height: 62px;
+    margin: 0 0 16px;
+    padding: 0 20px;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    background: var(--input-bg);
+    color: var(--text-3);
+    font-family: var(--sans);
+    font-size: 18px;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.SignUpInput::placeholder {
+    color: var(--text);
+}
+
+.SignUpInput:focus {
+    border-color: var(--accent-border);
+    box-shadow: 0 0 0 3px var(--accent-bg);
+}
+
+.DeliveryNote {
+    margin: -4px 0 18px;
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 13px;
+}
+
+.CreateAccountButton {
+    display: block;
+    width: 100%;
+    height: 62px;
+    margin: 0;
+    padding: 0;
+    border: none;
+    border-radius: 16px;
+    background: var(--btn-secondary);
+    color: var(--btn-label);
+    font-family: var(--sans);
+    font-size: 20px;
+    cursor: pointer;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.CreateAccountButton:hover {
+    opacity: 0.9;
+}
+
+.CreateAccountButton:active {
+    transform: scale(0.99);
+}
+
+.LoginText {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    margin: 22px 0 0;
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 16px;
+}
+
+.LoginText a {
+    color: var(--text-4);
+    font-size: 18px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.LoginText a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+    .SignUpCard {
+        max-width: 100%;
+        padding: 32px 20px 30px;
+        border-radius: 18px;
+    }
+
+    .SignUpHandle {
+        width: 50px;
+        height: 5px;
+        margin-bottom: 30px;
+    }
+
+    .SignUpLogo {
+        margin-bottom: 28px;
+    }
+
+    .SignUpLogo span {
+        font-size: 22px;
+    }
+
+    .SignUpCard h1 {
+        font-size: 32px;
+    }
+
+    .SignUpDescription {
+        margin-bottom: 24px;
+        font-size: 18px;
+    }
+
+    .SignUpCard label {
+        font-size: 14px;
+    }
+
+    .SignUpInput {
+        height: 58px;
+        font-size: 17px;
+    }
+
+    .CreateAccountButton {
+        height: 58px;
+        font-size: 18px;
+    }
+
+    .LoginText {
+        font-size: 14px;
+    }
+
+    .LoginText a {
+        font-size: 17px;
+    }
+}
