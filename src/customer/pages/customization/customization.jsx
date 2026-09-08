@@ -1,19 +1,14 @@
 import { useState } from "react";
-
 import { useLocation, useNavigate } from "react-router";
 
 import "./customization.css";
 
 import Badge from "/src/components/elements/badge/badge";
-
 import BackButton from "/src/components/elements/button/back-button/back-button";
-
 import QuantitySelector from "/src/components/elements/quantity-selector/qty-selector";
 
 import HotIcon from "/src/assets/icons/hot.svg?react";
-
 import IcedIcon from "/src/assets/icons/iced.svg?react";
-
 import CheckIcon from "/src/assets/icons/check.svg?react";
 
 const ADD_ONS = [
@@ -22,44 +17,42 @@ const ADD_ONS = [
         name: "Extra Shot",
         price: 30,
     },
-
-    {
-        id: "vanilla-syrup",
-        name: "Vanilla Syrup",
-        price: 30,
-    },
-
-    {
-        id: "oat-milk",
-        name: "Oat Milk",
-        price: 30,
-    },
-
     {
         id: "whipped-cream",
         name: "Whipped Cream",
-        price: 30,
+        price: 25,
     },
-
+    {
+        id: "oat-milk",
+        name: "Oat Milk",
+        price: 40,
+    },
+    {
+        id: "vanilla-syrup",
+        name: "Vanilla Syrup",
+        price: 20,
+    },
     {
         id: "caramel-drizzle",
         name: "Caramel Drizzle",
-        price: 30,
+        price: 20,
     },
 ];
 
-export default function Customization() {
+export default function Customization({
+    product: productProp = null,
+    onClose,
+    onAddToOrder,
+}) {
     const location = useLocation();
     const navigate = useNavigate();
 
-    const product = location.state?.product;
+    const isInline = Boolean(productProp);
+    const product = productProp || location.state?.product;
 
     const [selectedTemperature, setSelectedTemperature] = useState(null);
-
     const [selectedAddOns, setSelectedAddOns] = useState([]);
-
     const [quantity, setQuantity] = useState(1);
-
     const [notes, setNotes] = useState("");
 
     if (!product) {
@@ -74,10 +67,11 @@ export default function Customization() {
         );
     }
 
-    const hasTemperature =
-        Array.isArray(product.temperature) &&
-        product.temperature.length > 0;
+    const temperatures = Array.isArray(product.temperature)
+        ? product.temperature
+        : [];
 
+    const hasTemperature = temperatures.length > 0;
     const hasAddOns = ADD_ONS.length > 0;
 
     const toggleTemperature = (temperature) => {
@@ -94,19 +88,18 @@ export default function Customization() {
         );
     };
 
-    const addOnsTotal = selectedAddOns.reduce(
-        (total, addOnId) => {
-            const addOn = ADD_ONS.find(
-                (item) => item.id === addOnId
-            );
+    const addOnsTotal = selectedAddOns.reduce((total, addOnId) => {
+        const addOn = ADD_ONS.find(
+            (item) => item.id === addOnId
+        );
 
-            return total + (addOn?.price || 0);
-        },
-        0
-    );
+        return total + Number(addOn?.price || 0);
+    }, 0);
+
+    const basePrice = Number(product.price || 0);
 
     const totalPrice =
-        (Number(product.price) + addOnsTotal) * quantity;
+        (basePrice + addOnsTotal) * quantity;
 
     const handleAddToOrder = () => {
         const selectedAddOnDetails = ADD_ONS.filter((addOn) =>
@@ -122,61 +115,92 @@ export default function Customization() {
             product: {
                 id: product.id,
                 name: product.name,
-                price: Number(product.price),
+                price: basePrice,
                 image: product.image,
             },
             temperature: selectedTemperature,
             addOns: selectedAddOnDetails,
             quantity,
-            notes,
+            notes: notes.trim(),
             total: totalPrice,
         };
 
-        const updatedCart = [...existingCart, newCartItem];
+        const updatedCart = [
+            ...existingCart,
+            newCartItem,
+        ];
 
         localStorage.setItem(
             "cartItems",
             JSON.stringify(updatedCart)
         );
 
+        if (isInline) {
+            onAddToOrder?.(
+                newCartItem,
+                updatedCart
+            );
+            return;
+        }
+
         navigate("/");
     };
 
     return (
-        <div className="customization-page">
+        <div
+            className={`customization-page ${
+                isInline ? "inline-customization" : ""
+            }`}
+        >
             <div className="customization-image">
                 <img
-                    src="/src/assets/images/menu/kopi.png"
+                    src={product.image}
                     alt={product.name}
                 />
 
-                <BackButton />
+                {!isInline && <BackButton />}
 
-                {product.badge && product.badge !== "soldOut" && (
-                    <Badge
-                        type={product.badge}
-                        className="customization-badge"
-                    />
+                {isInline && onClose && (
+                    <button
+                        type="button"
+                        className="customization-close"
+                        onClick={onClose}
+                        aria-label="Close customization"
+                    >
+                        ×
+                    </button>
                 )}
+
+                {product.badge &&
+                    product.badge !== "soldOut" && (
+                        <Badge
+                            type={product.badge}
+                            className="customization-badge"
+                        />
+                    )}
             </div>
 
             <div className="customization-content">
                 <div className="customization-product-info">
-                    <span className="customization-category">
-                        {product.category}
-                    </span>
+                    {product.category && (
+                        <span className="customization-category">
+                            {product.category}
+                        </span>
+                    )}
 
                     <h1 className="customization-name">
                         {product.name}
                     </h1>
 
                     <p className="customization-price">
-                        ₱{Number(product.price).toFixed(2)}
+                        ₱{basePrice.toFixed(2)}
                     </p>
 
-                    <p className="customization-description">
-                        {product.description}
-                    </p>
+                    {product.description && (
+                        <p className="customization-description">
+                            {product.description}
+                        </p>
+                    )}
                 </div>
 
                 {hasTemperature && (
@@ -186,7 +210,7 @@ export default function Customization() {
                         </h2>
 
                         <div className="temperature-options">
-                            {product.temperature.includes("hot") && (
+                            {temperatures.includes("hot") && (
                                 <button
                                     type="button"
                                     className={`temperature-option temperature-hot ${
@@ -204,7 +228,7 @@ export default function Customization() {
                                 </button>
                             )}
 
-                            {product.temperature.includes("iced") && (
+                            {temperatures.includes("iced") && (
                                 <button
                                     type="button"
                                     className={`temperature-option temperature-iced ${
@@ -228,20 +252,25 @@ export default function Customization() {
                 {hasAddOns && (
                     <section className="customization-section">
                         <h2 className="customization-section-title">
-                            Add-ons <span>Optional</span>
+                            Add-ons
+                            <span>Optional</span>
                         </h2>
 
                         <div className="addon-list">
                             {ADD_ONS.map((addOn) => {
                                 const isSelected =
-                                    selectedAddOns.includes(addOn.id);
+                                    selectedAddOns.includes(
+                                        addOn.id
+                                    );
 
                                 return (
                                     <button
                                         key={addOn.id}
                                         type="button"
                                         className={`addon-option ${
-                                            isSelected ? "selected" : ""
+                                            isSelected
+                                                ? "selected"
+                                                : ""
                                         }`}
                                         onClick={() =>
                                             toggleAddOn(addOn.id)
@@ -276,12 +305,16 @@ export default function Customization() {
                         quantity={quantity}
                         onDecrease={() =>
                             setQuantity((current) =>
-                                Math.max(1, current - 1)
+                                Math.max(
+                                    1,
+                                    current - 1
+                                )
                             )
                         }
                         onIncrease={() =>
-                            setQuantity((current) =>
-                                current + 1
+                            setQuantity(
+                                (current) =>
+                                    current + 1
                             )
                         }
                     />
@@ -296,7 +329,9 @@ export default function Customization() {
                         className="customization-notes"
                         value={notes}
                         onChange={(event) =>
-                            setNotes(event.target.value)
+                            setNotes(
+                                event.target.value
+                            )
                         }
                         placeholder="Add notes..."
                     />
