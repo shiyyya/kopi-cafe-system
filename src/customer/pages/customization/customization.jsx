@@ -14,24 +14,24 @@ const ADD_ONS = [
         price: 30,
     },
     {
-        id: "vanilla-syrup",
-        name: "Vanilla Syrup",
-        price: 30,
+        id: "whipped-cream",
+        name: "Whipped Cream",
+        price: 25,
     },
     {
         id: "oat-milk",
         name: "Oat Milk",
-        price: 30,
+        price: 40,
     },
     {
-        id: "whipped-cream",
-        name: "Whipped Cream",
-        price: 30,
+        id: "vanilla-syrup",
+        name: "Vanilla Syrup",
+        price: 20,
     },
     {
         id: "caramel-drizzle",
         name: "Caramel Drizzle",
-        price: 30,
+        price: 20,
     },
 ];
 export default function Customization() {
@@ -101,13 +101,13 @@ export default function Customization() {
             product: {
                 id: product.id,
                 name: product.name,
-                price: Number(product.price),
+                price: basePrice,
                 image: product.image,
             },
             temperature: selectedTemperature,
             addOns: selectedAddOnDetails,
             quantity,
-            notes,
+            notes: notes.trim(),
             total: totalPrice,
         };
         const updatedCart = [...existingCart, newCartItem];
@@ -118,10 +118,14 @@ export default function Customization() {
         navigate("/");
     };
     return (
-        <div className="customization-page">
+        <div
+            className={`customization-page ${
+                isInline ? "inline-customization" : ""
+            }`}
+        >
             <div className="customization-image">
                 <img
-                    src="/src/assets/images/menu/kopi.png"
+                    src={product.image}
                     alt={product.name}
                 />
                 <BackButton />
@@ -131,6 +135,14 @@ export default function Customization() {
                         className="customization-badge"
                     />
                 )}
+
+                {product.badge &&
+                    product.badge !== "soldOut" && (
+                        <Badge
+                            type={product.badge}
+                            className="customization-badge"
+                        />
+                    )}
             </div>
             <div className="customization-content">
                 <div className="customization-product-info">
@@ -141,7 +153,7 @@ export default function Customization() {
                         {product.name}
                     </h1>
                     <p className="customization-price">
-                        ₱{Number(product.price).toFixed(2)}
+                        ₱{basePrice.toFixed(2)}
                     </p>
                     <p className="customization-description">
                         {product.description}
@@ -200,7 +212,8 @@ export default function Customization() {
                 {hasAddOns && (
                     <section className="customization-section">
                         <h2 className="customization-section-title">
-                            Add-ons <span>Optional</span>
+                            Add-ons
+                            <span>Optional</span>
                         </h2>
                         <div className="addon-list">
                             {ADD_ONS.map((addOn) => {
@@ -211,7 +224,9 @@ export default function Customization() {
                                         key={addOn.id}
                                         type="button"
                                         className={`addon-option ${
-                                            isSelected ? "selected" : ""
+                                            isSelected
+                                                ? "selected"
+                                                : ""
                                         }`}
                                         onClick={() =>
                                             toggleAddOn(addOn.id)
@@ -242,12 +257,16 @@ export default function Customization() {
                         quantity={quantity}
                         onDecrease={() =>
                             setQuantity((current) =>
-                                Math.max(1, current - 1)
+                                Math.max(
+                                    1,
+                                    current - 1
+                                )
                             )
                         }
                         onIncrease={() =>
-                            setQuantity((current) =>
-                                current + 1
+                            setQuantity(
+                                (current) =>
+                                    current + 1
                             )
                         }
                     />
@@ -260,7 +279,9 @@ export default function Customization() {
                         className="customization-notes"
                         value={notes}
                         onChange={(event) =>
-                            setNotes(event.target.value)
+                            setNotes(
+                                event.target.value
+                            )
                         }
                         placeholder="Add notes..."
                     />

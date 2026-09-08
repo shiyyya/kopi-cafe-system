@@ -1,8 +1,10 @@
 .customization-page {
     width: 100%;
     min-height: 100svh;
+    display: flex;
+    flex-direction: column;
     background: var(--bg);
-    padding-bottom: 90px;
+    color: var(--text);
     box-sizing: border-box;
 }
 
@@ -10,6 +12,7 @@
     position: relative;
     width: 100%;
     height: 120px;
+    flex-shrink: 0;
     overflow: hidden;
 }
 
@@ -44,7 +47,7 @@
 
 .customization-content {
     width: 100%;
-    padding: 14px 16px 0;
+    padding: 14px 16px 24px;
     text-align: left;
     box-sizing: border-box;
 }
@@ -56,7 +59,7 @@
 }
 
 .customization-category {
-    margin: 0;
+    margin: 0 0 3px;
     font-family: var(--sans);
     font-size: 10px;
     font-weight: 400;
@@ -76,9 +79,9 @@
 }
 
 .customization-price {
-    margin: 0;
+    margin: 3px 0 0;
     font-family: var(--heading);
-    font-size: 20px;
+    font-size: 15px;
     font-weight: 500;
     line-height: 1.2;
     color: var(--accent);
@@ -87,7 +90,7 @@
 .customization-description {
     margin: 6px 0 0;
     font-family: var(--sans);
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 400;
     line-height: 1.4;
     color: var(--text-2);
@@ -108,6 +111,7 @@
 }
 
 .customization-section-title span {
+    margin-left: 3px;
     font-weight: 400;
 }
 
@@ -136,6 +140,10 @@
     cursor: pointer;
     outline: none;
     box-shadow: none;
+}
+
+.temperature-option:hover {
+    border-color: var(--accent-border);
 }
 
 .temperature-option:focus,
@@ -186,6 +194,10 @@
     box-sizing: border-box;
 }
 
+.addon-option:hover {
+    border-color: var(--accent-border);
+}
+
 .addon-option:focus,
 .addon-option:focus-visible {
     outline: none;
@@ -207,16 +219,17 @@
     flex-shrink: 0;
     border: 1px solid var(--border);
     border-radius: 50%;
-    font-family: var(--sans);
-    font-size: 10px;
-    font-weight: 700;
-    color: transparent;
+    background: var(--card-bg);
+}
+
+.addon-check svg {
+    width: 9px;
+    height: 9px;
 }
 
 .addon-option.selected .addon-check {
     border-color: var(--btn-primary);
     background: var(--btn-primary);
-    color: var(--btn-label);
 }
 
 .addon-name {
@@ -247,7 +260,7 @@
 .customization-notes {
     display: block;
     width: 100%;
-    min-height: 120px;
+    min-height: 90px;
     padding: 10px 12px;
     border: 1px solid var(--border);
     border-radius: 8px;
@@ -275,16 +288,13 @@
 }
 
 .customization-order-button {
-    position: fixed;
-    right: 16px;
-    bottom: 16px;
-    left: 16px;
-    z-index: 10;
+    position: static;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: calc(100% - 32px);
+    width: 100%;
     min-height: 48px;
+    margin-top: 18px;
     padding: 10px 16px;
     border: none;
     border-radius: 9px;
@@ -298,10 +308,39 @@
     box-sizing: border-box;
 }
 
+.customization-order-button:hover {
+    opacity: 0.9;
+}
+
 .customization-order-button:focus,
 .customization-order-button:focus-visible {
     outline: none;
     box-shadow: none;
+}
+
+.customization-close {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    z-index: 4;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: var(--card-bg);
+    color: var(--text-3);
+    font-family: var(--sans);
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.customization-close:hover {
+    opacity: 0.85;
 }
 
 .customization-not-found {
@@ -311,8 +350,157 @@
     color: var(--text-2);
 }
 
+.inline-customization {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border-radius: 8px;
+    background: var(--card-bg);
+}
+
+.inline-customization .customization-image {
+    width: 100%;
+    height: 108px;
+    min-height: 108px;
+    flex-shrink: 0;
+}
+
+.inline-customization .customization-content {
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 12px 14px 14px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background: var(--card-bg);
+}
+
+.inline-customization .customization-product-info {
+    flex-shrink: 0;
+    margin-bottom: 2px;
+}
+
+.inline-customization .customization-category {
+    margin-bottom: 3px;
+    font-size: 8px;
+    letter-spacing: 0.7px;
+}
+
+.inline-customization .customization-name {
+    font-size: 16px;
+    line-height: 1.15;
+}
+
+.inline-customization .customization-price {
+    margin-top: 2px;
+    font-size: 12px;
+}
+
+.inline-customization .customization-description {
+    margin-top: 4px;
+    font-size: 9px;
+    line-height: 1.35;
+}
+
+.inline-customization .customization-section {
+    flex-shrink: 0;
+    margin-top: 11px;
+}
+
+.inline-customization .customization-section-title {
+    margin-bottom: 6px;
+    font-size: 9px;
+}
+
+.inline-customization .temperature-options {
+    gap: 6px;
+}
+
+.inline-customization .temperature-option {
+    height: 28px;
+    padding: 5px 7px;
+    border-radius: 6px;
+    font-size: 9px;
+}
+
+.inline-customization .temperature-icon {
+    width: 12px;
+    height: 12px;
+}
+
+.inline-customization .addon-list {
+    gap: 5px;
+}
+
+.inline-customization .addon-option {
+    min-height: 27px;
+    padding: 5px 8px;
+    border-radius: 6px;
+    font-size: 9px;
+}
+
+.inline-customization .addon-check {
+    width: 14px;
+    height: 14px;
+    margin-right: 7px;
+}
+
+.inline-customization .addon-check svg {
+    width: 8px;
+    height: 8px;
+}
+
+.inline-customization .addon-price {
+    margin-left: 7px;
+    font-size: 8px;
+}
+
+.inline-customization .quantity-section {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.inline-customization .quantity-section .customization-section-title {
+    margin: 0;
+}
+
+.inline-customization .notes-section {
+    margin-top: 11px;
+}
+
+.inline-customization .customization-notes {
+    min-height: 55px;
+    padding: 7px 8px;
+    border-radius: 6px;
+    font-size: 9px;
+}
+
+.inline-customization .customization-order-button {
+    position: static !important;
+    width: 100% !important;
+    min-width: 0;
+    min-height: 34px;
+    flex-shrink: 0;
+    margin-top: 10px;
+    padding: 7px 10px;
+    border-radius: 6px;
+    font-size: 9px;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    z-index: auto;
+}
+
 @media (min-width: 1025px) {
-    .customization-page {
+    .customization-page:not(.inline-customization) {
         max-width: 480px;
         margin: 0 auto;
     }

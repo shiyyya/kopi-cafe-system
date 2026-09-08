@@ -14,7 +14,7 @@ import categories from "/src/data/categories";
 
 import "./menu-section.css";
 
-export default function MenuSection({ onLoginRequired }) {
+export default function MenuSection({ onLoginRequired, onAddToOrder }) {
 
     const navigate = useNavigate();
 
@@ -66,19 +66,23 @@ export default function MenuSection({ onLoginRequired }) {
 
     const handleAddToOrder = (product) => {
 
-        if (onLoginRequired) {
+    if (onAddToOrder) {
+        onAddToOrder(product);
+        return;
+    }
 
-            onLoginRequired(product);
+    if (onLoginRequired) {
+        onLoginRequired(product);
+        return;
+    }
 
-            return;
-        }
-
-        navigate("/customization", {
-            state: {
-                product,
-            },
-        });
-    };
+    navigate("/customization", {
+        state: {
+            product,
+            from: "walk-in"
+        },
+    });
+};
 
     return (
 
