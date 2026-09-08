@@ -506,30 +506,11 @@
     }
 }
 
-@media (max-width: 800px) {
-    .customization-page:not(.inline-customization) {
-        min-height: 100vh;
-    }
-
-    .customization-page:not(.inline-customization) .customization-image {
-        height: 260px;
-    }
+.temperature-options.error .temperature-option {
+    border-color: #d9534f;
 }
-
-@media (max-width: 500px) {
-    .customization-page:not(.inline-customization) .customization-image {
-        height: 220px;
-    }
-
-    .customization-name {
-        font-size: 18px;
-    }
-
-    .temperature-options {
-        flex-direction: column;
-    }
-
-    .temperature-option {
-        width: 100%;
-    }
+.temperature-error {
+    margin: 6px 0 0;
+    color: #d9534f;
+    font-size: 12px;
 }

@@ -1,16 +1,12 @@
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router";
-
 import "./customization.css";
-
 import Badge from "/src/components/elements/badge/badge";
 import BackButton from "/src/components/elements/button/back-button/back-button";
 import QuantitySelector from "/src/components/elements/quantity-selector/qty-selector";
-
 import HotIcon from "/src/assets/icons/hot.svg?react";
 import IcedIcon from "/src/assets/icons/iced.svg?react";
 import CheckIcon from "/src/assets/icons/check.svg?react";
-
 const ADD_ONS = [
     {
         id: "extra-shot",
@@ -38,48 +34,39 @@ const ADD_ONS = [
         price: 20,
     },
 ];
-
-export default function Customization({
-    product: productProp = null,
-    onClose,
-    onAddToOrder,
-}) {
+export default function Customization() {
     const location = useLocation();
     const navigate = useNavigate();
-
-    const isInline = Boolean(productProp);
-    const product = productProp || location.state?.product;
-
+    const product = location.state?.product;
     const [selectedTemperature, setSelectedTemperature] = useState(null);
     const [selectedAddOns, setSelectedAddOns] = useState([]);
     const [quantity, setQuantity] = useState(1);
     const [notes, setNotes] = useState("");
-
+    const [temperatureError, setTemperatureError] = useState(false);
     if (!product) {
         return (
             <div className="customization-page">
                 <BackButton />
-
                 <p className="customization-not-found">
                     Product not found.
                 </p>
             </div>
         );
     }
-
-    const temperatures = Array.isArray(product.temperature)
-        ? product.temperature
-        : [];
-
-    const hasTemperature = temperatures.length > 0;
+    const hasTemperature =
+        Array.isArray(product.temperature) &&
+        product.temperature.length > 0;
+    const requiresTemperature =
+        hasTemperature &&
+        product.temperature.includes("hot") &&
+        product.temperature.includes("iced");
     const hasAddOns = ADD_ONS.length > 0;
-
     const toggleTemperature = (temperature) => {
         setSelectedTemperature((current) =>
             current === temperature ? null : temperature
         );
+        setTemperatureError(false);
     };
-
     const toggleAddOn = (addOnId) => {
         setSelectedAddOns((current) =>
             current.includes(addOnId)
@@ -87,29 +74,28 @@ export default function Customization({
                 : [...current, addOnId]
         );
     };
-
-    const addOnsTotal = selectedAddOns.reduce((total, addOnId) => {
-        const addOn = ADD_ONS.find(
-            (item) => item.id === addOnId
-        );
-
-        return total + Number(addOn?.price || 0);
-    }, 0);
-
-    const basePrice = Number(product.price || 0);
-
+    const addOnsTotal = selectedAddOns.reduce(
+        (total, addOnId) => {
+            const addOn = ADD_ONS.find(
+                (item) => item.id === addOnId
+            );
+            return total + (addOn?.price || 0);
+        },
+        0
+    );
     const totalPrice =
-        (basePrice + addOnsTotal) * quantity;
-
+        (Number(product.price) + addOnsTotal) * quantity;
     const handleAddToOrder = () => {
+        if (requiresTemperature && !selectedTemperature) {
+            setTemperatureError(true);
+            return;
+        }
         const selectedAddOnDetails = ADD_ONS.filter((addOn) =>
             selectedAddOns.includes(addOn.id)
         );
-
         const existingCart = JSON.parse(
             localStorage.getItem("cartItems") || "[]"
         );
-
         const newCartItem = {
             id: `cart-item-${Date.now()}`,
             product: {
@@ -124,28 +110,13 @@ export default function Customization({
             notes: notes.trim(),
             total: totalPrice,
         };
-
-        const updatedCart = [
-            ...existingCart,
-            newCartItem,
-        ];
-
+        const updatedCart = [...existingCart, newCartItem];
         localStorage.setItem(
             "cartItems",
             JSON.stringify(updatedCart)
         );
-
-        if (isInline) {
-            onAddToOrder?.(
-                newCartItem,
-                updatedCart
-            );
-            return;
-        }
-
         navigate("/");
     };
-
     return (
         <div
             className={`customization-page ${
@@ -157,18 +128,12 @@ export default function Customization({
                     src={product.image}
                     alt={product.name}
                 />
-
-                {!isInline && <BackButton />}
-
-                {isInline && onClose && (
-                    <button
-                        type="button"
-                        className="customization-close"
-                        onClick={onClose}
-                        aria-label="Close customization"
-                    >
-                        ×
-                    </button>
+                <BackButton />
+                {product.badge && product.badge !== "soldOut" && (
+                    <Badge
+                        type={product.badge}
+                        className="customization-badge"
+                    />
                 )}
 
                 {product.badge &&
@@ -179,38 +144,32 @@ export default function Customization({
                         />
                     )}
             </div>
-
             <div className="customization-content">
                 <div className="customization-product-info">
-                    {product.category && (
-                        <span className="customization-category">
-                            {product.category}
-                        </span>
-                    )}
-
+                    <span className="customization-category">
+                        {product.category}
+                    </span>
                     <h1 className="customization-name">
                         {product.name}
                     </h1>
-
                     <p className="customization-price">
                         ₱{basePrice.toFixed(2)}
                     </p>
-
-                    {product.description && (
-                        <p className="customization-description">
-                            {product.description}
-                        </p>
-                    )}
+                    <p className="customization-description">
+                        {product.description}
+                    </p>
                 </div>
-
                 {hasTemperature && (
                     <section className="customization-section">
                         <h2 className="customization-section-title">
-                            Temperature
+                            Temperature{requiresTemperature && " *"}
                         </h2>
-
-                        <div className="temperature-options">
-                            {temperatures.includes("hot") && (
+                        <div
+                            className={`temperature-options ${
+                                temperatureError ? "error" : ""
+                            }`}
+                        >
+                            {product.temperature.includes("hot") && (
                                 <button
                                     type="button"
                                     className={`temperature-option temperature-hot ${
@@ -223,12 +182,10 @@ export default function Customization({
                                     }
                                 >
                                     <HotIcon className="temperature-icon" />
-
                                     <span>Hot</span>
                                 </button>
                             )}
-
-                            {temperatures.includes("iced") && (
+                            {product.temperature.includes("iced") && (
                                 <button
                                     type="button"
                                     className={`temperature-option temperature-iced ${
@@ -241,28 +198,27 @@ export default function Customization({
                                     }
                                 >
                                     <IcedIcon className="temperature-icon" />
-
                                     <span>Iced</span>
                                 </button>
                             )}
                         </div>
+                        {temperatureError && (
+                            <p className="temperature-error">
+                                Please select a temperature.
+                            </p>
+                        )}
                     </section>
                 )}
-
                 {hasAddOns && (
                     <section className="customization-section">
                         <h2 className="customization-section-title">
                             Add-ons
                             <span>Optional</span>
                         </h2>
-
                         <div className="addon-list">
                             {ADD_ONS.map((addOn) => {
                                 const isSelected =
-                                    selectedAddOns.includes(
-                                        addOn.id
-                                    );
-
+                                    selectedAddOns.includes(addOn.id);
                                 return (
                                     <button
                                         key={addOn.id}
@@ -281,11 +237,9 @@ export default function Customization({
                                                 <CheckIcon />
                                             )}
                                         </span>
-
                                         <span className="addon-name">
                                             {addOn.name}
                                         </span>
-
                                         <span className="addon-price">
                                             +₱{addOn.price.toFixed(2)}
                                         </span>
@@ -295,12 +249,10 @@ export default function Customization({
                         </div>
                     </section>
                 )}
-
                 <section className="customization-section quantity-section">
                     <h2 className="customization-section-title">
                         Quantity
                     </h2>
-
                     <QuantitySelector
                         quantity={quantity}
                         onDecrease={() =>
@@ -319,12 +271,10 @@ export default function Customization({
                         }
                     />
                 </section>
-
                 <section className="customization-section notes-section">
                     <h2 className="customization-section-title">
                         Additional Notes
                     </h2>
-
                     <textarea
                         className="customization-notes"
                         value={notes}
@@ -336,14 +286,12 @@ export default function Customization({
                         placeholder="Add notes..."
                     />
                 </section>
-
                 <button
                     type="button"
                     className="customization-order-button"
                     onClick={handleAddToOrder}
                 >
                     <span>Add to Order</span>
-
                     <span>
                         ₱{totalPrice.toFixed(2)}
                     </span>
