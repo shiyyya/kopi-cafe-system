@@ -1,0 +1,124 @@
+.order-history-page {
+    width: 100%;
+    min-height: 100vh;
+    background: var(--bg);
+}
+.order-history-content {
+    width: 100%;
+    max-width: 520px;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.order-history-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+}
+.order-history-card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 16px;
+    border: 1px solid rgba(44, 26, 14, 0.15);
+    border-radius: 14px;
+    background: var(--card-bg);
+    color: var(--text);
+    text-align: left;
+    font-family: var(--sans);
+    cursor: pointer;
+}
+.history-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 12px;
+}
+.history-order-id {
+    margin: 0;
+    font-family: var(--mono);
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 21px;
+    color: var(--text-3);
+}
+.history-status {
+    flex-shrink: 0;
+    padding: 5px 9px;
+    border-radius: 999px;
+    background: var(--success-bg);
+    color: var(--success);
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 14px;
+}
+.history-date {
+    margin: 5px 0 0;
+    font-size: 12px;
+    line-height: 18px;
+    color: var(--text);
+}
+.history-summary {
+    margin: 6px 0 0;
+    font-size: 13px;
+    line-height: 19px;
+    color: var(--text);
+}
+.history-divider {
+    width: 100%;
+    height: 1px;
+    margin: 12px 0 10px;
+    background: rgba(44, 26, 14, 0.15);
+}
+.history-total {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+.history-total-label {
+    font-size: 13px;
+    line-height: 19px;
+    color: var(--text);
+}
+.history-total-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.history-total-price {
+    font-family: var(--heading);
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 22px;
+    color: var(--text-3);
+}
+.history-arrow {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    filter: brightness(0) saturate(100%) invert(13%) sepia(18%) saturate(1760%) hue-rotate(345deg) brightness(91%) contrast(101%);
+}
+.order-history-empty {
+    padding: 24px 16px;
+    border: 1px solid rgba(44, 26, 14, 0.15);
+    border-radius: 14px;
+    background: var(--card-bg);
+    text-align: center;
+}
+.order-history-empty p {
+    margin: 0;
+    font-size: 14px;
+    color: var(--text);
+}
+@media (max-width: 480px) {
+    .order-history-content {
+        padding: 16px;
+    }
+    .order-history-card {
+        padding: 15px;
+    }
+}
