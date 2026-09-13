@@ -1,0 +1,196 @@
+.InventoryPage {
+    width: 100%;
+    min-height: 100vh;
+    background: var(--bg);
+    color: var(--text);
+    text-align: left;
+}
+
+.Inventory {
+    width: 100%;
+    padding: 12px;
+    background: #E8D9C3;
+}
+
+.InventoryControls {
+    width: 100%;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px;
+    background: var(--card-bg);
+    border-radius: 7px 7px 0 0;
+}
+
+.InventorySearch {
+    width: 310px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 0 10px;
+    border: 1px solid #D8CFC3;
+    border-radius: 8px;
+    background: #FDF8F0;
+}
+
+.InventorySearch span {
+    font-size: 14px;
+    line-height: 1;
+    color: var(--text-2);
+}
+
+.InventorySearch input {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: var(--text-3);
+    font-family: var(--sans);
+    font-size: 11px;
+}
+
+.InventorySearch input::placeholder {
+    color: var(--text-2);
+}
+
+.InventoryActions {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+.InventoryActions button span svg {
+    width: 8px;
+    height: 8px;
+}
+
+.InventoryActions button {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: var(--text-3);
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.InventoryActions button span {
+    font-size: 14px;
+}
+
+.InventoryTable {
+    width: 100%;
+    overflow: hidden;
+    border-radius: 7px;
+    box-shadow: var(--shadow);
+}
+
+.InventoryHeader {
+    width: 100%;
+    min-height: 50px;
+    display: grid;
+    grid-template-columns: 1.2fr 2fr 1.2fr 0.7fr 1.4fr;
+    align-items: center;
+    padding: 0 12px;
+    background: var(--header-bg);
+    color: var(--text-h);
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 700;
+    text-align: center;
+    border-radius: 7px 7px 0 0;
+}
+
+.ItemInventory {
+    width: 100%;
+    min-height: 39px;
+    display: grid;
+    grid-template-columns: 1.2fr 2fr 1.2fr 0.7fr 1.4fr;
+    align-items: center;
+    padding: 0 12px;
+    background: var(--card-bg);
+    border-bottom: 1px solid #C9C0B6;
+    color: var(--text-3);
+    font-family: var(--sans);
+    font-size: 10px;
+    text-align: center;
+}
+
+.ItemInventory:last-child {
+    border-bottom: none;
+}
+
+.ItemInventory span {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.ItemInventory:hover {
+    background: #F8EFE4;
+}
+.InventoryAction {
+    position: relative;
+}
+
+.InventoryDropdown {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    z-index: 10;
+    min-width: 150px;
+    padding: 5px;
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    background: var(--card-bg);
+    box-shadow: var(--shadow);
+}
+
+.InventoryDropdown button {
+    width: 100%;
+    padding: 8px 10px;
+    border: none;
+    border-radius: 5px;
+    background: transparent;
+    color: var(--text-3);
+    font-family: var(--sans);
+    font-size: 11px;
+    text-align: left;
+    cursor: pointer;
+}
+
+.InventoryDropdown button:hover {
+    background: var(--input-bg);
+}
+@media (max-width: 800px) {
+    .Inventory {
+        padding: 8px;
+        overflow-x: auto;
+    }
+
+    .InventoryControls {
+        min-width: 700px;
+    }
+
+    .InventoryTable {
+        min-width: 700px;
+    }
+}
+
+@media (max-width: 600px) {
+    .InventorySearch {
+        width: 240px;
+    }
+
+    .InventoryActions {
+        gap: 15px;
+    }
+}
