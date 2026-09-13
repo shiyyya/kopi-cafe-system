@@ -13,31 +13,28 @@ import DeliveryEligibility from "./components/cards/delivery-eligibility/deliver
 import Login from "./components/cards/login/login.jsx";
 import Signup from "./components/cards/signup/signup.jsx";
 import QRPayment from "./customer/pages/qr-payment/qr-payment.jsx";
+import PaymentConfirmed from "./customer/pages/payment-confirmation/payment-confirmation.jsx";
 import Customization from "./customer/pages/customization/customization.jsx";
-import Walkin_Customer from "./owner-staff/pages/walk-in/walk-in.jsx";
-import Inventory from "./owner-staff/pages/inventory/inventory.jsx"
+
 createRoot(document.getElementById("root")).render(
-  <StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<App />}>
-          <Route index element={<Home />} />
-          <Route path="store-locator" element={<StoreLocator />} />
-          <Route path="order-status" element={<OrderStatus />} />
-          <Route path="order-history" element={<OrderHistory />} />
-          <Route path="settings" element={<Settings />} />
-          <Route path="place-order" element={<PlaceOrder />} />
-          <Route path="delivery-eligibility" element={<DeliveryEligibility />} />
-          <Route path="login" element={<Login />} />
-          <Route path="signup" element={<Signup />} />
-          <Route path="qr-payment" element={<QRPayment />} />
-          <Route path="customization" element={<Customization />} />
-          <Route path="walk-in" element={<Walkin_Customer />} />
-          <Route path="inventory" element={<Inventory/>} />
-
-
-        </Route>
-      </Routes>
-    </BrowserRouter>
-  </StrictMode>
+    <StrictMode>
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<App />}>
+                    <Route index element={<Home />} />
+                    <Route path="store-locator" element={<StoreLocator />} />
+                    <Route path="order-status" element={<OrderStatus />} />
+                    <Route path="order-history" element={<OrderHistory />} />
+                    <Route path="settings" element={<Settings />} />
+                    <Route path="place-order" element={<PlaceOrder />} />
+                    <Route path="delivery-eligibility" element={<DeliveryEligibility />} />
+                    <Route path="login" element={<Login />} />
+                    <Route path="signup" element={<Signup />} />
+                    <Route path="qr-payment" element={<QRPayment />} />
+                    <Route path="payment-confirmed" element={<PaymentConfirmed />} />
+                    <Route path="customization" element={<Customization />} />
+                </Route>
+            </Routes>
+        </BrowserRouter>
+    </StrictMode>
 );

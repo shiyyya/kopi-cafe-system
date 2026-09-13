@@ -29,3 +29,62 @@
     max-height: 90svh;
     overflow-y: auto;
 }
+
+.store-selection-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.35);
+}
+.store-selection-modal {
+    width: 100%;
+    max-width: 520px;
+    max-height: 80vh;
+    padding: 16px;
+    background: var(--bg);
+    border-radius: 18px 18px 0 0;
+    box-shadow: var(--shadow);
+    overflow-y: auto;
+    animation: storeSelectionSlideUp 0.25s ease;
+}
+.store-selection-modal .StoreSelection {
+    border: none;
+    padding: 0;
+    background: transparent;
+}
+@keyframes storeSelectionSlideUp {
+    from {
+        transform: translateY(100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+.SelectedStore {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: calc(100% - 32px);
+    max-width: 520px;
+    margin: 12px auto;
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--card-bg);
+    text-align: left;
+}
+.SelectedStore span {
+    color: var(--text);
+    font-size: 11px;
+}
+.SelectedStore strong {
+    color: var(--text-3);
+    font-size: 13px;
+}
+.SelectedStore small {
+    color: var(--text);
+    font-size: 12px;
+}
