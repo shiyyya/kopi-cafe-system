@@ -5,8 +5,6 @@ import PinIcon from '/src/assets/icons/location.svg?react';
 import PhoneIcon from '/src/assets/icons/contact.svg?react'; 
 import MailIcon from '/src/assets/icons/email.svg?react'; 
 import ClockIcon from '/src/assets/icons/schedule.svg?react';
-import InstagramIcon from '/src/assets/icons/ig.svg?react'; 
-import FacebookIcon from '/src/assets/icons/fb.svg?react'; 
 import LeafIcon from '/src/assets/icons/leaf.svg?react'; 
 const DELIVERY_ZONES = [
   'Siling Bata',

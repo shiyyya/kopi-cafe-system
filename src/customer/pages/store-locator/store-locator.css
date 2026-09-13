@@ -74,11 +74,12 @@
 }
 
 .storeDetailRow {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 14px;
-  color: var(--accent);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: var(--accent);
+    text-decoration: none;
 }
 
 .storeDetailRow svg {

@@ -12,10 +12,13 @@ import SignUpCard from "/src/components/cards/signup/signup.jsx";
 import Cart from "/src/components/cards/cart/cart.jsx";
 import Footer from "/src/components/blocks/footer/footer.jsx";
 import products from "/src/data/products";
+import StoreSelection from "/src/components/cards/store-selection/store-selection.jsx";
 export default function Home() {
     const navigate = useNavigate();
     const [sidebarOpen, setSidebarOpen] = useState(false);
-    const [orderType, setOrderType] = useState(null);
+    const [orderType, setOrderType] = useState("delivery");
+    const [selectedStore, setSelectedStore] = useState(null);
+    const [storeSelectionOpen, setStoreSelectionOpen] = useState(false);
     const [deliveryEligibilityOpen, setDeliveryEligibilityOpen] = useState(false);
     const [loginOpen, setLoginOpen] = useState(false);
     const [signUpOpen, setSignUpOpen] = useState(false);
@@ -28,9 +31,7 @@ export default function Home() {
     });
     const [pendingProduct, setPendingProduct] = useState(null);
     useEffect(() => {
-        const savedCart = JSON.parse(
-            localStorage.getItem("cartItems") || "[]"
-        );
+        const savedCart = JSON.parse(localStorage.getItem("cartItems") || "[]");
         setCartItems(savedCart);
     }, []);
     useEffect(() => {
@@ -82,17 +83,24 @@ export default function Home() {
     };
     const handleOrderType = (type) => {
         setOrderType(type);
+        if (type === "delivery") {
+            setSelectedStore(null);
+            setStoreSelectionOpen(false);
+        } else if (type === "pickup") {
+            setStoreSelectionOpen(true);
+        }
         console.log("Order type:", type);
+    };
+    const handleStoreSelect = (store) => {
+        setSelectedStore(store);
+        setStoreSelectionOpen(false);
     };
     const handleRemoveFromCart = (itemId) => {
         setCartItems((currentItems) => {
             const updatedItems = currentItems.filter(
                 (item) => item.id !== itemId
             );
-            localStorage.setItem(
-                "cartItems",
-                JSON.stringify(updatedItems)
-            );
+            localStorage.setItem("cartItems", JSON.stringify(updatedItems));
             return updatedItems;
         });
     };
@@ -113,10 +121,15 @@ export default function Home() {
             <OrderType
                 selectedType={orderType}
                 onSelect={handleOrderType}
-                onCheckDelivery={() =>
-                    setDeliveryEligibilityOpen(true)
-                }
+                onCheckDelivery={() => setDeliveryEligibilityOpen(true)}
             />
+            {selectedStore && orderType === "pickup" && (
+                <div className="SelectedStore">
+                    <span>Pickup Store</span>
+                    <strong>{selectedStore.name}</strong>
+                    <small>{selectedStore.address}</small>
+                </div>
+            )}
             <div id="menu">
                 <MenuSection
                     onLoginRequired={handleFeaturedOrder}
@@ -129,18 +142,30 @@ export default function Home() {
                 onLogout={handleLogout}
                 onLogin={handleLogin}
             />
+            {storeSelectionOpen && (
+                <div
+                    className="store-selection-overlay"
+                    onClick={() => setStoreSelectionOpen(false)}
+                >
+                    <div
+                        className="store-selection-modal"
+                        onClick={(event) => event.stopPropagation()}
+                    >
+                        <StoreSelection
+                            selectedStore={selectedStore}
+                            onSelect={handleStoreSelect}
+                        />
+                    </div>
+                </div>
+            )}
             {deliveryEligibilityOpen && (
                 <div
                     className="delivery-eligibility-overlay"
-                    onClick={() =>
-                        setDeliveryEligibilityOpen(false)
-                    }
+                    onClick={() => setDeliveryEligibilityOpen(false)}
                 >
                     <div
                         className="delivery-eligibility-modal"
-                        onClick={(event) =>
-                            event.stopPropagation()
-                        }
+                        onClick={(event) => event.stopPropagation()}
                     >
                         <DeliveryEligibility />
                     </div>
@@ -173,9 +198,16 @@ export default function Home() {
                     onClose={() => setCartOpen(false)}
                     onRemove={handleRemoveFromCart}
                     onPlaceOrder={() => {
+                        if (orderType === "pickup" && !selectedStore) {
+                            setStoreSelectionOpen(true);
+                            setCartOpen(false);
+                            return;
+                        }
                         navigate("/place-order", {
                             state: {
                                 items: cartItems,
+                                orderType: orderType === "delivery" ? "Delivery" : "Pickup",
+                                store: selectedStore,
                             },
                         });
                         setCartOpen(false);
