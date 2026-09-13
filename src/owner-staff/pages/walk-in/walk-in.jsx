@@ -3,8 +3,8 @@ import "./walk-in.css";
 
 import LargeHeader from "../../../components/largeheader-wback/largeheader-wback";
 import Button from "../../../components/elements/button/button";
-import StaffMenuSection from "../../menu-section/menu.jsx";
-import Customizer from "../../customizer/customizer.jsx";
+import StaffMenuSection from "../../../components/cards/menu-section/menu.jsx"
+import Customizer from "../../../components/cards/customizer/customizer.jsx";
 
 function Walkin_Customer() {
     const [orderItems, setOrderItems] = useState([]);
