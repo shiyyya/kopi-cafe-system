@@ -15,6 +15,8 @@
   --btn-secondary: #2C1A0E;   
   --btn-label: #FFFFFF;
   --btn-bg:   #e3e9d9;     
+  --btn-process: #3d4a7a;
+  --btn-process-hover: #313c62;
 
   --progress: #4A6741;         
 
@@ -127,5 +129,3 @@ code {
   padding: 4px 8px;
   background: var(--code-bg);
 }
-
-
