@@ -19,6 +19,7 @@ function App() {
       <Link to="qr-payment">QR Payment</Link><br />
       <Link to="payment-confirmation">Payment Confirmation</Link><br />
       <Link to="walk-in">Walk-in</Link><br />
+      <Link to="inventory">Inventory</Link><br />
     </div>
   )
 }

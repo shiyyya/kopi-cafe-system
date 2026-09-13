@@ -15,6 +15,8 @@ import Signup from "./components/cards/signup/signup.jsx";
 import QRPayment from "./customer/pages/qr-payment/qr-payment.jsx";
 import PaymentConfirmed from "./customer/pages/payment-confirmation/payment-confirmation.jsx";
 import Customization from "./customer/pages/customization/customization.jsx";
+import Walkin_Customer from "./owner-staff/pages/walk-in/walk-in.jsx";
+import Inventory from "./owner-staff/pages/inventory/inventory.jsx";
 
 createRoot(document.getElementById("root")).render(
     <StrictMode>
@@ -33,6 +35,10 @@ createRoot(document.getElementById("root")).render(
                     <Route path="qr-payment" element={<QRPayment />} />
                     <Route path="payment-confirmed" element={<PaymentConfirmed />} />
                     <Route path="customization" element={<Customization />} />
+                    <Route path="walk-in" element={<Walkin_Customer />} />
+                    <Route path="inventory" element={<Inventory />} />
+
+
                 </Route>
             </Routes>
         </BrowserRouter>
