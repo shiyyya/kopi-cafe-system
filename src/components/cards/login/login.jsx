@@ -7,28 +7,27 @@ import Logo from "/src/assets/logo/logo.svg?react";
 import EyeIcon from "/src/assets/icons/eye.svg?react";
 import EyeOffIcon from "/src/assets/icons/eye-off.svg?react";
 import user from "/src/data/user.js";
+
 function LoginCard({ onClose, onSignUp, onLoginSuccess }) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false);
+    const [error, setError] = useState("");
+
     const handleLogin = () => {
-        if (
-            email === user.email &&
-            password === user.password
-        ) {
-            localStorage.setItem(
-                "currentUser",
-                JSON.stringify(user)
-            );
+        if (email === user.email && password === user.password) {
+            setError("");
+            localStorage.setItem("currentUser", JSON.stringify(user));
             onLoginSuccess?.(user);
             onClose?.();
+            return;
         }
+
+        setError("Invalid email or password. Please check your credentials or sign up for an account.");
     };
+
     return (
-        <div
-            className="loginOverlay"
-            onClick={onClose}
-        >
+        <div className="loginOverlay" onClick={onClose}>
             <div
                 className="LoginCard"
                 onClick={(event) => event.stopPropagation()}
@@ -48,9 +47,10 @@ function LoginCard({ onClose, onSignUp, onLoginSuccess }) {
                     placeholder="Email address"
                     className="LoginInput"
                     value={email}
-                    onChange={(event) =>
-                        setEmail(event.target.value)
-                    }
+                    onChange={(event) => {
+                        setEmail(event.target.value);
+                        setError("");
+                    }}
                 />
                 <div className="LoginPasswordWrapper">
                     <Input
@@ -59,9 +59,10 @@ function LoginCard({ onClose, onSignUp, onLoginSuccess }) {
                         placeholder="Password"
                         className="LoginInput"
                         value={password}
-                        onChange={(event) =>
-                            setPassword(event.target.value)
-                        }
+                        onChange={(event) => {
+                            setPassword(event.target.value);
+                            setError("");
+                        }}
                     />
                     <button
                         type="button"
@@ -75,13 +76,14 @@ function LoginCard({ onClose, onSignUp, onLoginSuccess }) {
                                 : "Show password"
                         }
                     >
-                        {showPassword ? (
-                            <EyeIcon />
-                        ) : (
-                            <EyeOffIcon />
-                        )}
+                        {showPassword ? <EyeIcon /> : <EyeOffIcon />}
                     </button>
                 </div>
+                {error && (
+                    <p className="LoginError" role="alert">
+                        {error}
+                    </p>
+                )}
                 <Button
                     type="button"
                     className="LoginButton"
@@ -105,4 +107,5 @@ function LoginCard({ onClose, onSignUp, onLoginSuccess }) {
         </div>
     );
 }
+
 export default LoginCard;
