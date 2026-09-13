@@ -60,10 +60,26 @@
   margin-bottom: 12px;
 }
 
+.addressActions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
 .addAddressBtn {
   background: none;
   border: none;
   color: var(--accent);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0;
+}
+
+.cancelAddressBtn {
+  background: none;
+  border: none;
+  color: var(--text);
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
