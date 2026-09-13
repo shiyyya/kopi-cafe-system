@@ -18,6 +18,7 @@ function App() {
       <Link to="signup">Sign Up</Link><br />
       <Link to="qr-payment">QR Payment</Link><br />
       <Link to="payment-confirmation">Payment Confirmation</Link><br />
+      <Link to="walk-in">Walk-in</Link><br />
     </div>
   )
 }
