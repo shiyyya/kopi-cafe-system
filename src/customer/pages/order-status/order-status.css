@@ -1,335 +1,335 @@
 .order-status-page {
     width: 100%;
     min-height: 100vh;
-    background-color: #F5EDE0;
+    background-color: var(--bg);
 }
-
-.order-info-card {
-    position: absolute;
-    left: 16px;   
-    top: 75.99px;
-    width: 398.04px;
-    height: 77.22px;;
-    padding: 20px 16px;
+.order-status-content {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
     box-sizing: border-box;
-    background-color: #FDF8F0;
-    border: 1.11px solid rgba(44, 26, 14, 0.15);
-    border-radius: 16px;
 }
-
+.order-info-card,
+.order-progress-card,
+.items-ordered-card,
+.delivery-address-card {
+    width: 100%;
+    margin-bottom: 16px;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: var(--card-bg);
+    border: 1px solid rgba(44, 26, 14, 0.15);
+    border-radius: 18px;
+}
+.order-info-card {
+    text-align: left;
+}
 .order-info-details {
-    height: 23px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 14px;
 }
-
 .order-number {
-    alignment-baseline: top;
-    font-family: Consolas, monospace;
-    font-size: 14px;
-    width: 62px;
-    height: 20px;
-    font-weight: bold;
-    line-height: 20px;
-    color: #2C1A0E;
+    margin: 0;
+    font-family: var(--mono);
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 24px;
+    color: var(--accent);
 }
-
 .status-badge {
     display: flex;
     align-items: center;
-    padding: 4px 8px;
-    background-color: #DCFCE7;
+    flex-shrink: 0;
+    padding: 6px 11px;
+    background-color: var(--success-bg);
     border-radius: 999px;
 }
-
 .order-status {
-    font-family: Consolas, monospace;
-    font-size: 10px;
-    font-weight: bold;
-    line-height: 15px;
-    color: #008236;
-}
-
-
-.order-date {
-    text-align: left;
-    font-family: "Nunito Sans", sans-serif;
+    font-family: var(--mono);
     font-size: 12px;
+    font-weight: 700;
+    line-height: 17px;
+    color: var(--success);
+}
+.order-date {
+    margin: 6px 0 0;
+    font-family: var(--sans);
+    font-size: 14px;
     font-weight: 400;
-    line-height: 16px;
-    color: #6B5040;
+    line-height: 20px;
+    color: var(--text);
 }
-
 .order-progress-card {
-    position: absolute;
-    left: 16px;   
-    top: 169.21px;
-    width: 398.04px;
-    height: 330.15px;;
-    padding: 20px 16px;
-    box-sizing: border-box;
-    background-color: #FDF8F0;
-    border: 1.11px solid rgba(44, 26, 14, 0.15);
-    border-radius: 16px;
+    text-align: left;
 }
-
-.progress-title {
-  font-family: 'Nunito Sans',;
-  width: 100px;
-  font-weight: bold; 
-  font-size: 14px;
-  line-height: 20px;
-  color: #1C1008; 
-  text-align: left;          
+.progress-title,
+.ordered-title {
+    margin: 0 0 20px;
+    font-family: var(--sans);
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 25px;
+    color: var(--text-3);
 }
-
 .progress-list {
-  display: flex;
-  flex-direction: column;
-  width: 363.82px;
-  height: 275.93px;
-  gap: 0px;
-  padding: 0px 16px 0px 0px;
-}
-
-.progress-item {
-  display: flex;
-  flex-direction: row;
-  width: 363.82px;
-  height: 65.99px;
-  gap: 12px;
-  padding: 0px;
-}
-
-.check-circle {
-    width: 32px;
-    height: 32px;
-}
-
-.progress-details {
     display: flex;
     flex-direction: column;
-    width: Auto;
-    height: 65.99px, fill;
+    width: 100%;
+    padding: 0;
 }
-
+.progress-item {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    min-height: 78px;
+    gap: 16px;
+    padding: 0 0 20px;
+    box-sizing: border-box;
+}
+.progress-item:last-child {
+    min-height: 0;
+    padding-bottom: 0;
+}
+.progress-icon-wrap {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 24px;
+    flex-shrink: 0;
+}
+.progress-icon-wrap::after {
+    content: "";
+    position: absolute;
+    top: 24px;
+    left: 11px;
+    width: 3px;
+    height: 54px;
+    background: var(--btn-primary);
+    border-radius: 999px;
+    z-index: 0;
+    display: none;
+}
+.progress-item.has-line .progress-icon-wrap::after {
+    display: block;
+}
+.progress-check,
+.progress-circle {
+    position: relative;
+    z-index: 1;
+}
+.progress-check {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    border: 1px solid var(--btn-primary);
+    border-radius: 50%;
+    background: var(--btn-primary);
+    color: var(--btn-label);
+}
+.progress-check svg {
+    width: 15px;
+    height: 15px;
+}
+.progress-check.current {
+    animation: statusPulse 1.5s ease-in-out infinite;
+}
+@keyframes statusPulse {
+    0%,
+    100% {
+        box-shadow: 0 0 0 0 rgba(74, 103, 65, 0.25);
+    }
+    50% {
+        box-shadow: 0 0 0 8px rgba(74, 103, 65, 0);
+    }
+}
+.progress-circle {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    border: 2px solid var(--border);
+    border-radius: 50%;
+    background: var(--card-bg);
+}
+.progress-details {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    min-width: 0;
+    padding-top: 0;
+}
 .progress-status {
-    font-family: 'Nunito Sans',;
-    font-weight: 500;
+    margin: 0;
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 16px;
+    text-align: left;
+    line-height: 24px;
+    color: var(--text-3);
+}
+.progress-message {
+    margin: 4px 0 0;
+    font-family: var(--sans);
     font-size: 14px;
     text-align: left;
     line-height: 20px;
-    width: auto;
-    height: auto;
-    color: #1C1008;
+    color: var(--text);
 }
-
-.progress-message {
-    font-family: 'Nunito Sans',;
+.items-ordered-card {
+    text-align: left;
+}
+.ordered-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    min-height: 64px;
+    gap: 14px;
+    margin-bottom: 14px;
+    box-sizing: border-box;
+}
+.ordered-image {
+    width: 52px;
+    height: 52px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    object-fit: cover;
+}
+.ordered-details {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    min-width: 0;
+    padding: 0;
+}
+.ordered-name {
+    margin: 0;
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 14px;
+    text-align: left;
+    line-height: 20px;
+    color: var(--text-3);
+}
+.quantity-temp {
+    margin: 3px 0 0;
+    font-family: var(--sans);
+    font-weight: 400;
     font-size: 12px;
     text-align: left;
-    line-height: 0px;
-    width: auto;
-    height: auto;
-    color: #6B5040;
+    line-height: 18px;
+    color: var(--text);
 }
-
-.items-ordered-card {
-    position: absolute;
-    left: 16px;   
-    top: 515.36px;
-    width: 398.04px;
-    height: 155.34px;;
-    padding: 20px 16px;
-    box-sizing: border-box;
-    background-color: #FDF8F0;
-    border: 1.11px solid rgba(44, 26, 14, 0.15);
-    border-radius: 16px;
-}
-
-.ordered-title {
-  font-family: 'Nunito Sans',;
-  width: 100px;
-  font-weight: bold; 
-  font-size: 14px;
-  line-height: 20px;
-  color: #1C1008; 
-  text-align: left;          
-}
-
-.ordered-item {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  width: 363.82px;
-  height: 52px;
-  box-sizing: border-box;
-}
-
-.ordered-image {
-  width: 40px;
-  height: 40px;
-  border-radius: 8px;
-  object-fit: cover;
-}
-
-.ordered-details {
-  display: flex;
-  flex-direction: column;
-  width: 252.82px;
-  height: auto;
-  padding: 0px;
-}
-
-.ordered-name {
-  font-family: 'Nunito Sans', ;
-  font-weight: 600;
-  font-size: 12px;
-  text-align: left;
-  line-height: 0px;
-  letter-spacing: 0px;
-  color: #1C1008;
-  width: auto;
-  height: auto;
-}
-
-.quantity-temp {
-  font-family: 'Nunito Sans', ;
-  font-weight: 400;
-  font-size: 10px;
-  text-align: left;
-  line-height: 16px;
-  color: #6B5040;
-  width: auto;
-  height: auto;
-}
-
 .ordered-price {
-  font-family: 'Consolas', monospace;
-  font-weight: 700;
-  font-size: 12px; 
-  line-height: 16px;
-  letter-spacing: 0px;
-  color: #1C1008;
-  width: auto;
-  height: auto;
+    flex-shrink: 0;
+    font-family: var(--mono);
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    color: var(--text-3);
 }
-
 .total-section {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  width: 363.82px;
-  height: 37.12px;
-  padding: 0px;
-  box-sizing: border-box;
-  border-top: 1.11px solid rgba(44, 26, 14, 0.15); 
-}
-
-.total-font {
-  font-family: 'Nunito Sans', ;
-  font-weight: 400;
-  font-size: 14px;
-  text-align: left;
-  line-height: 20px;
-  letter-spacing: 0px;
-  color: #6B5040;
-  width: auto;
-  height: auto;
-}
-
-.total-price {
-  font-family: 'Playfair Display', ;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 24px;
-  letter-spacing: 0px;
-  color: #1C1008;
-  width: auto;
-  height: auto;
-}
-
-.delivery-address-card {
-    position: absolute;
-    left: 16px;   
-    top: 686.7px;
-    width: 398.04px;
-    height: 107.33px;;
-    padding: 20px 16px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 8px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(44, 26, 14, 0.15);
     box-sizing: border-box;
-    background-color: #FDF8F0;
-    border: 1.11px solid rgba(44, 26, 14, 0.15);
-    border-radius: 16px;
 }
-
+.total-font {
+    font-family: var(--sans);
+    font-weight: 400;
+    font-size: 16px;
+    text-align: left;
+    line-height: 22px;
+    color: var(--text);
+}
+.total-price {
+    font-family: var(--heading);
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 28px;
+    color: var(--text-3);
+}
+.delivery-address-card {
+    text-align: left;
+}
 .delivery-address-header {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 8px;
-  width: 363.82px;
-  height: 16px;
-  padding: 0px;
-  box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
 }
-
 .address-icon {
-    width: 13.99px;
-    height: 13.99px;
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
 }
-
 .address-title {
-  font-family: 'Nunito Sans', ;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 16px;
-  letter-spacing: 0px;
-  color: #1C1008;
-  width: auto;
-  height: auto;
+    margin: 0;
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 21px;
+    color: var(--text-3);
 }
-
 .address-location {
-  font-family: 'Nunito Sans', ;
-  font-weight: 400;
-  font-size: 14px;
-  text-align: left;
-  line-height: 20px;
-  letter-spacing: 0px;
-  color: #6B5040;
-  width: auto;
-  height: auto;
-  padding: 8px 0px 8px 0px;
+    margin: 10px 0;
+    font-family: var(--sans);
+    font-weight: 400;
+    font-size: 16px;
+    text-align: left;
+    line-height: 23px;
+    color: var(--text);
 }
-
 .address-time-row {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  width: 363.82px;
-  height: 21.11px;
-  padding: 0px 0px 0px 0px;
-  border-top: 1.11px solid rgba(44, 26, 14, 0.15);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding-top: 12px;
+    border-top: 1px solid rgba(44, 26, 14, 0.15);
+    box-sizing: border-box;
 }
-
 .time-icon {
-    width: 12.99px;
-    height: 12.99px;
-    padding: 0px 8px 0px 0px;
+    width: 17px;
+    height: 17px;
+    flex-shrink: 0;
 }
-
 .arrival-time {
-  font-family: 'Nunito Sans', ;
-  font-weight: 400;
-  font-size: 12px;
-  text-align: left;
-  line-height: 20px;
-  letter-spacing: 0px;
-  color: #6B5040;
-  width: auto;
-  height: auto;
+    margin: 0;
+    font-family: var(--sans);
+    font-weight: 400;
+    font-size: 14px;
+    text-align: left;
+    line-height: 20px;
+    color: var(--text);
+}
+@media (max-width: 480px) {
+    .order-status-content {
+        padding: 16px;
+    }
+    .order-info-card,
+    .order-progress-card,
+    .items-ordered-card,
+    .delivery-address-card {
+        padding: 18px;
+    }
+    .progress-status {
+        font-size: 15px;
+    }
+    .progress-message {
+        font-size: 13px;
+    }
 }
