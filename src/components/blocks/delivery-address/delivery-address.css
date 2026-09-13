@@ -1,0 +1,147 @@
+.DeliveryAddress {
+    width: 100%;
+    padding: 0;
+}
+.DeliveryAddressHeader {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 6px;
+    margin-bottom: 6px;
+}
+.DeliveryAddressHeader h3 {
+    margin: 0;
+    color: var(--text-3);
+    font-family: var(--heading);
+    font-size: 15px;
+    font-weight: 700;
+}
+.DeliveryAddressIcon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    color: var(--btn-primary);
+}
+.DeliveryAddressList {
+    width: 100%;
+}
+.DeliveryAddressOption {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 42px;
+    padding: 8px 10px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    background: transparent;
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 14px;
+    text-align: left;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+.DeliveryAddressOption:first-child {
+    border-top: 1px solid transparent;
+}
+.DeliveryAddressOption:hover {
+    color: var(--btn-primary);
+}
+.DeliveryAddressOption.selected {
+    border: 1px solid var(--btn-primary);
+    background: rgba(74, 103, 65, 0.08);
+}
+.DeliveryAddressText {
+    flex: 1;
+    min-width: 0;
+    padding-right: 10px;
+    overflow-wrap: anywhere;
+}
+.DeliveryAddressCheck,
+.DeliveryAddressRadio {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 17px;
+    height: 17px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    box-sizing: border-box;
+}
+.DeliveryAddressRadio {
+    border: 1px solid var(--border);
+}
+.DeliveryAddressCheck {
+    border: 1px solid var(--btn-primary);
+    background: var(--btn-primary);
+}
+.DeliveryAddressCheck svg {
+    width: 9px;
+    height: 9px;
+}
+.AddAddressButton {
+    display: block;
+    margin-top: 5px;
+    padding: 0;
+    border: none;
+    background: none;
+    color: var(--btn-primary);
+    font-size: 13px;
+    font-weight: 500;
+    text-align: left;
+    cursor: pointer;
+}
+.AddAddressButton:hover {
+    opacity: 0.8;
+}
+.NewDeliveryAddress {
+    width: 100%;
+    padding-top: 5px;
+}
+.DeliveryAddressInput {
+    width: 100%;
+    box-sizing: border-box;
+    background: var(--box-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 8px 11px;
+    color: var(--text);
+    font-size: 13px;
+    outline: none;
+}
+.DeliveryAddressInput:focus {
+    border-color: var(--btn-primary);
+}
+.NewAddressActions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 5px;
+}
+.NewAddressActions .AddAddressButton {
+    margin-top: 0;
+}
+.CancelAddressButton {
+    padding: 0;
+    border: none;
+    background: none;
+    color: var(--text);
+    font-size: 13px;
+    text-align: left;
+    cursor: pointer;
+}
+.CancelAddressButton:hover {
+    color: var(--btn-primary);
+}
+@media (max-width: 480px) {
+    .DeliveryAddressHeader h3 {
+        font-size: 14px;
+    }
+    .DeliveryAddressOption,
+    .DeliveryAddressInput,
+    .AddAddressButton,
+    .CancelAddressButton {
+        font-size: 12px;
+    }
+}
