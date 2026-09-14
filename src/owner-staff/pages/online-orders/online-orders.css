@@ -1,0 +1,36 @@
+.onlineOrders {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: var(--bg);
+  font-family: var(--sans);
+}
+
+.ordersBody {
+  flex: 1;
+  display: flex;
+  gap: 24px;
+  padding: 24px 32px;
+  align-items: flex-start;
+}
+
+.ordersGrid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 16px;
+}
+
+.emptyState {
+  flex: 1;
+  text-align: center;
+  padding: 48px 0;
+  color: var(--text);
+  font-size: 14px;
+}
+
+@media (max-width: 900px) {
+  .ordersBody {
+    flex-direction: column;
+  }
+}

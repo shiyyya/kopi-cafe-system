@@ -17,30 +17,33 @@ import PaymentConfirmed from "./customer/pages/payment-confirmation/payment-conf
 import Customization from "./customer/pages/customization/customization.jsx";
 import Walkin_Customer from "./owner-staff/pages/walk-in/walk-in.jsx";
 import Inventory from "./owner-staff/pages/inventory/inventory.jsx";
+import OnlineOrders from "./owner-staff/pages/online-orders/online-orders.jsx";
+import { OrdersProvider } from "./owner-staff/orders-context/orders-context.jsx";
 
 createRoot(document.getElementById("root")).render(
     <StrictMode>
-        <BrowserRouter>
-            <Routes>
-                <Route path="/" element={<App />}>
-                    <Route index element={<Home />} />
-                    <Route path="store-locator" element={<StoreLocator />} />
-                    <Route path="order-status" element={<OrderStatus />} />
-                    <Route path="order-history" element={<OrderHistory />} />
-                    <Route path="settings" element={<Settings />} />
-                    <Route path="place-order" element={<PlaceOrder />} />
-                    <Route path="delivery-eligibility" element={<DeliveryEligibility />} />
-                    <Route path="login" element={<Login />} />
-                    <Route path="signup" element={<Signup />} />
-                    <Route path="qr-payment" element={<QRPayment />} />
-                    <Route path="payment-confirmed" element={<PaymentConfirmed />} />
-                    <Route path="customization" element={<Customization />} />
-                    <Route path="walk-in" element={<Walkin_Customer />} />
-                    <Route path="inventory" element={<Inventory />} />
-
-
-                </Route>
-            </Routes>
-        </BrowserRouter>
+        <OrdersProvider>
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/" element={<App />}>
+                        <Route index element={<Home />} />
+                        <Route path="store-locator" element={<StoreLocator />} />
+                        <Route path="order-status" element={<OrderStatus />} />
+                        <Route path="order-history" element={<OrderHistory />} />
+                        <Route path="settings" element={<Settings />} />
+                        <Route path="place-order" element={<PlaceOrder />} />
+                        <Route path="delivery-eligibility" element={<DeliveryEligibility />} />
+                        <Route path="login" element={<Login />} />
+                        <Route path="signup" element={<Signup />} />
+                        <Route path="qr-payment" element={<QRPayment />} />
+                        <Route path="payment-confirmed" element={<PaymentConfirmed />} />
+                        <Route path="customization" element={<Customization />} />
+                        <Route path="walk-in" element={<Walkin_Customer />} />
+                        <Route path="inventory" element={<Inventory />} />
+                        <Route path="online-orders" element={<OnlineOrders />} />
+                    </Route>
+                </Routes>
+            </BrowserRouter>
+        </OrdersProvider>
     </StrictMode>
 );
