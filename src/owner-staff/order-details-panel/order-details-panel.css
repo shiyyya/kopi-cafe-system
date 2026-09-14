@@ -1,0 +1,180 @@
+.orderDetails {
+  width: 340px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.detailsCard {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 16px;
+}
+
+.detailsTop {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.detailsCustomer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--btn-primary);
+}
+
+.customerName {
+  font-weight: 700;
+  color: var(--text-3);
+  font-size: 15px;
+}
+
+.orderType {
+  color: var(--text);
+  font-size: 13px;
+}
+
+.statusBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.statusDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.statusPending {
+  color: var(--notif);
+}
+
+.statusAccepted {
+  color: var(--success);
+}
+
+.statusDeclined {
+  color: var(--error);
+}
+
+.detailsLabel {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--text);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.detailsValue {
+  font-size: 14px;
+  color: var(--text-3);
+  font-weight: 600;
+}
+
+.detailsSub {
+  font-size: 13px;
+  color: var(--text);
+}
+
+.detailsEta {
+  margin-top: 6px;
+  font-size: 13px;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.paymentRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Order summary */
+.summaryItems {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.summaryItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.summaryThumb {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background: var(--input-bg);
+  flex-shrink: 0;
+}
+
+.summaryInfo {
+  flex: 1;
+}
+
+.summaryName {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-3);
+}
+
+.summaryVariant {
+  font-size: 12px;
+  color: var(--text);
+}
+
+.summaryPrice {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-3);
+}
+
+.summaryTotals {
+  border-top: 1px solid var(--border);
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.summaryRow {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: var(--text);
+}
+
+.summaryRowTotal {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-3);
+  padding-top: 4px;
+}
+
+@media (max-width: 900px) {
+  .orderDetails {
+    width: 100%;
+  }
+}
