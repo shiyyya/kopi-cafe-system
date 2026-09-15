@@ -12,11 +12,7 @@ function Inventory() {
     const [showSort, setShowSort] = useState(false);
     const [filter, setFilter] = useState("all");
     const [sort, setSort] = useState("none");
-    const [isEditing, setIsEditing] = useState(false);
     const [adjustments, setAdjustments] = useState({});
-    const compareUnit = (a, b) => a.unit.localeCompare(b.unit);
-    const compareQuantity = (a, b) =>
-        Number(a.quantity) - Number(b.quantity);
 
     const filteredInventory = inventory
         .filter((item) => {
@@ -43,16 +39,41 @@ function Inventory() {
                 return Number(b.quantity) - Number(a.quantity);
             }
 
+            if (sort === "unit") {
+                const unitCompare = a.unit.localeCompare(b.unit);
+
+                if (unitCompare !== 0) {
+                    return unitCompare;
+                }
+
+                return Number(a.quantity) - Number(b.quantity);
+            }
+
             if (sort === "expiration") {
                 return (
                     new Date(a.expirationDate) -
                     new Date(b.expirationDate)
                 );
             }
-             const unitCompare = compareUnit(a, b);
 
-            if (unitCompare !== 0) {
-                return unitCompare;
+            if (filter === "high") {
+                const unitCompare = a.unit.localeCompare(b.unit);
+
+                if (unitCompare !== 0) {
+                    return unitCompare;
+                }
+
+                return Number(a.quantity) - Number(b.quantity);
+            }
+
+            if (filter === "low") {
+                const unitCompare = a.unit.localeCompare(b.unit);
+
+                if (unitCompare !== 0) {
+                    return unitCompare;
+                }
+
+                return Number(a.quantity) - Number(b.quantity);
             }
 
             return 0;
@@ -80,6 +101,11 @@ function Inventory() {
                     : item
             )
         );
+
+        setAdjustments((current) => ({
+            ...current,
+            [id]: ""
+        }));
     };
 
     const handleDecrease = (id) => {
@@ -100,21 +126,11 @@ function Inventory() {
                     : item
             )
         );
-    };
 
-    const handleApply = (id) => {
         setAdjustments((current) => ({
             ...current,
             [id]: ""
         }));
-    };
-
-    const handleEdit = () => {
-        setIsEditing((current) => !current);
-
-        if (isEditing) {
-            setAdjustments({});
-        }
     };
 
     return (
@@ -137,15 +153,6 @@ function Inventory() {
                     </div>
 
                     <div className="InventoryActions">
-                        <button
-                            className={`InventoryEditButton ${
-                                isEditing ? "editing" : ""
-                            }`}
-                            onClick={handleEdit}
-                        >
-                            {isEditing ? "Done" : "Edit"}
-                        </button>
-
                         <div className="InventoryAction">
                             <button
                                 onClick={() => {
@@ -235,6 +242,15 @@ function Inventory() {
 
                                     <button
                                         onClick={() => {
+                                            setSort("unit");
+                                            setShowSort(false);
+                                        }}
+                                    >
+                                        Unit
+                                    </button>
+
+                                    <button
+                                        onClick={() => {
                                             setSort("expiration");
                                             setShowSort(false);
                                         }}
@@ -247,17 +263,14 @@ function Inventory() {
                     </div>
                 </div>
 
-                <div
-                    className={`InventoryTable ${
-                        isEditing ? "editing" : ""
-                    }`}
-                >
+                <div className="InventoryTable">
                     <div className="InventoryHeader">
                         <span>Purchase Date</span>
                         <span>Name</span>
                         <span>Quantity</span>
                         <span>Unit</span>
                         <span>Expiration Date</span>
+                        <span>Adjust Stock</span>
                     </div>
 
                     <div className="InventoryItems">
@@ -265,7 +278,6 @@ function Inventory() {
                             <Item_Inventory
                                 key={item.id}
                                 item={item}
-                                isEditing={isEditing}
                                 adjustment={adjustments[item.id] || ""}
                                 onAdjustmentChange={(value) =>
                                     handleAdjustmentChange(
@@ -278,9 +290,6 @@ function Inventory() {
                                 }
                                 onDecrease={() =>
                                     handleDecrease(item.id)
-                                }
-                                onApply={() =>
-                                    handleApply(item.id)
                                 }
                             />
                         ))}
