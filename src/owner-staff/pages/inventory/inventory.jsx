@@ -6,12 +6,13 @@ import Item_Inventory from "../../../components/blocks/items-inventory/items";
 import inventoryData from "../../../data/inventory";
 
 function Inventory() {
-    const [inventory] = useState(inventoryData);
+    const [inventory, setInventory] = useState(inventoryData);
     const [search, setSearch] = useState("");
     const [showFilter, setShowFilter] = useState(false);
     const [showSort, setShowSort] = useState(false);
     const [filter, setFilter] = useState("all");
     const [sort, setSort] = useState("none");
+    const [adjustments, setAdjustments] = useState({});
 
     const filteredInventory = inventory
         .filter((item) => {
@@ -38,24 +39,107 @@ function Inventory() {
                 return Number(b.quantity) - Number(a.quantity);
             }
 
+            if (sort === "unit") {
+                const unitCompare = a.unit.localeCompare(b.unit);
+
+                if (unitCompare !== 0) {
+                    return unitCompare;
+                }
+
+                return Number(a.quantity) - Number(b.quantity);
+            }
+
             if (sort === "expiration") {
-                return new Date(a.expirationDate) - new Date(b.expirationDate);
+                return (
+                    new Date(a.expirationDate) -
+                    new Date(b.expirationDate)
+                );
+            }
+
+            if (filter === "high") {
+                const unitCompare = a.unit.localeCompare(b.unit);
+
+                if (unitCompare !== 0) {
+                    return unitCompare;
+                }
+
+                return Number(a.quantity) - Number(b.quantity);
+            }
+
+            if (filter === "low") {
+                const unitCompare = a.unit.localeCompare(b.unit);
+
+                if (unitCompare !== 0) {
+                    return unitCompare;
+                }
+
+                return Number(a.quantity) - Number(b.quantity);
             }
 
             return 0;
         });
 
+    const handleAdjustmentChange = (id, value) => {
+        setAdjustments((current) => ({
+            ...current,
+            [id]: value
+        }));
+    };
+
+    const handleIncrease = (id) => {
+        const adjustment = Number(adjustments[id]) || 0;
+
+        if (adjustment <= 0) return;
+
+        setInventory((current) =>
+            current.map((item) =>
+                item.id === id
+                    ? {
+                          ...item,
+                          quantity: Number(item.quantity) + adjustment
+                      }
+                    : item
+            )
+        );
+
+        setAdjustments((current) => ({
+            ...current,
+            [id]: ""
+        }));
+    };
+
+    const handleDecrease = (id) => {
+        const adjustment = Number(adjustments[id]) || 0;
+
+        if (adjustment <= 0) return;
+
+        setInventory((current) =>
+            current.map((item) =>
+                item.id === id
+                    ? {
+                          ...item,
+                          quantity: Math.max(
+                              0,
+                              Number(item.quantity) - adjustment
+                          )
+                      }
+                    : item
+            )
+        );
+
+        setAdjustments((current) => ({
+            ...current,
+            [id]: ""
+        }));
+    };
+
     return (
         <div className="InventoryPage">
-
             <LargeHeader title="Kopi Express/Staff" />
 
             <div className="Inventory">
-
                 <div className="InventoryControls">
-
                     <div className="InventorySearch">
-
                         <span>⌕</span>
 
                         <input
@@ -66,26 +150,24 @@ function Inventory() {
                             value={search}
                             onChange={(e) => setSearch(e.target.value)}
                         />
-
                     </div>
 
                     <div className="InventoryActions">
-
                         <div className="InventoryAction">
-
                             <button
                                 onClick={() => {
-                                    setShowFilter(!showFilter);
+                                    setShowFilter((current) => !current);
                                     setShowSort(false);
                                 }}
                             >
                                 Filter
-                                <span><Arrow /></span>
+                                <span>
+                                    <Arrow />
+                                </span>
                             </button>
 
                             {showFilter && (
                                 <div className="InventoryDropdown">
-
                                     <button
                                         onClick={() => {
                                             setFilter("all");
@@ -112,27 +194,25 @@ function Inventory() {
                                     >
                                         High Stock
                                     </button>
-
                                 </div>
                             )}
-
                         </div>
 
                         <div className="InventoryAction">
-
                             <button
                                 onClick={() => {
-                                    setShowSort(!showSort);
+                                    setShowSort((current) => !current);
                                     setShowFilter(false);
                                 }}
                             >
                                 Sort
-                                <span><Arrow /></span>
+                                <span>
+                                    <Arrow />
+                                </span>
                             </button>
 
                             {showSort && (
                                 <div className="InventoryDropdown">
-
                                     <button
                                         onClick={() => {
                                             setSort("none");
@@ -162,47 +242,60 @@ function Inventory() {
 
                                     <button
                                         onClick={() => {
+                                            setSort("unit");
+                                            setShowSort(false);
+                                        }}
+                                    >
+                                        Unit
+                                    </button>
+
+                                    <button
+                                        onClick={() => {
                                             setSort("expiration");
                                             setShowSort(false);
                                         }}
                                     >
                                         Expiration Date
                                     </button>
-
                                 </div>
                             )}
-
                         </div>
-
                     </div>
-
                 </div>
 
                 <div className="InventoryTable">
-
                     <div className="InventoryHeader">
                         <span>Purchase Date</span>
                         <span>Name</span>
                         <span>Quantity</span>
                         <span>Unit</span>
                         <span>Expiration Date</span>
+                        <span>Adjust Stock</span>
                     </div>
 
                     <div className="InventoryItems">
-
                         {filteredInventory.map((item) => (
                             <Item_Inventory
                                 key={item.id}
                                 item={item}
+                                adjustment={adjustments[item.id] || ""}
+                                onAdjustmentChange={(value) =>
+                                    handleAdjustmentChange(
+                                        item.id,
+                                        value
+                                    )
+                                }
+                                onIncrease={() =>
+                                    handleIncrease(item.id)
+                                }
+                                onDecrease={() =>
+                                    handleDecrease(item.id)
+                                }
                             />
                         ))}
-
                     </div>
-
                 </div>
-
             </div>
-
         </div>
     );
 }

@@ -1,0 +1,32 @@
+.QuantityButton {
+    height: 26px;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    padding: 0 8px !important;
+    border-radius: 4px;
+    color: #FFFFFF !important;
+    font-family: var(--sans);
+    font-size: 9px !important;
+    font-weight: 600 !important;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.AddButton {
+    border: 1px solid #4A8F4A !important;
+    background: #4A8F4A !important;
+}
+
+.AddButton:hover {
+    background: #3D7A3D !important;
+}
+
+.RemoveButton {
+    border: 1px solid #C94A4A !important;
+    background: #C94A4A !important;
+}
+
+.RemoveButton:hover {
+    background: #AE3D3D !important;
+}
