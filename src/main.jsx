@@ -18,6 +18,7 @@ import Customization from "./customer/pages/customization/customization.jsx";
 import Walkin_Customer from "./owner-staff/pages/walk-in/walk-in.jsx";
 import Inventory from "./owner-staff/pages/inventory/inventory.jsx";
 import OnlineOrders from "./owner-staff/pages/online-orders/online-orders.jsx";
+import OrdersQueue from "./owner-staff/pages/orders-queue/orders-queue.jsx";
 import { OrdersProvider } from "./owner-staff/orders-context/orders-context.jsx";
 
 createRoot(document.getElementById("root")).render(
@@ -41,6 +42,7 @@ createRoot(document.getElementById("root")).render(
                         <Route path="walk-in" element={<Walkin_Customer />} />
                         <Route path="inventory" element={<Inventory />} />
                         <Route path="online-orders" element={<OnlineOrders />} />
+                        <Route path="orders-queue" element={<OrdersQueue />} />
                     </Route>
                 </Routes>
             </BrowserRouter>

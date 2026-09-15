@@ -6,7 +6,7 @@ import Logo from "/src/assets/logo/logo.svg?react";
 const TABS = [
   { label: "Walk-In Order Requests", path: "/walk-in" },
   { label: "Online Order Requests", path: "/online-orders" },
-  { label: "Orders In-Queue", path: "/orders-in-queue" },
+  { label: "Orders In-Queue", path: "/orders-queue" },
   { label: "Sales Report", path: "/sales-report" },
   { label: "Inventory", path: "/inventory" },
 ];

@@ -1,14 +1,53 @@
-import "./order-details-panel.css";
+import "./orders-queue-details.css";
+
+const STATUS_LABELS = {
+  pending: "Pending",
+  preparing: "Preparing",
+  ready: "Ready",
+  delivered: "Delivered",
+  cancelled: "Cancelled",
+};
+
+const STATUS_ACTIONS = {
+  pending: {
+    label: "Start Preparation",
+    getHandler: (props) => props.onStartPreparation,
+    className: "queueDetailsStartButton",
+  },
+  preparing: {
+    label: "Mark as Ready",
+    getHandler: (props) => props.onMarkReady,
+    className: "queueDetailsReadyButton",
+  },
+  ready: {
+    label: "Done",
+    getHandler: (props) => props.onComplete,
+    className: "queueDetailsDoneButton",
+  },
+};
 
 function peso(amount) {
   return `₱${Number(amount ?? 0).toFixed(2)}`;
 }
 
-function OrderDetailsPanel({ order, onAccept, onDecline, isProcessing = false }) {
+function OrdersQueueDetailsPanel({
+  order,
+  onCancel,
+  onStartPreparation,
+  onMarkReady,
+  onComplete,
+  isProcessing = false,
+}) {
   if (!order) return null;
 
-  const statusLabel =
-    order.status === "accepted" ? "Accepted" : order.status === "declined" ? "Declined" : "Pending";
+  const normalizedStatus = String(order.status ?? "").toLowerCase();
+  const statusLabel = STATUS_LABELS[normalizedStatus] ?? order.status;
+  const action = STATUS_ACTIONS[normalizedStatus];
+  const showActions =
+    action ||
+    normalizedStatus === "pending" ||
+    normalizedStatus === "preparing" ||
+    normalizedStatus === "ready";
 
   return (
     <aside className="orderPanel">
@@ -17,10 +56,13 @@ function OrderDetailsPanel({ order, onAccept, onDecline, isProcessing = false })
           <div className="orderAvatar" aria-hidden="true" />
           <div>
             <p className="orderName">{order.customer}</p>
-            <p className="orderType">{order.type === "delivery" ? "Delivery" : "Pick-Up"}</p>
+            <p className="orderType">
+              {order.type === "delivery" ? "Delivery" : "Pick-Up"}
+              {order.orderNumber ? ` #${order.orderNumber}` : ""}
+            </p>
           </div>
         </div>
-        <span className={`cleanStatus clean${order.status}`}>
+        <span className={`cleanStatus clean${normalizedStatus}`}>
           <span className="orderDot" />
           {statusLabel}
         </span>
@@ -70,8 +112,13 @@ function OrderDetailsPanel({ order, onAccept, onDecline, isProcessing = false })
           <p className="orderLabel">Order summary</p>
           {order.items.map((item) => (
             <div className="orderItem" key={item.id}>
-              <span>{item.name}{item.quantity ? ` x${item.quantity}` : ""}</span>
-              <span className="orderItemPrice">{peso(item.price * (item.quantity ?? 1))}</span>
+              <span>
+                {item.name}
+                {item.quantity ? ` x${item.quantity}` : ""}
+              </span>
+              <span className="orderItemPrice">
+                {peso(item.price * (item.quantity ?? 1))}
+              </span>
             </div>
           ))}
         </div>
@@ -98,17 +145,30 @@ function OrderDetailsPanel({ order, onAccept, onDecline, isProcessing = false })
         </div>
       </div>
 
-      {order.status === "pending" && (
+      {showActions && (
         <div className="orderActions">
-          <button className="orderDeclineBtn" type="button" onClick={onDecline} disabled={isProcessing}>
-            Decline
+          <button
+            className="orderDeclineBtn"
+            type="button"
+            onClick={onCancel}
+            disabled={isProcessing}
+          >
+            Cancel Order
           </button>
-          <button className="orderAcceptBtn" type="button" onClick={onAccept} disabled={isProcessing}>
-            Accept
-          </button>
+          {action && (
+            <button
+              className={action.className}
+              type="button"
+              onClick={action.getHandler({ onStartPreparation, onMarkReady, onComplete })}
+              disabled={isProcessing}
+            >
+              {action.label}
+            </button>
+          )}
         </div>
       )}
     </aside>
   );
 }
-export default OrderDetailsPanel;
+
+export default OrdersQueueDetailsPanel;
