@@ -2,9 +2,8 @@ import { useState } from "react";
 import "./walk-in.css";
 
 import LargeHeader from "../../../components/largeheader-wback/largeheader-wback";
-import Button from "../../../components/elements/button/button";
 import StaffMenuSection from "../../menu-section/menu.jsx";
-import Customizer from "../../customizer/customizer.jsx";
+import Customizer from "../../../customer/pages/customization/customization.jsx";
 
 function Walkin_Customer() {
     const [orderItems, setOrderItems] = useState([]);
@@ -38,10 +37,11 @@ function Walkin_Customer() {
             <LargeHeader title="Kopi Express/Staff" />
 
             <div className="Walkin">
-
+                <div className="walkin-menu-card">
                 <StaffMenuSection
                     onAddToOrder={handleAddToOrder}
                 />
+                </div>
 
                 <div className="Order_Cards">
 
