@@ -12,6 +12,7 @@ function OwnerInventory() {
     const [showBranch, setShowBranch] = useState(false);
     const [showFilter, setShowFilter] = useState(false);
     const [showSort, setShowSort] = useState(false);
+    const [showAddModal, setShowAddModal] = useState(false);
 
     const [branch, setBranch] = useState("all");
     const [filter, setFilter] = useState("all");
@@ -19,6 +20,14 @@ function OwnerInventory() {
 
     const [adjustments, setAdjustments] = useState({});
 
+    const [newItem, setNewItem] = useState({
+        name: "",
+        quantity: "",
+        unit: "",
+        purchaseDate: "",
+        expirationDate: "",
+        branches: [],
+    });
 
     const filteredInventory = inventory
         .filter((item) => {
@@ -139,6 +148,45 @@ function OwnerInventory() {
             ...current,
             [id]: ""
         }));
+    };
+
+
+    const handleNewItemChange = (field, value) => {
+        setNewItem((current) => ({
+            ...current,
+            [field]: value,
+        }));
+    };
+
+
+    const handleAddItem = () => {
+        if (!newItem.name.trim() || !newItem.quantity || !newItem.unit.trim()) {
+            return;
+        }
+
+        setInventory((current) => [
+            ...current,
+            {
+                id: Date.now(),
+                name: newItem.name.trim(),
+                quantity: Number(newItem.quantity),
+                unit: newItem.unit.trim(),
+                purchaseDate: newItem.purchaseDate,
+                expirationDate: newItem.expirationDate,
+                branches: newItem.branches,
+            },
+        ]);
+
+        setNewItem({
+            name: "",
+            quantity: "",
+            unit: "",
+            purchaseDate: "",
+            expirationDate: "",
+            branches: [],
+        });
+
+        setShowAddModal(false);
     };
 
 
@@ -376,6 +424,16 @@ function OwnerInventory() {
 
                         </div>
 
+
+                        {/* ADD ITEM */}
+
+                        <button
+                            className="InventoryAddButton"
+                            onClick={() => setShowAddModal(true)}
+                        >
+                            + Add Item
+                        </button>
+
                     </div>
 
                 </div>
@@ -428,6 +486,96 @@ function OwnerInventory() {
                 </div>
 
             </div>
+
+
+            {/* ADD ITEM MODAL */}
+
+            {showAddModal && (
+                <div className="InventoryModalOverlay">
+
+                    <div className="InventoryModal">
+
+                        <h2>Add Inventory Item</h2>
+
+                        <label>
+                            Name
+                            <input
+                                type="text"
+                                value={newItem.name}
+                                onChange={(e) =>
+                                    handleNewItemChange("name", e.target.value)
+                                }
+                            />
+                        </label>
+
+                        <label>
+                            Quantity
+                            <input
+                                type="number"
+                                min="0"
+                                value={newItem.quantity}
+                                onChange={(e) =>
+                                    handleNewItemChange("quantity", e.target.value)
+                                }
+                            />
+                        </label>
+
+                        <label>
+                            Unit
+                            <input
+                                type="text"
+                                placeholder="e.g. kg, pcs, L"
+                                value={newItem.unit}
+                                onChange={(e) =>
+                                    handleNewItemChange("unit", e.target.value)
+                                }
+                            />
+                        </label>
+
+                        <label>
+                            Purchase Date
+                            <input
+                                type="date"
+                                value={newItem.purchaseDate}
+                                onChange={(e) =>
+                                    handleNewItemChange("purchaseDate", e.target.value)
+                                }
+                            />
+                        </label>
+
+                        <label>
+                            Expiration Date
+                            <input
+                                type="date"
+                                value={newItem.expirationDate}
+                                onChange={(e) =>
+                                    handleNewItemChange("expirationDate", e.target.value)
+                                }
+                            />
+                        </label>
+
+                        <div className="InventoryModalActions">
+
+                            <button
+                                className="InventoryModalCancel"
+                                onClick={() => setShowAddModal(false)}
+                            >
+                                Cancel
+                            </button>
+
+                            <button
+                                className="InventoryModalConfirm"
+                                onClick={handleAddItem}
+                            >
+                                Add
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            )}
 
         </div>
     );
