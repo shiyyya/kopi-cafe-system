@@ -62,10 +62,6 @@
     align-items: center;
     gap: 28px;
 }
-.InventoryActions button span svg {
-    width: 8px;
-    height: 8px;
-}
 
 .InventoryActions button {
     display: flex;
@@ -82,61 +78,26 @@
 }
 
 .InventoryActions button span {
-    font-size: 14px;
-}
-
-.InventoryTable {
-    width: 100%;
-    overflow: hidden;
-    border-radius: 7px;
-    box-shadow: var(--shadow);
-}
-
-.InventoryHeader {
-    width: 100%;
-    min-height: 50px;
-    display: grid;
-    grid-template-columns: 1.2fr 2fr 1.2fr 0.7fr 1.4fr;
+    display: flex;
     align-items: center;
-    padding: 0 12px;
-    background: var(--header-bg);
-    color: var(--text-h);
-    font-family: var(--sans);
-    font-size: 10px;
-    font-weight: 700;
-    text-align: center;
-    border-radius: 7px 7px 0 0;
+    justify-content: center;
 }
 
-.ItemInventory {
-    width: 100%;
-    min-height: 39px;
-    display: grid;
-    grid-template-columns: 1.2fr 2fr 1.2fr 0.7fr 1.4fr;
-    align-items: center;
-    padding: 0 12px;
-    background: var(--card-bg);
-    border-bottom: 1px solid #C9C0B6;
-    color: var(--text-3);
-    font-family: var(--sans);
-    font-size: 10px;
-    text-align: center;
+.InventoryActions button span svg {
+    width: 8px;
+    height: 8px;
 }
 
-.ItemInventory:last-child {
-    border-bottom: none;
+.InventoryEditButton {
+    padding: 0 !important;
+    margin-right: 20px !important;
+    order: 3;
 }
 
-.ItemInventory span {
-    min-width: 0;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+.InventoryEditButton.editing {
+    color: var(--accent);
 }
 
-.ItemInventory:hover {
-    background: #F8EFE4;
-}
 .InventoryAction {
     position: relative;
 }
@@ -170,6 +131,178 @@
 .InventoryDropdown button:hover {
     background: var(--input-bg);
 }
+
+.InventoryTable {
+    width: 100%;
+    overflow: hidden;
+    border-radius: 7px;
+    box-shadow: var(--shadow);
+}
+
+.InventoryHeader {
+    width: 100%;
+    min-height: 50px;
+    display: grid;
+    grid-template-columns: 1.2fr 2fr 1.2fr 0.7fr 1.4fr;
+    align-items: center;
+    padding: 0 12px;
+    background: var(--header-bg);
+    color: var(--text-h);
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 700;
+    text-align: center;
+    border-radius: 7px 7px 0 0;
+}
+
+.ItemInventory {
+    width: 100%;
+    min-height: 39px;
+    display: grid;
+    grid-template-columns: 1.2fr 2fr 1.2fr 0.7fr 1.4fr;
+    align-items: center;
+    padding: 8px 12px;
+    background: var(--card-bg);
+    border-bottom: 1px solid #C9C0B6;
+    color: var(--text-3);
+    font-family: var(--sans);
+    font-size: 10px;
+    text-align: center;
+}
+
+.ItemInventory:last-child {
+    border-bottom: none;
+}
+
+.ItemInventory > span {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.ItemInventory:hover {
+    background: #F8EFE4;
+}
+
+.InventoryQuantity {
+    width: 100%;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.NormalQuantity {
+    display: inline-block;
+    overflow: visible !important;
+    text-overflow: unset !important;
+    white-space: nowrap !important;
+}
+
+.QuantityEditor {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.CurrentQuantity {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.QuantityLabel {
+    display: inline-block;
+    min-width: auto !important;
+    overflow: visible !important;
+    text-overflow: unset !important;
+    white-space: nowrap !important;
+    font-size: 10px;
+}
+
+.QuantityValue {
+    display: inline-block;
+    min-width: auto !important;
+    overflow: visible !important;
+    text-overflow: unset !important;
+    white-space: nowrap !important;
+    font-size: 10px;
+    font-weight: 600;
+}
+
+.AdjustQuantity {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.QuantityInput {
+    width: 60px;
+    height: 26px;
+    padding: 0 6px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    outline: none;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 10px;
+    text-align: center;
+}
+
+.QuantityInput:focus {
+    border-color: var(--accent);
+}
+
+.QuantityButton {
+    width: 26px !important;
+    height: 26px;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    padding: 0 !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 4px;
+    background: var(--bg) !important;
+    color: var(--text) !important;
+    font-family: var(--sans);
+    font-size: 16px !important;
+    font-weight: 500 !important;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.QuantityButton:hover {
+    background: var(--accent-bg) !important;
+}
+
+.ApplyButton {
+    height: 26px;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    padding: 0 9px !important;
+    border: none !important;
+    border-radius: 4px;
+    background: var(--accent) !important;
+    color: var(--text-h) !important;
+    font-family: var(--sans);
+    font-size: 10px !important;
+    font-weight: 600 !important;
+    cursor: pointer;
+}
+
+.ApplyButton:hover {
+    opacity: 0.9;
+}
+
 @media (max-width: 800px) {
     .Inventory {
         padding: 8px;
