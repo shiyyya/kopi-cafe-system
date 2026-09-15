@@ -57,25 +57,12 @@ function Inventory() {
             }
 
             if (filter === "high") {
-                const unitCompare = a.unit.localeCompare(b.unit);
-
-                if (unitCompare !== 0) {
-                    return unitCompare;
-                }
-
-                return Number(a.quantity) - Number(b.quantity);
+                return a.unit.localeCompare(b.unit);
             }
 
             if (filter === "low") {
-                const unitCompare = a.unit.localeCompare(b.unit);
-
-                if (unitCompare !== 0) {
-                    return unitCompare;
-                }
-
-                return Number(a.quantity) - Number(b.quantity);
+                return a.unit.localeCompare(b.unit);
             }
-
             return 0;
         });
 
