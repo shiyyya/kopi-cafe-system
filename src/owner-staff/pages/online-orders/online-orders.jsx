@@ -37,7 +37,11 @@ function OnlineOrders() {
           </div>
         )}
 
-        <OrderDetailsPanel order={selectedOrder} />
+        <OrderDetailsPanel
+          order={selectedOrder}
+          onAccept={() => selectedOrder && acceptOnlineOrder(selectedOrder.id)}
+          onDecline={() => selectedOrder && declineOnlineOrder(selectedOrder.id)}
+        />
       </div>
     </div>
   );

@@ -1,6 +1,5 @@
 import "./largeheader-wback.css";
 import { useNavigate, useLocation } from "react-router";
-import Back from "/src/components/elements/button/back-button/back-button.jsx";
 import Button from "/src/components/elements/button/button.jsx";
 import Logo from "/src/assets/logo/logo.svg?react";
 
@@ -19,7 +18,6 @@ function LargeHeader() {
   return (
     <div className="LargeHeader">
       <div className="headerTop">
-        <Back />
         <Logo />
         <h1 className="LargeHeaderTitle">Kopi Express/Staff</h1>
       </div>
