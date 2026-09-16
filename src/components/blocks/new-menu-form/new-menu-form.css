@@ -1,0 +1,238 @@
+.NewMenuForm {
+    width: 100%;
+    max-width: 560px;
+    padding: 20px;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: var(--card-bg);
+    box-shadow: var(--shadow);
+    font-family: var(--sans);
+    text-align: left;
+}
+.NewMenuFormHeader {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 18px;
+}
+.NewMenuFormHeader h2 {
+    margin: 0;
+    color: var(--accent);
+    font-family: var(--heading);
+    font-size: 20px;
+    font-weight: 600;
+}
+.NewMenuFormHeader p {
+    margin: 3px 0 0;
+    color: var(--text);
+    font-size: 12px;
+}
+.NewMenuFormClose {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: var(--accent);
+    font-size: 22px;
+    line-height: 1;
+    cursor: pointer;
+}
+.NewMenuFormContent {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+.NewMenuFormRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+.NewMenuField {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.NewMenuField > label {
+    color: var(--accent);
+    font-size: 12px;
+    font-weight: 600;
+}
+.NewMenuField input,
+.NewMenuField textarea,
+.NewMenuField select {
+    width: 100%;
+    padding: 9px 10px;
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    background: var(--bg);
+    color: var(--accent);
+    font-family: var(--sans);
+    font-size: 12px;
+    outline: none;
+}
+.NewMenuField input:focus,
+.NewMenuField textarea:focus,
+.NewMenuField select:focus {
+    border-color: var(--accent-border);
+    box-shadow: 0 0 0 2px var(--accent-bg);
+}
+.NewMenuField textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+.NewMenuField input[type="file"] {
+    display: none;
+}
+.NewMenuImageUpload {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100px;
+    padding: 16px;
+    border: 1px dashed var(--border);
+    border-radius: 8px;
+    background: var(--bg);
+    color: var(--text);
+    text-align: center;
+    cursor: pointer;
+}
+.NewMenuImageUpload:hover {
+    border-color: var(--accent-border);
+    background: var(--accent-bg);
+}
+.NewMenuImageUpload strong {
+    color: var(--accent);
+    font-size: 12px;
+}
+.NewMenuImageUpload span {
+    margin-top: 3px;
+    font-size: 11px;
+}
+.NewMenuPriceInput {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    background: var(--bg);
+    overflow: hidden;
+}
+.NewMenuPriceInput:focus-within {
+    border-color: var(--accent-border);
+    box-shadow: 0 0 0 2px var(--accent-bg);
+}
+.NewMenuPriceInput > span {
+    padding-left: 10px;
+    color: var(--accent);
+    font-size: 12px;
+}
+.NewMenuPriceInput input {
+    border: none;
+    border-radius: 0;
+    background: transparent;
+}
+.NewMenuPriceInput input:focus {
+    border: none;
+    box-shadow: none;
+}
+.NewMenuTemperature {
+    display: flex;
+    gap: 8px;
+}
+.NewMenuTemperature button {
+    flex: 1;
+    min-height: 36px;
+    padding: 7px 12px;
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 12px;
+    cursor: pointer;
+}
+.NewMenuTemperature button.selected {
+    border-color: var(--btn-primary);
+    background: var(--btn-primary);
+    color: var(--btn-label);
+    font-weight: 600;
+}
+.NewMenuFormActions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-top: 20px;
+    padding-top: 14px;
+    border-top: 1px solid var(--border);
+}
+.NewMenuCancelButton,
+.NewMenuSaveButton {
+    min-width: 90px;
+    padding: 8px 14px;
+    border-radius: 7px;
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+}
+.NewMenuCancelButton {
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--accent);
+}
+.NewMenuSaveButton {
+    border: 1px solid var(--btn-primary);
+    background: var(--btn-primary);
+    color: var(--btn-label);
+}
+@media (max-width: 700px) {
+    .NewMenuForm {
+        max-width: 100%;
+        padding: 18px;
+    }
+    .NewMenuFormRow {
+        grid-template-columns: 1fr;
+    }
+}
+@media (max-width: 480px) {
+    .NewMenuForm {
+        padding: 16px;
+        border-radius: 12px;
+    }
+    .NewMenuFormHeader {
+        gap: 10px;
+        margin-bottom: 16px;
+    }
+    .NewMenuFormHeader h2 {
+        font-size: 18px;
+    }
+    .NewMenuFormContent {
+        gap: 12px;
+    }
+    .NewMenuFormActions {
+        margin-top: 16px;
+        padding-top: 12px;
+    }
+    .NewMenuCancelButton,
+    .NewMenuSaveButton {
+        flex: 1;
+        min-width: 0;
+    }
+}
+@media (max-width: 360px) {
+    .NewMenuForm {
+        padding: 14px;
+    }
+    .NewMenuFormActions {
+        flex-direction: column;
+    }
+    .NewMenuCancelButton,
+    .NewMenuSaveButton {
+        width: 100%;
+    }
+}

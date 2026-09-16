@@ -1,6 +1,7 @@
 import "./store-selection.css";
 import Button from "/src/components/elements/button/button";
 import CheckIcon from "/src/assets/icons/check.svg?react";
+
 const stores = [
     {
         id: "poblacion",
@@ -15,9 +16,10 @@ const stores = [
     {
         id: "cacarongbata",
         name: "Kopi-Express Cacarong Bata Branch",
-        address: "cacarong Bata, Pandi, Bulacan",
+        address: "Cacarong Bata, Pandi, Bulacan",
     },
 ];
+
 function StoreSelection({ selectedStore, onSelect }) {
     return (
         <section className="StoreSelection">
@@ -37,7 +39,13 @@ function StoreSelection({ selectedStore, onSelect }) {
                             <strong>{store.name}</strong>
                             <span>{store.address}</span>
                         </span>
-                        <span className={selectedStore?.id === store.id ? "StoreCheck" : "StoreRadio"}>
+                        <span
+                            className={
+                                selectedStore?.id === store.id
+                                    ? "StoreCheck"
+                                    : "StoreRadio"
+                            }
+                        >
                             {selectedStore?.id === store.id && <CheckIcon />}
                         </span>
                     </Button>
@@ -46,4 +54,5 @@ function StoreSelection({ selectedStore, onSelect }) {
         </section>
     );
 }
+
 export default StoreSelection;

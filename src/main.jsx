@@ -21,7 +21,8 @@ import OnlineOrders from "./owner-staff/pages/online-orders/online-orders.jsx";
 import { OrdersProvider } from "./owner-staff/orders-context/orders-context.jsx";
 import SalesReport from "./owner-staff/owner-pages/owner-sales-report/owner-sales-report.jsx";
 import OwnerInventory from "./owner-staff/owner-pages/owner-inventory/owner-inventory.jsx";
-
+import OwnerMenu from "./owner-staff/owner-pages/owner-menu/owner-menu.jsx";
+import OrderHistoryDetails from "/src/customer/pages/order-history-details/order-history-details.jsx";
 createRoot(document.getElementById("root")).render(
     <StrictMode>
         <OrdersProvider>
@@ -43,8 +44,10 @@ createRoot(document.getElementById("root")).render(
                         <Route path="walk-in" element={<Walkin_Customer />} />
                         <Route path="inventory" element={<Inventory />} />
                         <Route path="online-orders" element={<OnlineOrders />} />
+                        <Route path="owner/menu" element={<OwnerMenu />} />
                         <Route path="owner/sales-report" element={<SalesReport />} />
                         <Route path="owner/inventory" element={<OwnerInventory />} />
+                        <Route path="order-history/details" element={<OrderHistoryDetails />} />
                     </Route>
                 </Routes>
             </BrowserRouter>

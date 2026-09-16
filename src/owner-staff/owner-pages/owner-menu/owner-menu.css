@@ -1,0 +1,26 @@
+    .OwnerMenuPage {
+        min-height: 100svh;
+        width: 100%;
+        background: var(--bg);
+        color: var(--text);
+        font-family: var(--sans);
+    }
+    .OwnerMenu {
+        display: grid;
+        grid-template-columns: 3fr 1fr;
+        gap: 16px;
+        width: 100%;
+        padding: 20px;
+        box-sizing: border-box;
+        align-items: start;
+    }
+    .owner-menu-card {
+        min-width: 0;
+    }
+    .Owner_Menu_Cards {
+        position: sticky;
+        top: 20px;
+        align-self: start;
+        min-width: 0;
+        height: fit-content;
+    }
