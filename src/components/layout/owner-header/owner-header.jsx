@@ -1,7 +1,5 @@
 import "/src/components/largeheader-wback/largeheader-wback.css";
 import { useNavigate, useLocation } from "react-router";
-
-import Back from "/src/components/elements/button/back-button/back-button.jsx";
 import Button from "/src/components/elements/button/button.jsx";
 import Logo from "/src/assets/logo/logo.svg?react";
 
@@ -17,7 +15,6 @@ function OwnerHeader({ title }) {
     return (
         <div className="LargeHeader">
             <div className="headerTop">
-                <Back />
                 <Logo />
                 <h1 className="LargeHeaderTitle">{title}</h1>
             </div>
