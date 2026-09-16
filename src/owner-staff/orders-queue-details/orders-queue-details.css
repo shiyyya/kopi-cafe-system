@@ -1,0 +1,193 @@
+.orderPanel {
+  width: 400px;
+  flex-shrink: 0;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 20px;
+  text-align: left;
+  position: sticky;
+  top: 142px;
+  height: calc(100vh - 166px);
+  display: flex;
+  flex-direction: column;
+}
+
+.orderScrollArea {
+  overflow-y: auto;
+  flex: 1;
+  min-height: 0;
+}
+
+.orderTop {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+
+.orderCustomer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.orderAvatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--btn-primary);
+}
+
+.orderName {
+  font-weight: 700;
+  color: var(--text-3);
+  font-size: 15px;
+}
+
+.orderType {
+  color: var(--text);
+  font-size: 13px;
+}
+
+.cleanStatus {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.orderDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.cleanpending    { color: var(--notif); }
+.cleanpreparing  { color: var(--progress); }
+.cleanready      { color: var(--success); }
+.cleandelivered  { color: var(--text-muted); }
+.cleancancelled  { color: var(--error); }
+
+.orderDivider {
+  height: 1px;
+  background: var(--border);
+  margin: 16px 0;
+}
+
+.orderLabel {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--text);
+  margin-bottom: 6px;
+  text-align: center;
+}
+
+.orderValue {
+  font-size: 14px;
+  color: var(--text-3);
+  font-weight: 600;
+}
+
+.orderSub {
+  font-size: 13px;
+  color: var(--text);
+  margin-top: 2px;
+}
+
+.orderItem {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: var(--text-3);
+  padding: 4px 0;
+}
+
+.orderItemPrice {
+  font-weight: 600;
+}
+
+.orderTotals {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.orderRow {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: var(--text);
+}
+
+.orderRowTotal {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-3);
+}
+
+.orderActions {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+  flex-shrink: 0;
+}
+
+.orderDeclineBtn,
+.orderAcceptBtn {
+  flex: 1;
+  padding: 12px 0;
+  border: none;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 14px;
+  font-family: var(--sans);
+  cursor: pointer;
+}
+
+.orderDeclineBtn {
+  background: var(--input-bg);
+  color: var(--text-3);
+}
+
+.orderAcceptBtn {
+  background: var(--btn-primary);
+  color: var(--btn-label);
+}
+
+/* Queue action buttons */
+.queueDetailsStartButton,
+.queueDetailsReadyButton,
+.queueDetailsDoneButton {
+  flex: 1;
+  padding: 12px 0;
+  border: none;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 14px;
+  font-family: var(--sans);
+  cursor: pointer;
+  color: var(--btn-label);
+}
+
+.queueDetailsStartButton {
+  background: var(--btn-process);
+}
+
+.queueDetailsReadyButton {
+  background: var(--btn-primary);
+}
+
+.queueDetailsDoneButton {
+  background: var(--accent);
+}
+
+@media (max-width: 900px) {
+  .orderPanel {
+    width: 100%;
+  }
+}

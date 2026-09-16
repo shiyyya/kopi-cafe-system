@@ -17,7 +17,7 @@ function formatCurrency(amount, currencySymbol) {
   return `${currencySymbol}${amount.toFixed(2)}`;
 }
 
-export default function OnlineOrders({
+function OnlineOrders({
   customerName = "",
   fulfillmentType,
   fulfillmentLabel,
@@ -117,3 +117,5 @@ export default function OnlineOrders({
     </div>
   );
 }
+
+export default OnlineOrders;

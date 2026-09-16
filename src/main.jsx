@@ -18,6 +18,7 @@ import Customization from "./customer/pages/customization/customization.jsx";
 import Walkin_Customer from "./owner-staff/pages/walk-in/walk-in.jsx";
 import Inventory from "./owner-staff/pages/inventory/inventory.jsx";
 import OnlineOrders from "./owner-staff/pages/online-orders/online-orders.jsx";
+import OrdersQueue from "./owner-staff/pages/orders-queue/orders-queue.jsx";
 import { OrdersProvider } from "./owner-staff/orders-context/orders-context.jsx";
 import SalesReport from "./owner-staff/owner-pages/owner-sales-report/owner-sales-report.jsx";
 import OwnerInventory from "./owner-staff/owner-pages/owner-inventory/owner-inventory.jsx";
@@ -45,6 +46,7 @@ createRoot(document.getElementById("root")).render(
                         <Route path="inventory" element={<Inventory />} />
                         <Route path="online-orders" element={<OnlineOrders />} />
                         <Route path="owner/menu" element={<OwnerMenu />} />
+                        <Route path="orders-queue" element={<OrdersQueue />} />
                         <Route path="owner/sales-report" element={<SalesReport />} />
                         <Route path="owner/inventory" element={<OwnerInventory />} />
                         <Route path="order-history/details" element={<OrderHistoryDetails />} />

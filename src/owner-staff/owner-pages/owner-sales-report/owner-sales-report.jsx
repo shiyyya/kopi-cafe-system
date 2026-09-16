@@ -323,8 +323,6 @@ function OwnerSalesReport() {
                                     <th>Product</th>
                                     <th>Units Sold</th>
                                     <th>Unit Price</th>
-                                    <th>Discount</th>
-                                    <th>Tax</th>
                                     <th>Total Sale</th>
                                     <th>Payment Method</th>
                                     <th>Order Type</th>
@@ -341,8 +339,6 @@ function OwnerSalesReport() {
                                         <td>{sale.product}</td>
                                         <td>{sale.unitsSold}</td>
                                         <td>₱{sale.unitPrice}</td>
-                                        <td>₱{sale.discount}</td>
-                                        <td>₱{sale.tax}</td>
                                         <td>₱{sale.totalSale}</td>
                                         <td>{sale.paymentMethod}</td>
                                         <td>{sale.orderType}</td>
