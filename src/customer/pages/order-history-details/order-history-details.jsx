@@ -58,7 +58,9 @@ function OrderHistoryDetails() {
                         <button
                             type="button"
                             className="back-to-history-btn"
-                            onClick={() => navigate("/order-history")}
+                            onClick={() =>
+                                navigate("/order-history", { replace: true })
+                            }
                         >
                             Back to Order History
                         </button>
@@ -274,7 +276,9 @@ function OrderHistoryDetails() {
                 <button
                     type="button"
                     className="back-to-history-btn"
-                    onClick={() => navigate("/order-history")}
+                    onClick={() =>
+                        navigate("/order-history", { replace: true })
+                    }
                 >
                     Back to Order History
                 </button>

@@ -4,11 +4,12 @@ import Button from "/src/components/elements/button/button.jsx";
 import Logo from "/src/assets/logo/logo.svg?react";
 
 const TABS = [
+    { label: "Menu", path: "/owner/menu" },
     { label: "Sales Report", path: "/owner/sales-report" },
     { label: "Inventory", path: "/owner/inventory" },
 ];
 
-function OwnerHeader({ title }) {
+function OwnerHeader({ title = "Kopi Express" }) {
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -18,14 +19,11 @@ function OwnerHeader({ title }) {
                 <Logo />
                 <h1 className="LargeHeaderTitle">{title}</h1>
             </div>
-
             <div className="headerTabs">
                 {TABS.map((tab) => (
                     <Button
                         key={tab.label}
-                        className={`headerTab ${
-                            location.pathname === tab.path ? "active" : ""
-                        }`}
+                        className={`headerTab ${location.pathname === tab.path ? "active" : ""}`}
                         onClick={() => navigate(tab.path)}
                     >
                         {tab.label}
