@@ -1,12 +1,43 @@
 import { Outlet, Link } from "react-router";
 import "./App.css";
+import { signup, login } from "./api/auth.api";
 
 function App() {
+    // async function handleSignup() {
+    //     const user = await signup({
+    //         fullName: "Beday, Shine",
+    //         email: "bedaybeday@gmail.com",
+    //         phoneNumber: "+639123456789",
+    //         defaultAddress: "sa bahay nila", // Optional
+    //         password: "strawberry123",
+    //         confirmPassword: "strawberry123"
+    //     })
+
+    //     console.log(user);
+    //     console.log(user.data.customer.fullName);
+    // }
+
+    // async function handleLogin() {
+    //     const user = await login({
+    //         email: "tuazonkobe@gmail.com",
+    //         password: "bikolangs5623"
+    //     })
+
+    //     console.log(user);
+    //     console.log(user.data.account.fullName);
+    // }
+
     return (
         <div>
+
+            {/* <button onClick={handleSignup}>Sign Up</button>
+            <button onClick={handleLogin}>Login</button> */}
+
             <div>
                 <Outlet />
             </div>
+
+
             {/* <Link to="store-locator">Store Locator</Link><br />
             <Link to="settings">Settings</Link><br />
             <Link to="order-status">Order Status</Link><br />
