@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./signup.css";
+import { signup } from "/src/api/auth.api.js";
 import { Link } from "react-router";
 import Input from "/src/components/elements/input/input.jsx";
 import Button from "/src/components/elements/button/button.jsx";
@@ -9,6 +10,17 @@ import EyeOffIcon from "/src/assets/icons/eye-off.svg?react";
 function SignUpCard({ onClose, onLogin }) {
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+    const handleSignUp = async () => {
+        const user = await signup({ fullName, email, phoneNumber, password, confirmPassword, defaultAddress });
+        localStorage.setItem("currentUser", JSON.stringify(user.data));
+        localStorage.setItem("token", JSON.stringify(user.data.token));
+        console.log("Login successful:", user.data.customer.fullName);
+        onLoginSuccess?.(user);
+        onClose?.();
+        return;
+    };
+
     return (
         <div
             className="signUpOverlay"
