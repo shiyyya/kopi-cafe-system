@@ -7,4 +7,6 @@ const user = {
     address: "Siling Bata, Pandi, Bulacan",
 };
 
+
+
 export default user;
